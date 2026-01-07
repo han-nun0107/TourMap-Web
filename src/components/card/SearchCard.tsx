@@ -65,7 +65,6 @@ export default function SearchCard({
             onClick={() => {
               console.log('좋아요')
             }}
-            className="cursor-pointer"
           >
             <HeartIcon size={24} />
           </button>

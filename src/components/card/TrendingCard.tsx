@@ -30,14 +30,12 @@ export default function TrendingCard({
           width={316}
           height={236}
         />
-        <div>
-          <Badge
-            name={tag}
-            type="main"
-            Icon={tagIcon}
-            className="absolute top-52 left-2"
-          />
-        </div>
+        <Badge
+          name={tag}
+          type="main"
+          Icon={tagIcon}
+          className="absolute top-52 left-2"
+        />
       </div>
       <div className="flex flex-1 flex-col justify-center gap-1 px-4">
         <p className="text-sm font-bold">{title}</p>
