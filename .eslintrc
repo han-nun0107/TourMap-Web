@@ -1,0 +1,12 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:import/typescript"
+    ],
+    "rules": {
+        "import/no-unresolved": ["error", { "commonjs": true, "amd": true }],
+        "typescript": true,
+        "node": true
+    }
+}
