@@ -1,6 +1,7 @@
 import {
   BookIcon,
   CalendarIcon,
+  MapPinIcon,
   TrendingUpIcon,
   UtensilsIcon,
 } from 'lucide-react'
@@ -38,5 +39,40 @@ export const trendingCardMock = [
     location: 'Trending location4',
     tag: 'Food',
     tagIcon: UtensilsIcon,
+  },
+]
+
+export const categoryCardMock = [
+  {
+    Icon: BookIcon,
+    title: 'Category Card1',
+  },
+  {
+    Icon: CalendarIcon,
+    title: 'Category Card2',
+  },
+  {
+    Icon: UtensilsIcon,
+    title: 'Category Card3',
+  },
+  {
+    Icon: MapPinIcon,
+    title: 'Category Card4',
+  },
+  {
+    Icon: TrendingUpIcon,
+    title: 'Category Card5',
+  },
+  {
+    Icon: TrendingUpIcon,
+    title: 'Category Card6',
+  },
+  {
+    Icon: TrendingUpIcon,
+    title: 'Category Card7',
+  },
+  {
+    Icon: TrendingUpIcon,
+    title: 'Category Card8',
   },
 ]

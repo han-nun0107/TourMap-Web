@@ -21,7 +21,7 @@ export default function TrendingCard({
   tagIcon,
 }: TrendingCardProps) {
   return (
-    <Card className="flex h-80 w-full flex-col">
+    <Card className="flex h-80 w-full flex-col rounded-2xl">
       <div className="relative h-60 overflow-hidden">
         <Image
           src={image}
