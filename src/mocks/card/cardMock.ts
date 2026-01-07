@@ -6,10 +6,12 @@ import {
   UtensilsIcon,
 } from 'lucide-react'
 
-import gwangjangMarket from '@/assets/images/card/Gwangjang Market.png'
-import gyeongbokgungPalace from '@/assets/images/card/Gyeongbokgung Palace.png'
-import nationalMuseum from '@/assets/images/card/National Museum of Korea.png'
-import seoulLanternFestival from '@/assets/images/card/Seoul Lantern Festival.png'
+import {
+  gwangjangMarket,
+  gyeongbokgungPalace,
+  nationalMuseum,
+  seoulLanternFestival,
+} from '@/assets/images/card'
 
 export const trendingCardMock = [
   {
@@ -74,5 +76,40 @@ export const categoryCardMock = [
   {
     Icon: TrendingUpIcon,
     title: 'Category Card8',
+  },
+]
+
+export const searchCardMock = [
+  {
+    image: gwangjangMarket,
+    title: 'Search Card1',
+    location: 'Search location1',
+    tag: 'Search',
+    tagIcon: TrendingUpIcon,
+    distance: '100m',
+  },
+  {
+    image: gyeongbokgungPalace,
+    title: 'Search Card2',
+    location: 'Search location2',
+    tag: 'Search',
+    tagIcon: TrendingUpIcon,
+    distance: '200m',
+  },
+  {
+    image: nationalMuseum,
+    title: 'Search Card3',
+    location: 'Search location3',
+    tag: 'Search',
+    tagIcon: TrendingUpIcon,
+    distance: '300m',
+  },
+  {
+    image: seoulLanternFestival,
+    title: 'Search Card4',
+    location: 'Search location4',
+    tag: 'Search',
+    tagIcon: TrendingUpIcon,
+    distance: '400m',
   },
 ]
