@@ -15,7 +15,7 @@
     @apply flex items-center justify-center;
   }
   .grid-center {
-    @apply grid items-center justify-center;
+    @apply grid place-items-center;
   }
   .text-base-bold {
     @apply text-base font-bold;
