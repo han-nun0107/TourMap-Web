@@ -6,13 +6,15 @@ type BadgeProps = {
   type: BadgeType
   name: string
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  className?: string
 }
 
-export default function Badge({ name, type, Icon }: BadgeProps) {
+export default function Badge({ name, type, Icon, className }: BadgeProps) {
   return (
     <div
       className={cn(
         'flex items-center gap-1 rounded-full',
+        className,
         badgeVariants[type]
       )}
     >
