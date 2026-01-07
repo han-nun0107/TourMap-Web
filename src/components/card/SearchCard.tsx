@@ -1,15 +1,34 @@
-import { HeartIcon, MapPinIcon } from 'lucide-react'
+'use client'
+
+import {
+  BookIcon,
+  CalendarIcon,
+  HeartIcon,
+  MapPinIcon,
+  TrendingUpIcon,
+  UtensilsIcon,
+} from 'lucide-react'
 import Image, { StaticImageData } from 'next/image'
 
 import { Badge } from '@/components/common'
 import Card from '@/components/common/Card'
+
+const iconMap = {
+  BookIcon,
+  CalendarIcon,
+  MapPinIcon,
+  TrendingUpIcon,
+  UtensilsIcon,
+} as const
+
+type IconName = keyof typeof iconMap
 
 type SearchCardProps = {
   image: StaticImageData
   title: string
   location: string
   tag: string
-  tagIcon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  tagIcon: IconName
   distance: string
 }
 
@@ -32,7 +51,7 @@ export default function SearchCard({
           className="rounded-xl object-cover"
         />
         <div className="flex flex-col gap-1">
-          <Badge name={tag} type="search" Icon={tagIcon} />
+          <Badge name={tag} type="search" Icon={iconMap[tagIcon]} />
           <p className="text-black-900 text-lg-bold">{title}</p>
           <div className="flex items-center gap-1">
             <MapPinIcon size={12} className="text-gray-600" />
@@ -40,7 +59,16 @@ export default function SearchCard({
           </div>
         </div>
         <div className="flex flex-col items-center gap-3">
-          <HeartIcon size={24} />
+          <button
+            type="button"
+            aria-label="좋아요"
+            onClick={() => {
+              console.log('좋아요')
+            }}
+            className="cursor-pointer"
+          >
+            <HeartIcon size={24} />
+          </button>
           <p className="text-sm font-medium text-gray-600">{distance}</p>
         </div>
       </div>

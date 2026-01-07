@@ -85,7 +85,7 @@ export const searchCardMock = [
     title: 'Search Card1',
     location: 'Search location1',
     tag: 'Search',
-    tagIcon: TrendingUpIcon,
+    tagIcon: 'TrendingUpIcon' as const,
     distance: '100m',
   },
   {
@@ -93,7 +93,7 @@ export const searchCardMock = [
     title: 'Search Card2',
     location: 'Search location2',
     tag: 'Search',
-    tagIcon: TrendingUpIcon,
+    tagIcon: 'TrendingUpIcon' as const,
     distance: '200m',
   },
   {
@@ -101,7 +101,7 @@ export const searchCardMock = [
     title: 'Search Card3',
     location: 'Search location3',
     tag: 'Search',
-    tagIcon: TrendingUpIcon,
+    tagIcon: 'TrendingUpIcon' as const,
     distance: '300m',
   },
   {
@@ -109,7 +109,7 @@ export const searchCardMock = [
     title: 'Search Card4',
     location: 'Search location4',
     tag: 'Search',
-    tagIcon: TrendingUpIcon,
+    tagIcon: 'TrendingUpIcon' as const,
     distance: '400m',
   },
 ]
