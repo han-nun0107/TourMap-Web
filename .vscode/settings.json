@@ -16,7 +16,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  
+
   "eslint.format.enable": false,
   "eslint.validate": [
     "javascript",
@@ -24,6 +24,7 @@
     "typescript",
     "typescriptreact"
   ],
-  
+  "eslint.runtime": "node",
+
   "prettier.enable": true
 }
