@@ -16,7 +16,7 @@ export default function Badge({ name, type, Icon }: BadgeProps) {
         badgeVariants[type]
       )}
     >
-      <Icon aria-label={name} className="size-4" />
+      <Icon aria-hidden="true" className="size-4" />
       <p className="text-sm font-medium">{name}</p>
     </div>
   )
