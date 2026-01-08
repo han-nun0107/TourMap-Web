@@ -1,2 +1,2 @@
-export type BadgeType = 'main' | 'search' | 'info' | 'warning' | 'filter'
-export type FilterLocation = 'main' | 'search' | 'info' | 'warning'
+export type BadgeType = 'main' | 'search' | 'region'
+export type FilterLocation = 'main' | 'search' | 'region'

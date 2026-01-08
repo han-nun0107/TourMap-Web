@@ -1,0 +1,31 @@
+import { buttonVariants, type ButtonVariants } from '@/foundation/button'
+import { cn } from '@/lib/cn'
+
+type ButtonBaseProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'onClick'
+> &
+  ButtonVariants & {
+    className?: string
+    children?: React.ReactNode
+  }
+
+export function Button({
+  variant,
+  intent,
+  fullWidth,
+  className,
+  type = 'button',
+  disabled,
+  children,
+}: ButtonBaseProps) {
+  return (
+    <button
+      type={type}
+      disabled={disabled}
+      className={cn(buttonVariants({ variant, intent, fullWidth }), className)}
+    >
+      {children}
+    </button>
+  )
+}

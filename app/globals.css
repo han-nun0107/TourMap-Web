@@ -6,8 +6,11 @@
 
   --color-blue-600: #2136f2;
 
+  --color-gray-100: #f9fafb;
   --color-gray-200: #e1e7ef;
   --color-gray-600: #65758b;
+
+  --color-purple-600: #7c43ef;
 }
 
 @layer components {
