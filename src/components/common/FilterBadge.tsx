@@ -3,6 +3,7 @@ import { cn } from '@/lib/cn'
 import { BadgeType } from '@/types'
 
 import Badge from './Badge'
+import { ButtonClient } from './button'
 
 type FilterBadgeProps = {
   type: BadgeType
@@ -22,11 +23,13 @@ export function FilterBadge({
   disabled,
 }: FilterBadgeProps) {
   return (
-    <button
-      type="button"
+    <ButtonClient
+      variant="region"
+      intent="region"
       onClick={onClick}
       disabled={disabled}
       aria-pressed={active}
+      active={active}
       className={cn(
         'inline-flex cursor-pointer items-center rounded-full transition-all duration-200',
         disabled && 'cursor-not-allowed opacity-50',
@@ -42,6 +45,6 @@ export function FilterBadge({
           !disabled && 'hover:opacity-90'
         )}
       />
-    </button>
+    </ButtonClient>
   )
 }

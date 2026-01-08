@@ -11,6 +11,7 @@ import {
 import Image, { StaticImageData } from 'next/image'
 
 import { Badge } from '@/components/common'
+import { ButtonClient } from '@/components/common/button'
 import Card from '@/components/common/Card'
 
 const iconMap = {
@@ -59,15 +60,16 @@ export default function SearchCard({
           </div>
         </div>
         <div className="flex flex-col items-center gap-3">
-          <button
-            type="button"
+          <ButtonClient
+            variant="heart"
+            intent="heart"
             aria-label="좋아요"
             onClick={() => {
               console.log('좋아요')
             }}
           >
             <HeartIcon size={24} />
-          </button>
+          </ButtonClient>
           <p className="text-sm font-medium text-gray-600">{distance}</p>
         </div>
       </div>
