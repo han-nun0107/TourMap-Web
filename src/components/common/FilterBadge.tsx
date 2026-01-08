@@ -1,3 +1,4 @@
+import { activeBadgeVariants } from '@/foundation/badge'
 import { cn } from '@/lib/cn'
 import { BadgeType } from '@/types'
 
@@ -37,7 +38,7 @@ export function FilterBadge({
         name={name}
         className={cn(
           'transition-all duration-200',
-          active && 'scale-105 bg-purple-600 text-white shadow-md',
+          active && activeBadgeVariants[type],
           !disabled && 'hover:opacity-90'
         )}
       />

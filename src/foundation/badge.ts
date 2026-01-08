@@ -7,3 +7,11 @@ export const badgeVariants: Record<BadgeType, string> = {
   warning: 'h-5 w-32 justify-center bg-yellow-500 px-2 text-black',
   filter: 'flex-center bg-gray-200 px-3 py-2 text-black-900 text-sm',
 }
+
+export const activeBadgeVariants: Record<BadgeType, string> = {
+  main: 'scale-105 bg-purple-600 text-white shadow-md',
+  search: 'scale-105 bg-purple-600 text-white shadow-md',
+  info: 'scale-105 bg-purple-600 text-white shadow-md',
+  warning: 'scale-105 bg-purple-600 text-white shadow-md',
+  filter: 'scale-105 bg-purple-600 text-white shadow-md',
+}
