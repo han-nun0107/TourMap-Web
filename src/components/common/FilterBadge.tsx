@@ -1,0 +1,46 @@
+import { cn } from '@/lib/cn'
+import { BadgeType } from '@/types'
+
+import Badge from './Badge'
+
+type FilterBadgeProps = {
+  type: BadgeType
+  name: string
+  className?: string
+  active: boolean
+  onClick: () => void
+  disabled?: boolean
+}
+
+export function FilterBadge({
+  type,
+  name,
+  className,
+  active,
+  onClick,
+  disabled,
+}: FilterBadgeProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-pressed={active}
+      className={cn(
+        'inline-flex cursor-pointer items-center rounded-full transition-all duration-200',
+        disabled && 'cursor-not-allowed opacity-50',
+        className
+      )}
+    >
+      <Badge
+        type={type}
+        name={name}
+        className={cn(
+          'transition-all duration-200',
+          active && 'scale-105 bg-purple-600 text-white shadow-md',
+          !disabled && 'hover:opacity-90'
+        )}
+      />
+    </button>
+  )
+}

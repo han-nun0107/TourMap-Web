@@ -5,21 +5,32 @@ import { BadgeType } from '@/types'
 type BadgeProps = {
   type: BadgeType
   name: string
-  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
   className?: string
+  iconClassName?: string
+  textClassName?: string
 }
 
-export default function Badge({ name, type, Icon, className }: BadgeProps) {
+export default function Badge({
+  name,
+  type,
+  Icon,
+  className,
+  iconClassName,
+  textClassName,
+}: BadgeProps) {
   return (
-    <div
+    <span
       className={cn(
         'flex items-center gap-1 rounded-full',
-        className,
-        badgeVariants[type]
+        badgeVariants[type],
+        className
       )}
     >
-      <Icon aria-hidden="true" className="size-4" />
-      <p className="text-sm font-medium">{name}</p>
-    </div>
+      {Icon && (
+        <Icon aria-hidden="true" className={cn('size-4', iconClassName)} />
+      )}
+      <p className={cn('text-sm font-medium', textClassName)}>{name}</p>
+    </span>
   )
 }
