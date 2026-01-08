@@ -29,6 +29,7 @@ export function FilterBadge({
       onClick={onClick}
       disabled={disabled}
       aria-pressed={active}
+      active={active}
       className={cn(
         'inline-flex cursor-pointer items-center rounded-full transition-all duration-200',
         disabled && 'cursor-not-allowed opacity-50',

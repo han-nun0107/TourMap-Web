@@ -7,21 +7,33 @@ export const buttonVariants = cva(
       variant: {
         main: 'bg-purple-600 text-white hover:opacity-90 rounded-xl',
         heart: 'text-gray-600 hover:opacity-90 rounded-full',
-        region: 'text-black-900 hover:opacity-90 rounded-full',
+        region: 'bg-gray-200 text-black-900 hover:opacity-90 rounded-full',
       },
       intent: {
         main: 'px-8 py-3',
         heart: 'h-9 w-9',
         region: 'px-3 py-2',
       },
+      active: {
+        true: '',
+        false: '',
+      },
       fullWidth: {
         true: 'w-full',
         false: '',
       },
     },
+    compoundVariants: [
+      {
+        variant: 'region',
+        active: true,
+        className: 'bg-purple-600 text-white',
+      },
+    ],
     defaultVariants: {
       variant: 'main',
       intent: 'main',
+      active: false,
       fullWidth: false,
     },
   }

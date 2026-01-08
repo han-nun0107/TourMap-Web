@@ -6,7 +6,6 @@ import { cn } from '@/lib/cn'
 type ButtonClientProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   ButtonVariants & {
     isLoading?: boolean
-    active?: boolean
   }
 
 export function ButtonClient({
@@ -26,8 +25,7 @@ export function ButtonClient({
     <button
       disabled={isDisabled}
       className={cn(
-        buttonVariants({ variant, intent, fullWidth }),
-        active ? 'bg-purple-600 text-white' : 'text-black-900 bg-gray-200',
+        buttonVariants({ variant, intent, fullWidth, active }),
         className
       )}
       {...props}

@@ -13,6 +13,7 @@ type ButtonBaseProps = Omit<
 export function Button({
   variant,
   intent,
+  active,
   fullWidth,
   className,
   type = 'button',
@@ -23,7 +24,10 @@ export function Button({
     <button
       type={type}
       disabled={disabled}
-      className={cn(buttonVariants({ variant, intent, fullWidth }), className)}
+      className={cn(
+        buttonVariants({ variant, intent, fullWidth, active }),
+        className
+      )}
     >
       {children}
     </button>
