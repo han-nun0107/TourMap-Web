@@ -10,7 +10,7 @@ type ButtonBaseProps = Omit<
     children?: React.ReactNode
   }
 
-export function Button({
+export default function Button({
   variant,
   intent,
   active,
