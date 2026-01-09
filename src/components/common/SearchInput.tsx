@@ -1,7 +1,7 @@
 'use client'
 
 import { SearchIcon, X } from 'lucide-react'
-import { useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 
 import { ButtonClient } from '@/components/common/button'
 import { useDebounce } from '@/hooks/search/useDebounce'
@@ -20,24 +20,42 @@ export function SearchInput({
   const [value, setValue] = useState(defaultValue)
   const { debouncedValue } = useDebounce(value, debounceMs)
   const inputRef = useRef<HTMLInputElement>(null)
+  const isInitialMountRef = useRef(true)
+  const skipNextDebouncedEffectRef = useRef(false)
 
   useEffect(() => {
-    onDebouncedChange(debouncedValue.trim())
-  }, [debouncedValue, onDebouncedChange])
+    const q = debouncedValue.trim()
+
+    if (skipNextDebouncedEffectRef.current) {
+      skipNextDebouncedEffectRef.current = false
+      return
+    }
+
+    if (isInitialMountRef.current) {
+      isInitialMountRef.current = false
+      if (defaultValue.trim() === '' && q === '') return
+    }
+
+    onDebouncedChange(q)
+  }, [debouncedValue, defaultValue, onDebouncedChange])
 
   const inputId = useId()
 
-  const clear = () => {
+  const clear = useCallback(() => {
+    skipNextDebouncedEffectRef.current = true
     setValue('')
     onDebouncedChange('')
     inputRef.current?.focus()
-  }
+  }, [onDebouncedChange])
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Escape') {
-      clear()
-    }
-  }
+  const onKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Escape') {
+        clear()
+      }
+    },
+    [clear]
+  )
 
   return (
     <div role="search" aria-label="Site search" className="w-full">
@@ -60,7 +78,7 @@ export function SearchInput({
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={onKeyDown}
           aria-describedby={`${inputId}-hint`}
-          className="w-full rounded-full border py-3 pl-10 outline-none"
+          className="w-full rounded-full border py-3 pr-10 pl-10 outline-none"
         />
 
         {value.length > 0 && (
