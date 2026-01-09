@@ -22,6 +22,11 @@ export function SearchInput({
   const inputRef = useRef<HTMLInputElement>(null)
   const isInitialMountRef = useRef(true)
   const skipNextDebouncedEffectRef = useRef(false)
+  const onDebouncedChangeRef = useRef(onDebouncedChange)
+
+  useEffect(() => {
+    onDebouncedChangeRef.current = onDebouncedChange
+  })
 
   useEffect(() => {
     const q = debouncedValue.trim()
@@ -33,20 +38,22 @@ export function SearchInput({
 
     if (isInitialMountRef.current) {
       isInitialMountRef.current = false
-      if (defaultValue.trim() === '' && q === '') return
+      if (q === '') {
+        return
+      }
     }
 
-    onDebouncedChange(q)
-  }, [debouncedValue, defaultValue, onDebouncedChange])
+    onDebouncedChangeRef.current(q)
+  }, [debouncedValue])
 
   const inputId = useId()
 
   const clear = useCallback(() => {
     skipNextDebouncedEffectRef.current = true
     setValue('')
-    onDebouncedChange('')
+    onDebouncedChangeRef.current('')
     inputRef.current?.focus()
-  }, [onDebouncedChange])
+  }, [])
 
   const onKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -57,6 +64,7 @@ export function SearchInput({
     [clear]
   )
 
+  console.log('value', value)
   return (
     <div role="search" aria-label="Site search" className="w-full">
       <label htmlFor={inputId} className="sr-only">
