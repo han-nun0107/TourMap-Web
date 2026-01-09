@@ -64,7 +64,6 @@ export function SearchInput({
     [clear]
   )
 
-  console.log('value', value)
   return (
     <div role="search" aria-label="Site search" className="w-full">
       <label htmlFor={inputId} className="sr-only">
