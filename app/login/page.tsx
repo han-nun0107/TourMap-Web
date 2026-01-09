@@ -1,0 +1,39 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+
+import { ButtonClient } from '@/components/common/button'
+import { useAuthStore } from '@/store/auth'
+
+export default function LoginPage() {
+  const router = useRouter()
+  const login = useAuthStore((state) => state.login)
+
+  const handleLogin = () => {
+    login({
+      id: 'temp-user-id',
+      email: 'user@example.com',
+      name: 'User',
+    })
+    router.push('/')
+  }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="w-full max-w-md space-y-4 rounded-lg border border-gray-200 bg-white p-8 shadow-sm">
+        <h1 className="text-black-900 text-2xl font-bold">로그인</h1>
+        <p className="text-sm text-gray-600">
+          임시 로그인 버튼입니다. (추후 Supabase 연동 예정)
+        </p>
+        <ButtonClient
+          variant="main"
+          intent="main"
+          fullWidth
+          onClick={handleLogin}
+        >
+          로그인
+        </ButtonClient>
+      </div>
+    </div>
+  )
+}
