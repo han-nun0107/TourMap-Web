@@ -9,11 +9,17 @@ export default function LoginPage() {
   const router = useRouter()
   const login = useAuthStore((state) => state.login)
 
+  const MOCK_USER = {
+    id: 'temp-user-id',
+    email: 'user@example.com',
+    name: 'User',
+  }
+
   const handleLogin = () => {
     login({
-      id: 'temp-user-id',
-      email: 'user@example.com',
-      name: 'User',
+      id: MOCK_USER.id,
+      email: MOCK_USER.email,
+      name: MOCK_USER.name,
     })
     router.push('/')
   }

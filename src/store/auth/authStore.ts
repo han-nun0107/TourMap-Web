@@ -4,11 +4,11 @@ import { persist } from 'zustand/middleware'
 export type AuthState = {
   isLogin: boolean
   user: {
-    id: string | null
-    email: string | null
-    name: string | null
+    id: string
+    email: string
+    name: string
   } | null
-  login: (userData?: { id: string; email: string; name: string }) => void
+  login: (userData: { id: string; email: string; name: string }) => void
   logout: () => void
 }
 
@@ -20,11 +20,7 @@ export const useAuthStore = create<AuthState>()(
       login: (userData) => {
         set({
           isLogin: true,
-          user: userData || {
-            id: 'temp-user-id',
-            email: 'temp@example.com',
-            name: 'Temp User',
-          },
+          user: userData,
         })
       },
       logout: () => {
