@@ -8,7 +8,7 @@ type ButtonClientProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
     isLoading?: boolean
   }
 
-export function ButtonClient({
+export default function ButtonClient({
   variant,
   intent,
   fullWidth,

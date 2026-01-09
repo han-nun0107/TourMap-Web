@@ -8,11 +8,13 @@ export const buttonVariants = cva(
         main: 'bg-purple-600 text-white hover:opacity-90 rounded-xl',
         heart: 'text-gray-600 hover:opacity-90 rounded-full',
         region: 'bg-gray-200 text-black-900 hover:opacity-90 rounded-full',
+        clear: 'absolute top-1/2 right-3 -translate-y-1/2 rounded px-2 py-1',
       },
       intent: {
         main: 'px-8 py-3',
         heart: 'h-9 w-9',
         region: 'px-3 py-2',
+        clear: '',
       },
       active: {
         true: '',

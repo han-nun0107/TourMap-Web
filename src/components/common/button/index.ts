@@ -1,2 +1,2 @@
-export * from './Button'
-export * from './ButtonClient'
+export { default as Button } from './Button'
+export { default as ButtonClient } from './ButtonClient'
