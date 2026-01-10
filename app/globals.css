@@ -11,6 +11,8 @@
   --color-gray-600: #65758b;
 
   --color-purple-600: #7c43ef;
+
+  --color-orange-600: #e76e50;
 }
 
 @layer components {
