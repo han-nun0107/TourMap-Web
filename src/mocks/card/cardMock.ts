@@ -20,6 +20,7 @@ export const trendingCardMock = [
     location: 'Trending location1',
     tag: 'Trending',
     tagIcon: TrendingUpIcon,
+    id: 1,
   },
   {
     image: gyeongbokgungPalace,
@@ -27,6 +28,7 @@ export const trendingCardMock = [
     location: 'Trending location2',
     tag: 'Culture',
     tagIcon: BookIcon,
+    id: 2,
   },
   {
     image: nationalMuseum,
@@ -34,6 +36,7 @@ export const trendingCardMock = [
     location: 'Trending location3',
     tag: 'Festival',
     tagIcon: CalendarIcon,
+    id: 3,
   },
   {
     image: seoulLanternFestival,
@@ -41,6 +44,7 @@ export const trendingCardMock = [
     location: 'Trending location4',
     tag: 'Food',
     tagIcon: UtensilsIcon,
+    id: 4,
   },
 ]
 

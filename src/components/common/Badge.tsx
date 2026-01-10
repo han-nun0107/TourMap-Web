@@ -22,7 +22,7 @@ export default function Badge({
   return (
     <span
       className={cn(
-        'flex items-center gap-1 rounded-full',
+        'flex h-8 items-center gap-1 rounded-full',
         badgeVariants[type],
         className
       )}
