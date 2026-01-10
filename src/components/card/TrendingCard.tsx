@@ -57,7 +57,7 @@ export default function TrendingCard({
           <HeartIcon
             size={16}
             className={
-              isLiked ? 'fill-red-500 text-red-500' : 'text-none fill-none'
+              isLiked ? 'fill-red-500 text-red-500' : 'fill-none text-gray-500'
             }
           />
         </ButtonClient>

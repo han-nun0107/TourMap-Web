@@ -10,7 +10,7 @@ export default {
         'orange-600': '#e76e50',
       },
       screens: {
-        xs: '390px',
+        sm: '390px',
         md: '768px',
         lg: '1024px',
         xl: '1440px',

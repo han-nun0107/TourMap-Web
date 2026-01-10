@@ -23,7 +23,7 @@ export default function ExploreSection({
   const [activeFilter, setActiveFilter] = useState<string>('all-regions')
 
   return (
-    <div className="mx-auto flex w-full max-w-[332px] flex-col gap-6 sm:max-w-[332px] md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px] 2xl:max-w-[1440px]">
+    <div className="mx-auto flex w-full max-w-[332px] flex-col gap-6 py-12 md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px]">
       <div className="flex w-full items-center justify-between">
         <div className="flex flex-col gap-1">
           <h1 className="text-black-900 text-2xl font-bold">{sectionTitle}</h1>

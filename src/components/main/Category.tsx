@@ -4,7 +4,7 @@ import { CATEGORY_OPTIONS } from '@/constants/main/category'
 export default function Category() {
   return (
     <section className="w-full bg-gray-200 py-12">
-      <div className="mx-auto flex w-full max-w-[332px] flex-col items-start gap-6 sm:max-w-[332px] md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px] 2xl:max-w-[1440px]">
+      <div className="mx-auto flex w-full max-w-[332px] flex-col items-start gap-6 md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px]">
         <h1 className="text-black-900 flex w-full items-start text-2xl font-bold">
           Browse by Category
         </h1>
