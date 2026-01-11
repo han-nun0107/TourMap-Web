@@ -1,6 +1,6 @@
 'use client'
 
-import { HeartIcon, MapPin } from 'lucide-react'
+import { HeartIcon, LucideIcon, MapPin } from 'lucide-react'
 import Image, { StaticImageData } from 'next/image'
 import { useState } from 'react'
 
@@ -13,7 +13,7 @@ type TrendingCardProps = {
   title: string
   location: string
   tag: string
-  tagIcon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  tagIcon: React.ComponentType<React.SVGProps<SVGSVGElement>> | LucideIcon
   id: string | number
   onClick?: () => void
 }

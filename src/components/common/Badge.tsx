@@ -1,3 +1,5 @@
+import { LucideIcon } from 'lucide-react'
+
 import { badgeVariants } from '@/foundation/badge'
 import { cn } from '@/lib/cn'
 import { BadgeType } from '@/types'
@@ -5,7 +7,7 @@ import { BadgeType } from '@/types'
 type BadgeProps = {
   type: BadgeType
   name: string
-  Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  Icon?: React.ComponentType<React.SVGProps<SVGSVGElement>> | LucideIcon
   className?: string
   iconClassName?: string
   textClassName?: string

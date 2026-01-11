@@ -1,6 +1,6 @@
 'use client'
 
-import { TrendingUpIcon } from 'lucide-react'
+import { LucideIcon } from 'lucide-react'
 
 import { TrendingCard } from '@/components/card'
 import { SearchInput } from '@/components/common'
@@ -32,7 +32,11 @@ export default function SearchPage() {
               type="region"
               name={option.title}
               active={activeFilter === option.value}
-              onClick={() => setActiveFilter(option.value)}
+              onClick={() =>
+                setActiveFilter(
+                  activeFilter === option.value ? null : option.value
+                )
+              }
               className="h-8"
             />
           ))}
@@ -50,7 +54,11 @@ export default function SearchPage() {
               title={card.title}
               location={card.location}
               tag={card.tag}
-              tagIcon={TrendingUpIcon}
+              tagIcon={
+                card.tagIcon as
+                  | React.ComponentType<React.SVGProps<SVGSVGElement>>
+                  | LucideIcon
+              }
               id={card.id}
             />
           ))}
