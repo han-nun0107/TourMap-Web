@@ -7,9 +7,12 @@ type SearchFilterOptions = {
 
 const normalizeString = (str: string) => str.toLowerCase().replace(/[-\s]/g, '')
 
-export function useSearchFilter<
+export const useSearchFilter = <
   T extends { title: string; location: string; tag?: string },
->(items: T[], options?: Partial<SearchFilterOptions>) {
+>(
+  items: T[],
+  options?: Partial<SearchFilterOptions>
+) => {
   const [searchQuery, setSearchQuery] = useState(options?.searchQuery ?? '')
   const [activeFilter, setActiveFilter] = useState<string | null>(
     options?.activeFilter ?? null
@@ -24,20 +27,16 @@ export function useSearchFilter<
       : null
 
     return items.filter((item) => {
-      if (normalizedActiveFilter) {
-        if (!item.tag || normalizeString(item.tag) !== normalizedActiveFilter) {
-          return false
-        }
-      }
+      const tagMatch =
+        !normalizedActiveFilter ||
+        (item.tag && normalizeString(item.tag) === normalizedActiveFilter)
 
-      if (searchQuery) {
-        const titleMatch = item.title.toLowerCase().includes(lowercasedQuery)
-        if (titleMatch) return true
+      const queryMatch =
+        !searchQuery ||
+        item.title.toLowerCase().includes(lowercasedQuery) ||
+        item.location.toLowerCase().includes(lowercasedQuery)
 
-        return item.location.toLowerCase().includes(lowercasedQuery)
-      }
-
-      return true
+      return tagMatch && queryMatch
     })
   }, [items, searchQuery, activeFilter])
 
