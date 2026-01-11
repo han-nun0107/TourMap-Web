@@ -1,3 +1,5 @@
+'use client'
+
 import { CategoryCard } from '@/components/card'
 import { CATEGORY_OPTIONS } from '@/constants/main/category'
 

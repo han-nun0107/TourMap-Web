@@ -1,3 +1,5 @@
+'use client'
+
 import { HeartIcon, MapPin } from 'lucide-react'
 import Image, { StaticImageData } from 'next/image'
 import { useState } from 'react'
