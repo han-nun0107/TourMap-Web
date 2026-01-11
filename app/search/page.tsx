@@ -54,11 +54,7 @@ export default function SearchPage() {
               title={card.title}
               location={card.location}
               tag={card.tag}
-              tagIcon={
-                card.tagIcon as
-                  | React.ComponentType<React.SVGProps<SVGSVGElement>>
-                  | LucideIcon
-              }
+              tagIcon={card.tagIcon}
               id={card.id}
             />
           ))}
