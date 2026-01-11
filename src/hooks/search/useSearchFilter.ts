@@ -5,33 +5,39 @@ type SearchFilterOptions = {
   activeFilter: string | null
 }
 
-export const useSearchFilter = <
+const normalizeString = (str: string) => str.toLowerCase().replace(/[-\s]/g, '')
+
+export function useSearchFilter<
   T extends { title: string; location: string; tag?: string },
->(
-  items: T[],
-  options?: Partial<SearchFilterOptions>
-) => {
+>(items: T[], options?: Partial<SearchFilterOptions>) {
   const [searchQuery, setSearchQuery] = useState(options?.searchQuery ?? '')
   const [activeFilter, setActiveFilter] = useState<string | null>(
     options?.activeFilter ?? null
   )
 
   const filteredItems = useMemo(() => {
-    const normalizeString = (str: string) =>
-      str.toLowerCase().replace(/[-\s]/g, '')
+    if (!searchQuery && !activeFilter) return items
+
+    const lowercasedQuery = searchQuery.toLowerCase()
+    const normalizedActiveFilter = activeFilter
+      ? normalizeString(activeFilter)
+      : null
 
     return items.filter((item) => {
-      const matchesSearch =
-        searchQuery === '' ||
-        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.location.toLowerCase().includes(searchQuery.toLowerCase())
+      if (normalizedActiveFilter) {
+        if (!item.tag || normalizeString(item.tag) !== normalizedActiveFilter) {
+          return false
+        }
+      }
 
-      const matchesCategory =
-        !activeFilter ||
-        (item.tag &&
-          normalizeString(item.tag) === normalizeString(activeFilter))
+      if (searchQuery) {
+        const titleMatch = item.title.toLowerCase().includes(lowercasedQuery)
+        if (titleMatch) return true
 
-      return matchesSearch && matchesCategory
+        return item.location.toLowerCase().includes(lowercasedQuery)
+      }
+
+      return true
     })
   }, [items, searchQuery, activeFilter])
 
