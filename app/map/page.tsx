@@ -9,11 +9,7 @@ import { FilterBadge } from '@/components/common'
 import { CATEGORY_OPTIONS } from '@/constants/main/category'
 import { searchCardMock } from '@/mocks'
 
-type MapPageProps = {
-  number: number
-}
-
-export default function MapPage({ number }: MapPageProps) {
+export default function MapPage() {
   const [activeFilter, setActiveFilter] = useState<string | null>('attraction')
   return (
     <>
@@ -50,12 +46,12 @@ export default function MapPage({ number }: MapPageProps) {
         </Map>
         <div className="mx-auto flex flex-col gap-3 pt-4">
           <p className="text-sm font-light text-gray-600">
-            {number} places nearby
+            {searchCardMock.length} places nearby
           </p>
           <div className="flex flex-col gap-3">
             {searchCardMock.map((card) => (
               <SearchCard
-                key={card.title}
+                key={card.id}
                 image={card.image}
                 title={card.title}
                 location={card.location}
