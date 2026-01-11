@@ -1,3 +1,5 @@
+'use client'
+
 import { activeBadgeVariants } from '@/foundation/badge'
 import { cn } from '@/lib/cn'
 import { BadgeType } from '@/types'
