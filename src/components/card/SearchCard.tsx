@@ -1,35 +1,18 @@
 'use client'
 
-import {
-  BookIcon,
-  CalendarIcon,
-  HeartIcon,
-  MapPinIcon,
-  TrendingUpIcon,
-  UtensilsIcon,
-} from 'lucide-react'
+import { HeartIcon, LucideIcon, MapPinIcon } from 'lucide-react'
 import Image, { StaticImageData } from 'next/image'
 
 import { Badge } from '@/components/common'
 import { ButtonClient } from '@/components/common/button'
 import Card from '@/components/common/Card'
 
-const iconMap = {
-  BookIcon,
-  CalendarIcon,
-  MapPinIcon,
-  TrendingUpIcon,
-  UtensilsIcon,
-} as const
-
-type IconName = keyof typeof iconMap
-
 type SearchCardProps = {
   image: StaticImageData
   title: string
   location: string
   tag: string
-  tagIcon: IconName
+  tagIcon: LucideIcon
   distance: string
 }
 
@@ -52,7 +35,7 @@ export default function SearchCard({
           className="rounded-xl object-cover"
         />
         <div className="flex flex-col gap-1">
-          <Badge name={tag} type="search" Icon={iconMap[tagIcon]} />
+          <Badge name={tag} type="search" Icon={tagIcon} />
           <p className="text-black-900 text-lg-bold">{title}</p>
           <div className="flex items-center gap-1">
             <MapPinIcon size={12} className="text-gray-600" />
