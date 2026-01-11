@@ -31,6 +31,14 @@
   .text-sm-light {
     @apply text-sm font-light;
   }
+  /* scrollbar 숨기기 */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 /* input search 클리어 버튼 css */

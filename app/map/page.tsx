@@ -23,7 +23,7 @@ export default function MapPage() {
             {CATEGORY_OPTIONS.map((option) => (
               <FilterBadge
                 key={option.value}
-                type="region"
+                type="category"
                 name={option.title}
                 active={activeFilter === option.value}
                 onClick={() => setActiveFilter(option.value)}
@@ -48,18 +48,20 @@ export default function MapPage() {
           <p className="text-sm font-light text-gray-600">
             {searchCardMock.length} places nearby
           </p>
-          <div className="flex flex-col gap-3">
-            {searchCardMock.map((card) => (
-              <SearchCard
-                key={card.id}
-                image={card.image}
-                title={card.title}
-                location={card.location}
-                tag={card.tag}
-                tagIcon={card.tagIcon}
-                distance={card.distance}
-              />
-            ))}
+          <div className="scrollbar-hide h-[76vh] overflow-y-auto">
+            <div className="flex flex-col gap-3">
+              {searchCardMock.map((card) => (
+                <SearchCard
+                  key={card.id}
+                  image={card.image}
+                  title={card.title}
+                  location={card.location}
+                  tag={card.tag}
+                  tagIcon={card.tagIcon}
+                  distance={card.distance}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
