@@ -91,6 +91,7 @@ export const searchCardMock = [
     tag: 'Search',
     tagIcon: 'TrendingUpIcon' as const,
     distance: '100m',
+    id: 1,
   },
   {
     image: gyeongbokgungPalace,
@@ -99,6 +100,7 @@ export const searchCardMock = [
     tag: 'Search',
     tagIcon: 'TrendingUpIcon' as const,
     distance: '200m',
+    id: 2,
   },
   {
     image: nationalMuseum,
@@ -107,6 +109,7 @@ export const searchCardMock = [
     tag: 'Search',
     tagIcon: 'TrendingUpIcon' as const,
     distance: '300m',
+    id: 3,
   },
   {
     image: seoulLanternFestival,
@@ -115,5 +118,6 @@ export const searchCardMock = [
     tag: 'Search',
     tagIcon: 'TrendingUpIcon' as const,
     distance: '400m',
+    id: 4,
   },
 ]

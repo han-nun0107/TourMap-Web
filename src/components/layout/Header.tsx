@@ -18,7 +18,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-gray-200 bg-white px-4 shadow-sm md:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-gray-200 bg-white/80 px-4 md:px-6 lg:px-8">
       <Link
         href="/"
         className="flex items-center gap-2 transition-opacity hover:opacity-80"

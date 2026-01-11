@@ -1,5 +1,3 @@
-'use client'
-
 import { Banner, Category, ExploreSection } from '@/components/main'
 
 export default function Home() {
