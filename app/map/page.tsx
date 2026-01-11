@@ -23,7 +23,7 @@ export default function MapPage() {
             {CATEGORY_OPTIONS.map((option) => (
               <FilterBadge
                 key={option.value}
-                type="region"
+                type="category"
                 name={option.title}
                 active={activeFilter === option.value}
                 onClick={() => setActiveFilter(option.value)}

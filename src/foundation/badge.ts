@@ -11,5 +11,5 @@ export const activeBadgeVariants: Record<BadgeType, string> = {
   main: 'scale-105 text-white shadow-md',
   search: 'scale-105 text-white shadow-md',
   region: 'scale-105 text-white shadow-md',
-  category: ' text-white shadow-md',
+  category: 'scale-105 text-white shadow-md',
 }
