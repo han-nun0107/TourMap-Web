@@ -35,7 +35,7 @@ export const useLikeStore = create<LikeState>()(
 
       addLike: (like) => {
         set((state) => {
-          if (state.likes.some((l) => l.id === like.id)) return state
+          if (state.likes.some((l) => l.id === like.id)) return {}
           return { likes: [...state.likes, like] }
         })
       },
