@@ -43,7 +43,7 @@ export default function ExploreSection({
           {FILTER_OPTIONS.map((option) => (
             <FilterBadge
               key={option.value}
-              type="region"
+              type="category"
               name={option.name}
               active={activeFilter === option.value}
               onClick={() => setActiveFilter(option.value)}
