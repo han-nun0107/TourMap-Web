@@ -68,7 +68,6 @@ export const useLikeStore = create<LikeState>()(
             image: imagePath,
           }
         }),
-        hasHydrated: state.hasHydrated,
       }),
       onRehydrateStorage: () => (state, error) => {
         if (!error && state) {
