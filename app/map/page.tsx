@@ -53,6 +53,7 @@ export default function MapPage() {
               {searchCardMock.map((card) => (
                 <SearchCard
                   key={card.id}
+                  id={card.id}
                   image={card.image}
                   title={card.title}
                   location={card.location}

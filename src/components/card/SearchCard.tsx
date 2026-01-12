@@ -6,6 +6,7 @@ import Image, { StaticImageData } from 'next/image'
 import { Badge } from '@/components/common'
 import { ButtonClient } from '@/components/common/button'
 import Card from '@/components/common/Card'
+import { useLikeStore } from '@/store/like/likeStore'
 
 type SearchCardProps = {
   image: StaticImageData
@@ -14,6 +15,7 @@ type SearchCardProps = {
   tag: string
   tagIcon: LucideIcon
   distance: string
+  id: number
 }
 
 export default function SearchCard({
@@ -23,7 +25,12 @@ export default function SearchCard({
   tag,
   tagIcon,
   distance,
+  id,
 }: SearchCardProps) {
+  const { hasHydrated, isLiked, toggleLike } = useLikeStore()
+
+  const liked = hasHydrated ? isLiked(id) : false
+
   return (
     <Card className="h-30 w-88 rounded-2xl">
       <div className="flex-center h-full w-full gap-4">
@@ -47,11 +54,16 @@ export default function SearchCard({
             variant="heart"
             intent="heart"
             aria-label="좋아요"
-            onClick={() => {
-              console.log('좋아요')
-            }}
+            onClick={() =>
+              toggleLike({ id, title, image, location, tag, tagIcon })
+            }
           >
-            <HeartIcon size={24} />
+            <HeartIcon
+              size={24}
+              className={
+                liked ? 'fill-red-500 text-red-500' : 'fill-none text-gray-500'
+              }
+            />
           </ButtonClient>
           <p className="text-sm font-medium text-gray-600">{distance}</p>
         </div>
