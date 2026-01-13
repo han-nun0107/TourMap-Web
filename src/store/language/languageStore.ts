@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
+import type { AppLocale } from '@/i18n/routing'
+
 export type LanguageState = {
-  language: 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW' | 'fr' | 'de' | 'es' | 'ru'
-  setLanguage: (
-    language: 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW' | 'fr' | 'de' | 'es' | 'ru'
-  ) => void
+  language: AppLocale
+  setLanguage: (language: AppLocale) => void
 }
 
 export const useLanguageStore = create<LanguageState>()(

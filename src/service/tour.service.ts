@@ -1,4 +1,5 @@
 import { getTours } from '@/api/tour.api'
+import type { AppLocale } from '@/i18n/routing'
 
 const BASE_URL = process.env.NEXT_PUBLIC_TOUR_API_URL
 
@@ -36,12 +37,12 @@ export const TOUR_ENDPOINT = {
   ldongCode2: 'ldongCode2',
 } as const
 
-export const BASE_BY_LANG = {
+export const BASE_BY_LANG: Record<AppLocale, string> = {
   ko: '/KorService2',
   en: '/EngService2',
-  jp: '/JpnService2',
-  cn: '/ChsService2',
-  tc: '/ChtService2',
+  ja: '/JpnService2',
+  'zh-CN': '/ChsService2',
+  'zh-TW': '/ChtService2',
   fr: '/FreService2',
   de: '/GerService2',
   es: '/SpnService2',
@@ -49,7 +50,7 @@ export const BASE_BY_LANG = {
 }
 
 export async function getTourList(
-  lang: keyof typeof BASE_BY_LANG,
+  lang: AppLocale,
   endpoint: keyof typeof TOUR_ENDPOINT = 'areaCode2',
   params: Partial<Record<string, string>> = {}
 ) {

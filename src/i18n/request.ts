@@ -23,10 +23,8 @@ function normalizeLocale(input: string | undefined): AppLocale {
 
   const lower = input.toLowerCase()
 
-  if (lower === 'zh-cn' || lower.startsWith('zh-cn')) return 'zh-CN'
-  if (lower === 'zh-tw' || lower.startsWith('zh-tw')) return 'zh-TW'
-  if (lower === 'zh-hans') return 'zh-CN'
-  if (lower === 'zh-hant') return 'zh-TW'
+ if (lower.startsWith('zh-cn') || lower === 'zh-hans') return 'zh-CN'
+ if (lower.startsWith('zh-tw') || lower === 'zh-hant') return 'zh-TW'
 
   const base = input.split('-')[0]
 
