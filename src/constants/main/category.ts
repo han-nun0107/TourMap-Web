@@ -17,42 +17,42 @@ type CategoryOption = {
 
 export const CATEGORY_OPTIONS: CategoryOption[] = [
   {
-    title: 'categoriesAttractions',
+    title: 'categories.Attractions',
     Icon: Landmark,
     value: 'attraction',
   },
   {
-    title: 'categoriesCulture',
+    title: 'categories.Culture',
     Icon: Theater,
     value: 'culture',
   },
   {
-    title: 'categoriesFestival',
+    title: 'categories.Festival',
     Icon: PartyPopper,
     value: 'festival',
   },
   {
-    title: 'categoriesTourCourse',
+    title: 'categories.TourCourse',
     Icon: Route,
     value: 'tour-course',
   },
   {
-    title: 'categoriesLeisure',
+    title: 'categories.Leisure',
     Icon: Bike,
     value: 'leisure',
   },
   {
-    title: 'categoriesStay',
+    title: 'categories.Stay',
     Icon: Hotel,
     value: 'stay',
   },
   {
-    title: 'categoriesShopping',
+    title: 'categories.Shopping',
     Icon: ShoppingBag,
     value: 'shopping',
   },
   {
-    title: 'categoriesFood',
+    title: 'categories.Food',
     Icon: UtensilsCrossed,
     value: 'food',
   },

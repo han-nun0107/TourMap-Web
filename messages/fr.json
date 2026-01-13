@@ -1,29 +1,64 @@
 {
   "Home": {
-    "bannerTitle": "Découvrez la Corée",
-    "bannerSubtitle": "Explorez la beauté de la Corée",
-    "bannerDescription": "Des palais anciens à la street food animée, découvrez les meilleures destinations de voyage à travers la péninsule coréenne.",
-    "bannerStartButton": "Commencer l’exploration",
-    "bannerMapButton": "Voir la carte",
-    "trendingTitle": "Tendances",
-    "trendingSubtitle": "Destinations populaires cette saison",
-    "regionsTitle": "Régions",
-    "regionsSubtitle": "Découvrez diverses destinations par région",
-    "layoutHome": "Accueil",
-    "layoutSearch": "Rechercher",
-    "layoutMap": "Carte",
-    "layoutFavorite": "Favoris",
-    "layoutLogin": "Connexion",
-    "layoutSignup": "Inscription",
-    "layoutLogout": "Déconnexion",
-    "categoriesTitle": "Parcourir par catégorie",
-    "categoriesAttractions": "Attraction",
-    "categoriesCulture": "Culture",
-    "categoriesFestival": "Festival",
-    "categoriesTourCourse": "Circuit touristique",
-    "categoriesLeisure": "Loisirs",
-    "categoriesStay": "Hébergement",
-    "categoriesShopping": "Shopping",
-    "categoriesFood": "Gastronomie"
+    "banner": {
+      "Title": "Découvrez la Corée",
+      "Subtitle": "Explorez la beauté de la Corée",
+      "Description": "Des palais anciens à la street food animée, découvrez les meilleures destinations de voyage à travers la péninsule coréenne.",
+      "StartButton": "Commencer l’exploration",
+      "MapButton": "Voir la carte"
+    },
+
+    "trending": {
+      "Title": "Tendances",
+      "Subtitle": "Destinations populaires cette saison"
+    },
+
+    "regionsName": {
+      "Title": "Régions",
+      "Subtitle": "Découvrez diverses destinations par région"
+    },
+
+    "layout": {
+      "Home": "Accueil",
+      "Search": "Rechercher",
+      "Map": "Carte",
+      "Favorite": "Favoris",
+      "Login": "Connexion",
+      "Signup": "Inscription",
+      "Logout": "Déconnexion"
+    },
+
+    "categories": {
+      "Title": "Parcourir par catégorie",
+      "Attractions": "Attraction",
+      "Culture": "Culture",
+      "Festival": "Festival",
+      "TourCourse": "Circuit touristique",
+      "Leisure": "Loisirs",
+      "Stay": "Hébergement",
+      "Shopping": "Shopping",
+      "Food": "Gastronomie"
+    },
+
+    "region": {
+      "all": "Tous",
+      "seoul": "Séoul",
+      "busan": "Busan",
+      "daegu": "Daegu",
+      "incheon": "Incheon",
+      "gwangju": "Gwangju",
+      "daejeon": "Daejeon",
+      "ulsan": "Ulsan",
+      "sejong": "Sejong",
+      "gyeonggi": "Gyeonggi",
+      "gangwon": "Gangwon",
+      "chungbuk": "Chungbuk",
+      "chungnam": "Chungnam",
+      "jeonbuk": "Jeonbuk",
+      "jeonnam": "Jeonnam",
+      "gyeongbuk": "Gyeongbuk",
+      "gyeongnam": "Gyeongnam",
+      "jeju": "Jeju"
+    }
   }
 }

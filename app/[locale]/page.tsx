@@ -18,23 +18,23 @@ export default function Home() {
   return (
     <main>
       <Banner
-        title={t('bannerTitle')}
-        subtitle={t('bannerSubtitle')}
-        description={t('bannerDescription')}
-        StartButtonText={t('bannerStartButton')}
-        ViewMapButtonText={t('bannerMapButton')}
+        title={t('banner.Title')}
+        subtitle={t('banner.Subtitle')}
+        description={t('banner.Description')}
+        StartButtonText={t('banner.StartButton')}
+        ViewMapButtonText={t('banner.MapButton')}
       />
       <div className="flex flex-col bg-gray-100">
         <ExploreSection
-          sectionTitle={t('trendingTitle')}
-          subtitle={t('trendingSubtitle')}
+          sectionTitle={t('trending.Title')}
+          subtitle={t('trending.Subtitle')}
           type="trending"
           data={data}
         />
-        <Category title={t('categoriesTitle')} />
+        <Category title={t('categories.Title')} />
         <ExploreSection
-          sectionTitle={t('regionsTitle')}
-          subtitle={t('regionsSubtitle')}
+          sectionTitle={t('regionsName.Title')}
+          subtitle={t('regionsName.Subtitle')}
           type="region"
           data={data}
         />

@@ -1,29 +1,64 @@
 {
   "Home": {
-    "bannerTitle": "探索韩国",
-    "bannerSubtitle": "探索韩国之美",
-    "bannerDescription": "从古代宫殿到热闹的街头美食，探索整个韩半岛最精彩的旅行目的地。",
-    "bannerStartButton": "开始探索",
-    "bannerMapButton": "查看地图",
-    "trendingTitle": "热门趋势",
-    "trendingSubtitle": "本季最受欢迎的旅行目的地",
-    "regionsTitle": "地区",
-    "regionsSubtitle": "按地区探索多样化的旅行目的地",
-    "layoutHome": "首页",
-    "layoutSearch": "搜索",
-    "layoutMap": "地图",
-    "layoutFavorite": "收藏",
-    "layoutLogin": "登录",
-    "layoutSignup": "注册",
-    "layoutLogout": "注销",
-    "categoriesTitle": "按类别浏览",
-    "categoriesAttractions": "景点",
-    "categoriesCulture": "文化",
-    "categoriesFestival": "节日",
-    "categoriesTourCourse": "旅游路线",
-    "categoriesLeisure": "休闲",
-    "categoriesStay": "住宿",
-    "categoriesShopping": "购物",
-    "categoriesFood": "美食"
+    "banner": {
+      "Title": "探索韩国",
+      "Subtitle": "探索韩国之美",
+      "Description": "从古代宫殿到热闹的街头美食，探索整个韩半岛最精彩的旅行目的地。",
+      "StartButton": "开始探索",
+      "MapButton": "查看地图"
+    },
+
+    "trending": {
+      "Title": "热门趋势",
+      "Subtitle": "本季最受欢迎的旅行目的地"
+    },
+
+    "regionsName": {
+      "Title": "地区",
+      "Subtitle": "按地区探索多样化的旅行目的地"
+    },
+
+    "layout": {
+      "Home": "首页",
+      "Search": "搜索",
+      "Map": "地图",
+      "Favorite": "收藏",
+      "Login": "登录",
+      "Signup": "注册",
+      "Logout": "注销"
+    },
+
+    "categories": {
+      "Title": "按类别浏览",
+      "Attractions": "景点",
+      "Culture": "文化",
+      "Festival": "节日",
+      "TourCourse": "旅游路线",
+      "Leisure": "休闲",
+      "Stay": "住宿",
+      "Shopping": "购物",
+      "Food": "美食"
+    },
+
+    "region": {
+      "all": "全部",
+      "seoul": "首尔",
+      "busan": "釜山",
+      "daegu": "大邱",
+      "incheon": "仁川",
+      "gwangju": "光州",
+      "daejeon": "大田",
+      "ulsan": "蔚山",
+      "sejong": "世宗",
+      "gyeonggi": "京畿",
+      "gangwon": "江原",
+      "chungbuk": "忠清北道",
+      "chungnam": "忠清南道",
+      "jeonbuk": "全罗北道",
+      "jeonnam": "全罗南道",
+      "gyeongbuk": "庆尚北道",
+      "gyeongnam": "庆尚南道",
+      "jeju": "济州"
+    }
   }
 }

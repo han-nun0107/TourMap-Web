@@ -1,30 +1,64 @@
 {
   "Home": {
-    "bannerTitle": "Discover Korea",
-    "bannerSubtitle": "Explore the Beauty of Korea",
-    "bannerDescription": "From ancient palaces to vibrant street food, discover the best travel destinations across the Korean Peninsula.",
-    "bannerStartButton": "Start Exploring",
-    "bannerMapButton": "View Map",
-    "trendingTitle": "Trending",
-    "trendingSubtitle": "Popular destinations this season",
-    "regionsTitle": "Regions",
-    "regionsSubtitle": "Discover diverse destinations by region",
-    "layoutHome": "Home",
-    "layoutSearch": "Search",
-    "layoutMap": "Map",
-    "layoutFavorite": "Favorites",
-    "layoutLogin": "Log in",
-    "layoutSignup": "Sign up",
-    "layoutLogout": "Log out",
+    "banner": {
+      "Title": "Discover Korea",
+      "Subtitle": "Explore the Beauty of Korea",
+      "Description": "From ancient palaces to vibrant street food, discover the best travel destinations across the Korean Peninsula.",
+      "StartButton": "Start Exploring",
+      "MapButton": "View Map"
+    },
 
-    "categoriesTitle": "Browse by Category",
-    "categoriesAttractions": "Attraction",
-    "categoriesCulture": "Culture",
-    "categoriesFestival": "Festival",
-    "categoriesTourCourse": "Tour Course",
-    "categoriesLeisure": "Leisure",
-    "categoriesStay": "Stay",
-    "categoriesShopping": "Shopping",
-    "categoriesFood": "Food"
+    "trending": {
+      "Title": "Trending",
+      "Subtitle": "Popular destinations this season"
+    },
+
+    "regionsName": {
+      "Title": "Regions",
+      "Subtitle": "Discover diverse destinations by region"
+    },
+    
+    "layout": {
+      "Home": "Home",
+      "Search": "Search",
+      "Map": "Map",
+      "Favorite": "Favorite",
+      "Login": "Login",
+      "Signup": "Signup",
+      "Logout": "Logout"
+    },
+
+    "categories": {
+      "Title": "Browse by Category",
+      "Attractions": "Attraction",
+      "Culture": "Culture",
+      "Festival": "Festival",
+      "TourCourse": "Tour Course",
+      "Leisure": "Leisure",
+      "Stay": "Stay",
+      "Shopping": "Shopping",
+      "Food": "Food"
+    },
+
+    "region": {
+      "all": "All",
+      "seoul": "Seoul",
+      "busan": "Busan",
+      "daegu": "Daegu",
+      "incheon": "Incheon",
+      "gwangju": "Gwangju",
+      "daejeon": "Daejeon",
+      "ulsan": "Ulsan",
+      "sejong": "Sejong",
+      "gyeonggi": "Gyeonggi",
+      "gangwon": "Gangwon",
+      "chungbuk": "Chungbuk",
+      "chungnam": "Chungnam",
+      "jeonbuk": "Jeonbuk",
+      "jeonnam": "Jeonnam",
+      "gyeongbuk": "Gyeongbuk",
+      "gyeongnam": "Gyeongnam",
+      "jeju": "Jeju"
+    }
   }
 }

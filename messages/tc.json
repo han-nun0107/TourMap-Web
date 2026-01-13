@@ -1,30 +1,64 @@
 {
   "Home": {
-    "bannerTitle": "探索韓國",
-    "bannerSubtitle": "探索韓國之美",
-    "bannerDescription": "從古宮到熱鬧的街頭美食，探索整個韓半島最精彩的旅遊景點。",
-    "bannerStartButton": "開始探索",
-    "bannerMapButton": "查看地圖",
-    "trendingTitle": "熱門趨勢",
-    "trendingSubtitle": "本季最受歡迎的旅遊目的地",
-    "regionsTitle": "地區",
-    "regionsSubtitle": "依地區探索多樣化的旅遊景點",
-    "regionsSubtitle": "依地區探索多樣化的旅遊景點",
-    "layoutHome": "首頁",
-    "layoutSearch": "搜尋",
-    "layoutMap": "地圖",
-    "layoutFavorite": "收藏",
-    "layoutLogin": "登入",
-    "layoutSignup": "註冊",
-    "layoutLogout": "登出",
-    "categoriesTitle": "依分類瀏覽",
-    "categoriesAttractions": "景點",
-    "categoriesCulture": "文化",
-    "categoriesFestival": "節慶",
-    "categoriesTourCourse": "旅遊路線",
-    "categoriesLeisure": "休閒",
-    "categoriesStay": "住宿",
-    "categoriesShopping": "購物",
-    "categoriesFood": "美食"
+    "banner": {
+      "Title": "探索韓國",
+      "Subtitle": "探索韓國之美",
+      "Description": "從古宮到熱鬧的街頭美食，探索整個韓半島最精彩的旅遊景點。",
+      "StartButton": "開始探索",
+      "MapButton": "查看地圖"
+    },
+
+    "trending": {
+      "Title": "熱門趨勢",
+      "Subtitle": "本季最受歡迎的旅遊目的地"
+    },
+
+    "regionsName": {
+      "Title": "地區",
+      "Subtitle": "依地區探索多樣化的旅遊景點"
+    },
+
+    "categories": {
+      "Title": "依分類瀏覽",
+      "Attractions": "景點",
+      "Culture": "文化",
+      "Festival": "節慶",
+      "TourCourse": "旅遊路線",
+      "Leisure": "休閒",
+      "Stay": "住宿",
+      "Shopping": "購物",
+      "Food": "美食"
+    },
+
+    "layout": {
+      "Home": "首頁",
+      "Search": "搜尋",
+      "Map": "地圖",
+      "Favorite": "收藏",
+      "Login": "登入",
+      "Signup": "註冊",
+      "Logout": "登出"
+    },
+
+    "region": {
+      "all": "全部",
+      "seoul": "首爾",
+      "busan": "釜山",
+      "daegu": "大邱",
+      "incheon": "仁川",
+      "gwangju": "光州",
+      "daejeon": "大田",
+      "ulsan": "蔚山",
+      "sejong": "世宗",
+      "gyeonggi": "京畿",
+      "gangwon": "江原",
+      "chungbuk": "忠清北道",
+      "chungnam": "忠清南道",
+      "jeonbuk": "全羅北道",
+      "jeonnam": "全羅南道",
+      "gyeongbuk": "慶尚北道",
+      "gyeongnam": "慶尚南道",
+      "jeju": "濟州"
+    }
   }
 }

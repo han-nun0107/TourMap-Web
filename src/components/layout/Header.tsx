@@ -58,7 +58,7 @@ export default function Header() {
       <div className="flex items-center gap-3">
         {isLogin ? (
           <ButtonClient variant="login" intent="clear" onClick={handleLogout}>
-            {t('layoutLogout')}
+            {t('layout.Logout')}
           </ButtonClient>
         ) : (
           <>
@@ -66,13 +66,13 @@ export default function Header() {
               href="/login"
               className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
             >
-              {t('layoutLogin')}
+              {t('layout.Login')}
             </Link>
             <Link
               href="/signup"
               className="inline-flex items-center justify-center rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
             >
-              {t('layoutSignup')}
+              {t('layout.Signup')}
             </Link>
           </>
         )}

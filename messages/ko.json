@@ -1,29 +1,64 @@
 {
   "Home": {
-    "bannerTitle": "한국을 발견하세요",
-    "bannerSubtitle": "한국의 아름다움을 탐험하세요",
-    "bannerDescription": "고궁부터 활기찬 길거리 음식까지, 한반도 전역의 최고의 여행지를 발견하세요.",
-    "bannerStartButton": "탐험 시작하기",
-    "bannerMapButton": "지도 보기",
-    "trendingTitle": "트렌드",
-    "trendingSubtitle": "이번 시즌 인기 여행지",
-    "regionsTitle": "지역",
-    "regionsSubtitle": "지역별로 다양한 여행지를 찾아보세요",
-    "layoutHome": "홈",
-    "layoutSearch": "검색",
-    "layoutMap": "지도",
-    "layoutFavorite": "즐겨찾기",
-    "layoutLogin": "로그인",
-    "layoutSignup": "회원가입",
-    "layoutLogout": "로그아웃",
-    "categoriesTitle": "카테고리별로 보기",
-    "categoriesAttractions": "관광지",
-    "categoriesCulture": "문화",
-    "categoriesFestival": "축제",
-    "categoriesTourCourse": "관광 코스",
-    "categoriesLeisure": "레저",
-    "categoriesStay": "숙박",
-    "categoriesShopping": "쇼핑",
-    "categoriesFood": "음식"
+    "banner": {
+      "Title": "한국을 발견하세요",
+      "Subtitle": "한국의 아름다움을 탐험하세요",
+      "Description": "고궁부터 활기찬 길거리 음식까지, 한반도 전역의 최고의 여행지를 발견하세요.",
+      "StartButton": "탐험 시작하기",
+      "MapButton": "지도 보기"
+    },
+
+    "trending": {
+      "Title": "트렌드",
+      "Subtitle": "이번 시즌 인기 여행지"
+    },
+
+    "regionsName": {
+      "Title": "지역",
+      "Subtitle": "지역별로 다양한 여행지를 찾아보세요"
+    },
+
+    "layout": {
+      "Home": "홈",
+      "Search": "검색",
+      "Map": "지도",
+      "Favorite": "즐겨찾기",
+      "Login": "로그인",
+      "Signup": "회원가입",
+      "Logout": "로그아웃"
+    },
+
+    "categories": {
+      "Title": "카테고리별로 보기",
+      "Attractions": "관광지",
+      "Culture": "문화",
+      "Festival": "축제",
+      "TourCourse": "관광 코스",
+      "Leisure": "레저",
+      "Stay": "숙박",
+      "Shopping": "쇼핑",
+      "Food": "음식"
+    },
+
+    "region": {
+      "all": "전체",
+      "seoul": "서울",
+      "busan": "부산",
+      "daegu": "대구",
+      "incheon": "인천",
+      "gwangju": "광주",
+      "daejeon": "대전",
+      "ulsan": "울산",
+      "sejong": "세종",
+      "gyeonggi": "경기",
+      "gangwon": "강원",
+      "chungbuk": "충북",
+      "chungnam": "충남",
+      "jeonbuk": "전북",
+      "jeonnam": "전남",
+      "gyeongbuk": "경북",
+      "gyeongnam": "경남",
+      "jeju": "제주"
+    }
   }
 }

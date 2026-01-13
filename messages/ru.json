@@ -1,28 +1,64 @@
 {
   "Home": {
-    "bannerTitle": "Откройте Корею",
-    "bannerSubtitle": "Исследуйте красоту Кореи",
-    "bannerDescription": "От древних дворцов до оживлённой уличной еды — откройте для себя лучшие туристические направления Корейского полуострова.",
-    "bannerStartButton": "Начать путешествие",
-    "bannerMapButton": "Посмотреть карту",
-    "trendingTitle": "В тренде",
-    "trendingSubtitle": "Популярные направления этого сезона",
-    "regionsTitle": "Регионы",
-    "regionsSubtitle": "Исследуйте разнообразные направления по регионам",
-    "layoutHome": "Главная",
-    "layoutSearch": "Поиск",
-    "layoutMap": "Карта",
-    "layoutFavorite": "Избранное",
-    "layoutLogin": "Вход",
-    "layoutSignup": "Регистрация",
-    "layoutLogout": "Выход",
-    "categoriesTitle": "Просмотр по категориям",
-    "categoriesAttractions": "Культура",
-    "categoriesFestival": "Фестиваль",
-    "categoriesTourCourse": "Туристический маршрут",
-    "categoriesLeisure": "Досуг",
-    "categoriesStay": "Проживание",
-    "categoriesShopping": "Покупки",
-    "categoriesFood": "Еда"
+    "banner": {
+      "Title": "Откройте Корею",
+      "Subtitle": "Исследуйте красоту Кореи",
+      "Description": "От древних дворцов до оживлённой уличной еды — откройте для себя лучшие туристические направления Корейского полуострова.",
+      "StartButton": "Начать путешествие",
+      "MapButton": "Посмотреть карту"
+    },
+
+    "trending": {
+      "Title": "В тренде",
+      "Subtitle": "Популярные направления этого сезона"
+    },
+
+    "regionsName": {
+      "Title": "Регионы",
+      "Subtitle": "Исследуйте разнообразные направления по регионам"
+    },
+
+    "layout": {
+      "Home": "Главная",
+      "Search": "Поиск",
+      "Map": "Карта",
+      "Favorite": "Избранное",
+      "Login": "Вход",
+      "Signup": "Регистрация",
+      "Logout": "Выход"
+    },
+
+    "categories": {
+      "Title": "Просмотр по категориям",
+      "Attractions": "Культура",
+      "Festival": "Фестиваль",
+      "Culture": "Культура",
+      "TourCourse": "Туристический маршрут",
+      "Leisure": "Досуг",
+      "Stay": "Проживание",
+      "Shopping": "Покупки",
+      "Food": "Еда"
+    },
+
+    "region": {
+      "all": "Все",
+      "seoul": "Сеул",
+      "busan": "Пусан",
+      "daegu": "Тэгу",
+      "incheon": "Инчхон",
+      "gwangju": "Кванджу",
+      "daejeon": "Тэджон",
+      "ulsan": "Ульсан",
+      "sejong": "Седжон",
+      "gyeonggi": "Кёнгидо",
+      "gangwon": "Канвондо",
+      "chungbuk": "Чхунчхон-Пукто",
+      "chungnam": "Чхунчхон-Намдо",
+      "jeonbuk": "Чолла-Пукто",
+      "jeonnam": "Чолла-Намдо",
+      "gyeongbuk": "Кёнсан-Пукто",
+      "gyeongnam": "Кёнсан-Намдо",
+      "jeju": "Чеджу"
+    }
   }
 }
