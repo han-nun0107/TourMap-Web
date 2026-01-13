@@ -64,8 +64,7 @@
       "Title": "Search Page",
       "placeholder": "Search destinations, attractions, restaurants...",
       "ariaHint": "Type to search. Results update automatically.",
-      "resultFound": "1 results found",
-      "resultsFound": "{count} results found"
+      "resultFound": "{count, plural, one {1 result found} other {{count} results found}}"
     },
 
     "map": {

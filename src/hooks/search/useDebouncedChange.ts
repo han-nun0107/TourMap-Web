@@ -34,5 +34,5 @@ export function useDebouncedChange({
     }
 
     onDebouncedChangeRef.current(q)
-  }, [debouncedValue, skipNextDebouncedEffectRef])
+  }, [debouncedValue])
 }
