@@ -12,7 +12,9 @@ import {
   LucideIcon,
 } from 'lucide-react'
 
-type Lang = 'ko' | 'en' | 'jp' | 'cn' | 'tc' | 'fr' | 'de' | 'es' | 'ru'
+import type { AppLocale } from '@/i18n/routing'
+
+type Lang = AppLocale
 type ContentType = string
 
 export type ContetntTypeMeta = {
@@ -37,7 +39,7 @@ export const CONTENT_TYPE_LABEL: Record<
   },
 
   /* 일본어 */
-  jp: {
+  ja: {
     '76': { name: '観光', icon: MapPinIcon },
     '78': { name: '文化', icon: BuildingIcon },
     '85': { name: 'イベント', icon: CalendarIcon },
@@ -61,7 +63,7 @@ export const CONTENT_TYPE_LABEL: Record<
   },
 
   /* 중국어 간체 */
-  cn: {
+  'zh-CN': {
     '76': { name: '景点', icon: MapPinIcon },
     '78': { name: '文化', icon: BuildingIcon },
     '85': { name: '活动', icon: CalendarIcon },
@@ -73,7 +75,7 @@ export const CONTENT_TYPE_LABEL: Record<
   },
 
   /* 중문 번체 */
-  tc: {
+  'zh-TW': {
     '76': { name: '景點', icon: MapPinIcon },
     '78': { name: '文化', icon: BuildingIcon },
     '85': { name: '活動', icon: CalendarIcon },
