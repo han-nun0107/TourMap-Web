@@ -32,7 +32,14 @@ export default function Badge({
       {Icon && (
         <Icon aria-hidden="true" className={cn('size-4', iconClassName)} />
       )}
-      <p className={cn('text-sm font-medium', textClassName)}>{name}</p>
+      <p
+        className={cn(
+          'truncate text-sm font-medium whitespace-nowrap',
+          textClassName
+        )}
+      >
+        {name}
+      </p>
     </span>
   )
 }

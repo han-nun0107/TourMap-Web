@@ -13,7 +13,10 @@ type TrendingCardProps = {
   title: string
   location: string
   tag: string
-  tagIcon: React.ComponentType<React.SVGProps<SVGSVGElement>> | LucideIcon
+  tagIcon: {
+    name: string
+    icon: React.ComponentType<React.SVGProps<SVGSVGElement>> | LucideIcon
+  }
   id: number
   onClick?: () => void
 }
@@ -30,24 +33,31 @@ export default function TrendingCard({
   const { hasHydrated, isLiked, toggleLike } = useLikeStore()
 
   const liked = hasHydrated ? isLiked(id) : false
+  const hasImage =
+    typeof image === 'string' ? image.trim().length > 0 : Boolean(image)
 
   return (
     <Card
       className="flex h-80 w-79 flex-col rounded-2xl max-sm:w-83 max-sm:items-center max-sm:justify-center"
       onClick={onClick}
     >
-      <div className="relative h-60 overflow-hidden">
-        <Image
-          src={image}
-          alt={title}
-          className="object-cover"
-          width={316}
-          height={236}
-        />
+      <div className="relative h-60 w-full overflow-hidden">
+        {hasImage ? (
+          <Image
+            src={image}
+            alt={title}
+            className="object-cover"
+            fill
+            sizes="(max-width: 640px) 100vw, 316px"
+            loading="eager"
+          />
+        ) : (
+          <div className="h-full w-full bg-gray-200" />
+        )}
         <Badge
           name={tag}
           type="main"
-          Icon={tagIcon}
+          Icon={tagIcon.icon}
           className="absolute top-52 left-2"
         />
         <ButtonClient
@@ -55,7 +65,14 @@ export default function TrendingCard({
           intent="clear"
           onClick={(e) => {
             e.stopPropagation()
-            toggleLike({ id, title, image, location, tag, tagIcon })
+            toggleLike({
+              id,
+              title,
+              image,
+              location,
+              tag,
+              tagIcon: tagIcon.icon,
+            })
           }}
           className="absolute top-2 right-2 z-10 h-9 w-9 rounded-full bg-gray-100/80"
         >
@@ -69,10 +86,10 @@ export default function TrendingCard({
       </div>
 
       <div className="flex flex-1 flex-col justify-center gap-1 px-4">
-        <p className="text-sm font-bold">{title}</p>
+        <p className="truncate text-sm font-bold">{title}</p>
         <div className="flex items-center gap-2">
           <MapPin size={16} className="text-gray-600" />
-          <p className="text-sm text-gray-600">{location}</p>
+          <p className="truncate text-sm text-gray-600">{location}</p>
         </div>
       </div>
     </Card>

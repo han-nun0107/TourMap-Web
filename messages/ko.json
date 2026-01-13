@@ -1,0 +1,20 @@
+{
+  "Home": {
+    "bannerTitle": "한국을 발견하세요",
+    "bannerSubtitle": "한국의 아름다움을 탐험하세요",
+    "bannerDescription": "고궁부터 활기찬 길거리 음식까지, 한반도 전역의 최고의 여행지를 발견하세요.",
+    "bannerStartButton": "탐험 시작하기",
+    "bannerMapButton": "지도 보기",
+    "trendingTitle": "트렌드",
+    "trendingSubtitle": "이번 시즌 인기 여행지",
+    "regionsTitle": "지역",
+    "regionsSubtitle": "지역별로 다양한 여행지를 찾아보세요",
+    "layoutHome": "홈",
+    "layoutSearch": "검색",
+    "layoutMap": "지도",
+    "layoutFavorite": "즐겨찾기",
+    "layoutLogin": "로그인",
+    "layoutSignup": "회원가입",
+    "layoutLogout": "로그아웃"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "Home": {
+    "bannerTitle": "Discover Korea",
+    "bannerSubtitle": "Explore the Beauty of Korea",
+    "bannerDescription": "From ancient palaces to vibrant street food, discover the best travel destinations across the Korean Peninsula.",
+    "bannerStartButton": "Start Exploring",
+    "bannerMapButton": "View Map",
+    "trendingTitle": "Trending",
+    "trendingSubtitle": "Popular destinations this season",
+    "regionsTitle": "Regions",
+    "regionsSubtitle": "Discover diverse destinations by region",
+    "layoutHome": "Home",
+    "layoutSearch": "Search",
+    "layoutMap": "Map",
+    "layoutFavorite": "Favorites",
+    "layoutLogin": "Log in",
+    "layoutSignup": "Sign up",
+    "layoutLogout": "Log out"
+  }
+}

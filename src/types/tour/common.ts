@@ -31,3 +31,10 @@ export type TourApiInner<TBody> = {
 export type TourApiResponse<TBody> =
   | TourApiInner<TBody>
   | { response: TourApiInner<TBody> }
+
+export function unwrapTourApiResponse<TBody>(
+  data: TourApiResponse<TBody> | undefined
+): TourApiInner<TBody> | undefined {
+  if (!data) return undefined
+  return 'response' in data ? data.response : data
+}
