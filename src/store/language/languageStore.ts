@@ -2,9 +2,9 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 export type LanguageState = {
-  language: 'ko' | 'en' | 'jp' | 'cn' | 'tc' | 'fr' | 'de' | 'es' | 'ru'
+  language: 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW' | 'fr' | 'de' | 'es' | 'ru'
   setLanguage: (
-    language: 'ko' | 'en' | 'jp' | 'cn' | 'tc' | 'fr' | 'de' | 'es' | 'ru'
+    language: 'ko' | 'en' | 'ja' | 'zh-CN' | 'zh-TW' | 'fr' | 'de' | 'es' | 'ru'
   ) => void
 }
 
