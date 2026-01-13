@@ -59,6 +59,17 @@
       "gyeongbuk": "경북",
       "gyeongnam": "경남",
       "jeju": "제주"
+    },
+
+    "search": {
+      "Title": "검색 페이지",
+      "placeholder": "여행지 · 관광지 · 맛집 검색",
+      "ariaHint": "검색어를 입력하면 결과가 자동으로 업데이트됩니다.",
+      "resultFound": "{count}개의 결과가 있습니다."
+    },
+
+    "map": {
+      "title": "주변 장소"
     }
   }
 }

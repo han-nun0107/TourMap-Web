@@ -17,7 +17,7 @@
       "Title": "Regions",
       "Subtitle": "Discover diverse destinations by region"
     },
-    
+
     "layout": {
       "Home": "Home",
       "Search": "Search",
@@ -59,6 +59,17 @@
       "gyeongbuk": "Gyeongbuk",
       "gyeongnam": "Gyeongnam",
       "jeju": "Jeju"
+    },
+    "search": {
+      "Title": "Search Page",
+      "placeholder": "Search destinations, attractions, restaurants...",
+      "ariaHint": "Type to search. Results update automatically.",
+      "resultFound": "1 results found",
+      "resultsFound": "{count} results found"
+    },
+
+    "map": {
+      "title": "Nearby Places"
     }
   }
 }

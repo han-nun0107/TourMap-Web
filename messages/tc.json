@@ -59,6 +59,15 @@
       "gyeongbuk": "慶尚北道",
       "gyeongnam": "慶尚南道",
       "jeju": "濟州"
+    },
+    "search": {
+      "Title": "搜尋頁面",
+      "placeholder": "搜尋旅遊地點・景點・美食",
+      "ariaHint": "輸入即可搜尋，結果會自動更新。",
+      "resultFound": "找到 {count} 個結果。"
+    },
+    "map": {
+      "title": "附近地點"
     }
   }
 }

@@ -59,6 +59,15 @@
       "gyeongbuk": "Gyeongbuk",
       "gyeongnam": "Gyeongnam",
       "jeju": "Jeju"
+    },
+    "search": {
+      "Title": "Suchseite",
+      "placeholder": "Reiseziele, Sehenswürdigkeiten, Restaurants suchen",
+      "ariaHint": "Geben Sie einen Suchbegriff ein. Die Ergebnisse werden automatisch aktualisiert.",
+      "resultFound": "{count, plural, one {1 Ergebnis gefunden.} other {# Ergebnisse gefunden.}}"
+    },
+    "map": {
+      "title": "Orte in der Nähe"
     }
   }
 }

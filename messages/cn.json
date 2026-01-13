@@ -59,6 +59,15 @@
       "gyeongbuk": "庆尚北道",
       "gyeongnam": "庆尚南道",
       "jeju": "济州"
+    },
+    "search": {
+      "Title": "搜索页面",
+      "placeholder": "搜索旅游目的地、景点、美食",
+      "ariaHint": "输入即可搜索，结果会自动更新。",
+      "resultFound": "找到 {count} 个结果。"
+    },
+    "map": {
+      "title": "附近地点"
     }
   }
 }
