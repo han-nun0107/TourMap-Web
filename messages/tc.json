@@ -8,6 +8,23 @@
     "trendingTitle": "熱門趨勢",
     "trendingSubtitle": "本季最受歡迎的旅遊目的地",
     "regionsTitle": "地區",
-    "regionsSubtitle": "依地區探索多樣化的旅遊景點"
+    "regionsSubtitle": "依地區探索多樣化的旅遊景點",
+    "regionsSubtitle": "依地區探索多樣化的旅遊景點",
+    "layoutHome": "首頁",
+    "layoutSearch": "搜尋",
+    "layoutMap": "地圖",
+    "layoutFavorite": "收藏",
+    "layoutLogin": "登入",
+    "layoutSignup": "註冊",
+    "layoutLogout": "登出",
+    "categoriesTitle": "依分類瀏覽",
+    "categoriesAttractions": "景點",
+    "categoriesCulture": "文化",
+    "categoriesFestival": "節慶",
+    "categoriesTourCourse": "旅遊路線",
+    "categoriesLeisure": "休閒",
+    "categoriesStay": "住宿",
+    "categoriesShopping": "購物",
+    "categoriesFood": "美食"
   }
 }

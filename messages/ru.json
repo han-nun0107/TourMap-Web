@@ -8,6 +8,21 @@
     "trendingTitle": "В тренде",
     "trendingSubtitle": "Популярные направления этого сезона",
     "regionsTitle": "Регионы",
-    "regionsSubtitle": "Исследуйте разнообразные направления по регионам"
+    "regionsSubtitle": "Исследуйте разнообразные направления по регионам",
+    "layoutHome": "Главная",
+    "layoutSearch": "Поиск",
+    "layoutMap": "Карта",
+    "layoutFavorite": "Избранное",
+    "layoutLogin": "Вход",
+    "layoutSignup": "Регистрация",
+    "layoutLogout": "Выход",
+    "categoriesTitle": "Просмотр по категориям",
+    "categoriesAttractions": "Культура",
+    "categoriesFestival": "Фестиваль",
+    "categoriesTourCourse": "Туристический маршрут",
+    "categoriesLeisure": "Досуг",
+    "categoriesStay": "Проживание",
+    "categoriesShopping": "Покупки",
+    "categoriesFood": "Еда"
   }
 }

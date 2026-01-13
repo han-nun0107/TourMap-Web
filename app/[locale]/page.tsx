@@ -31,7 +31,7 @@ export default function Home() {
           type="trending"
           data={data}
         />
-        <Category />
+        <Category title={t('categoriesTitle')} />
         <ExploreSection
           sectionTitle={t('regionsTitle')}
           subtitle={t('regionsSubtitle')}

@@ -15,6 +15,15 @@
     "layoutFavorite": "즐겨찾기",
     "layoutLogin": "로그인",
     "layoutSignup": "회원가입",
-    "layoutLogout": "로그아웃"
+    "layoutLogout": "로그아웃",
+    "categoriesTitle": "카테고리별로 보기",
+    "categoriesAttractions": "관광지",
+    "categoriesCulture": "문화",
+    "categoriesFestival": "축제",
+    "categoriesTourCourse": "관광 코스",
+    "categoriesLeisure": "레저",
+    "categoriesStay": "숙박",
+    "categoriesShopping": "쇼핑",
+    "categoriesFood": "음식"
   }
 }

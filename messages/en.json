@@ -15,6 +15,16 @@
     "layoutFavorite": "Favorites",
     "layoutLogin": "Log in",
     "layoutSignup": "Sign up",
-    "layoutLogout": "Log out"
+    "layoutLogout": "Log out",
+
+    "categoriesTitle": "Browse by Category",
+    "categoriesAttractions": "Attraction",
+    "categoriesCulture": "Culture",
+    "categoriesFestival": "Festival",
+    "categoriesTourCourse": "Tour Course",
+    "categoriesLeisure": "Leisure",
+    "categoriesStay": "Stay",
+    "categoriesShopping": "Shopping",
+    "categoriesFood": "Food"
   }
 }

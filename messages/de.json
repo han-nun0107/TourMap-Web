@@ -8,6 +8,22 @@
     "trendingTitle": "Im Trend",
     "trendingSubtitle": "Beliebte Reiseziele dieser Saison",
     "regionsTitle": "Regionen",
-    "regionsSubtitle": "Entdecke vielfältige Reiseziele nach Region"
+    "regionsSubtitle": "Entdecke vielfältige Reiseziele nach Region",
+    "layoutHome": "Startseite",
+    "layoutSearch": "Suche",
+    "layoutMap": "Karte",
+    "layoutFavorite": "Favoriten",
+    "layoutLogin": "Anmelden",
+    "layoutSignup": "Registrieren",
+    "layoutLogout": "Abmelden",
+    "categoriesTitle": "Nach Kategorie durchsuchen",
+    "categoriesAttractions": "Sehenswürdigkeiten",
+    "categoriesCulture": "Kultur",
+    "categoriesFestival": "Festival",
+    "categoriesTourCourse": "Reiseroute",
+    "categoriesLeisure": "Freizeit",
+    "categoriesStay": "Unterkunft",
+    "categoriesShopping": "Einkaufen",
+    "categoriesFood": "Essen"
   }
 }

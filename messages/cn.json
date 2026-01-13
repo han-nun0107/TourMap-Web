@@ -8,6 +8,22 @@
     "trendingTitle": "热门趋势",
     "trendingSubtitle": "本季最受欢迎的旅行目的地",
     "regionsTitle": "地区",
-    "regionsSubtitle": "按地区探索多样化的旅行目的地"
+    "regionsSubtitle": "按地区探索多样化的旅行目的地",
+    "layoutHome": "首页",
+    "layoutSearch": "搜索",
+    "layoutMap": "地图",
+    "layoutFavorite": "收藏",
+    "layoutLogin": "登录",
+    "layoutSignup": "注册",
+    "layoutLogout": "注销",
+    "categoriesTitle": "按类别浏览",
+    "categoriesAttractions": "景点",
+    "categoriesCulture": "文化",
+    "categoriesFestival": "节日",
+    "categoriesTourCourse": "旅游路线",
+    "categoriesLeisure": "休闲",
+    "categoriesStay": "住宿",
+    "categoriesShopping": "购物",
+    "categoriesFood": "美食"
   }
 }

@@ -8,6 +8,22 @@
     "trendingTitle": "Tendencias",
     "trendingSubtitle": "Destinos populares de esta temporada",
     "regionsTitle": "Regiones",
-    "regionsSubtitle": "Descubre diversos destinos por región"
+    "regionsSubtitle": "Descubre diversos destinos por región",
+    "layoutHome": "Inicio",
+    "layoutSearch": "Buscar",
+    "layoutMap": "Mapa",
+    "layoutFavorite": "Favoritos",
+    "layoutLogin": "Iniciar sesión",
+    "layoutSignup": "Registrarse",
+    "layoutLogout": "Cerrar sesión",
+    "categoriesTitle": "Explorar por categoría",
+    "categoriesAttractions": "Atracción",
+    "categoriesCulture": "Cultura",
+    "categoriesFestival": "Festival",
+    "categoriesTourCourse": "Ruta turística",
+    "categoriesLeisure": "Ocio",
+    "categoriesStay": "Alojamiento",
+    "categoriesShopping": "Compras",
+    "categoriesFood": "Gastronomía"
   }
 }

@@ -8,6 +8,22 @@
     "trendingTitle": "トレンド",
     "trendingSubtitle": "今シーズン人気の旅行先",
     "regionsTitle": "地域",
-    "regionsSubtitle": "地域別に多彩な旅行先を探す"
+    "regionsSubtitle": "地域別に多彩な旅行先を探す",
+    "layoutHome": "ホーム",
+    "layoutSearch": "検索",
+    "layoutMap": "地図",
+    "layoutFavorite": "お気に入り",
+    "layoutLogin": "ログイン",
+    "layoutSignup": "新規登録",
+    "layoutLogout": "ログアウト",
+    "categoriesTitle": "カテゴリー別に見る",
+    "categoriesAttractions": "観光名所",
+    "categoriesCulture": "文化",
+    "categoriesFestival": "祭り",
+    "categoriesTourCourse": "観光コース",
+    "categoriesLeisure": "レジャー",
+    "categoriesStay": "宿泊",
+    "categoriesShopping": "ショッピング",
+    "categoriesFood": "グルメ"
   }
 }
