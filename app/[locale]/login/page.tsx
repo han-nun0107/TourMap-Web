@@ -1,11 +1,13 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useLocale } from 'next-intl'
 
 import { ButtonClient } from '@/components/common/button'
+import { useRouter } from '@/i18n/navigation'
 import { useAuthStore } from '@/store/auth'
 
 export default function LoginPage() {
+  const locale = useLocale()
   const router = useRouter()
   const login = useAuthStore((state) => state.login)
 
@@ -21,7 +23,7 @@ export default function LoginPage() {
       email: MOCK_USER.email,
       name: MOCK_USER.name,
     })
-    router.push('/')
+    router.push('/', { locale })
   }
 
   return (
@@ -43,3 +45,4 @@ export default function LoginPage() {
     </div>
   )
 }
+

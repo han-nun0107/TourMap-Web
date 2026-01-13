@@ -8,12 +8,15 @@ import {
 } from '@radix-ui/react-dropdown-menu'
 
 import { LANGUAGE_OPTIONS } from '@/constants/header/header'
+import { usePathname, useRouter } from '@/i18n/navigation'
 import { cn } from '@/lib/cn'
 import { useLanguageStore } from '@/store/language/languageStore'
 
 export default function DropDown({ children }: { children: React.ReactNode }) {
   const language = useLanguageStore((state) => state.language)
   const setLanguage = useLanguageStore((state) => state.setLanguage)
+  const router = useRouter()
+  const pathname = usePathname()
 
   return (
     <DropdownMenu>
@@ -25,7 +28,10 @@ export default function DropDown({ children }: { children: React.ReactNode }) {
         {LANGUAGE_OPTIONS.map((option) => (
           <DropdownMenuItem
             key={option.value}
-            onClick={() => setLanguage(option.value)}
+            onClick={() => {
+              setLanguage(option.value)
+              router.push(pathname, { locale: option.value })
+            }}
             className={cn(
               'cursor-pointer',
               language === option.value && 'bg-blue-600/10 text-blue-600'

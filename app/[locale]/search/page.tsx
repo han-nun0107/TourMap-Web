@@ -1,13 +1,12 @@
 'use client'
 
-import { LucideIcon } from 'lucide-react'
-
 import { TrendingCard } from '@/components/card'
 import { SearchInput } from '@/components/common'
 import { FilterBadge } from '@/components/common/FilterBadge'
 import { CATEGORY_OPTIONS } from '@/constants/main/category'
 import { useSearchFilter } from '@/hooks/search'
 import { searchCardMock } from '@/mocks'
+import { getIconByTag } from '@/utils/iconMapper'
 
 export default function SearchPage() {
   const {
@@ -54,7 +53,10 @@ export default function SearchPage() {
               title={card.title}
               location={card.location}
               tag={card.tag}
-              tagIcon={card.tagIcon}
+              tagIcon={{
+                name: card.tag,
+                icon: getIconByTag(card.tag),
+              }}
               id={card.id}
             />
           ))}

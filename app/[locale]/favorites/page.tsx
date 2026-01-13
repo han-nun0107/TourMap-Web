@@ -47,7 +47,10 @@ export default function FavoritesPage() {
                 title={like.title}
                 location={like.location}
                 tag={like.tag}
-                tagIcon={getIconByTag(like.tag)}
+                tagIcon={{
+                  name: like.tag,
+                  icon: getIconByTag(like.tag),
+                }}
                 id={like.id}
               />
             ))}

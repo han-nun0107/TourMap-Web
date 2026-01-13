@@ -53,9 +53,13 @@ export async function getTourList(
   endpoint: keyof typeof TOUR_ENDPOINT = 'areaCode2',
   params: Partial<Record<string, string>> = {}
 ) {
+  const serviceKey = process.env.NEXT_PUBLIC_TOUR_API_KEY || ''
+  if (!serviceKey) {
+    throw new Error('NEXT_PUBLIC_TOUR_API_KEY is not set')
+  }
   const fullUrl = `${BASE_URL}${BASE_BY_LANG[lang]}/${TOUR_ENDPOINT[endpoint]}`
   return getTours(fullUrl, {
-    serviceKey: process.env.NEXT_PUBLIC_TOUR_API_KEY || '',
+    serviceKey,
     numOfRows: '10',
     pageNo: '1',
     MobileOS: 'ETC',

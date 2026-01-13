@@ -37,7 +37,9 @@ export default function ExploreSection({
 
     if (!raw) return []
 
-    const items: AreaBasedListItem[] = Array.isArray(raw) ? raw : [raw]
+    const items: AreaBasedListItem[] = (
+      Array.isArray(raw) ? raw : [raw]
+    ).filter((item) => item.contentid && !isNaN(Number(item.contentid)))
 
     return filterTourItems({ items, activeFilter, type })
   }, [activeFilter, data, type])
@@ -89,7 +91,7 @@ export default function ExploreSection({
                     icon: MapPinIcon,
                   }
                 }
-                id={Number(card.contentid) || 0}
+                id={Number(card.contentid)}
                 onClick={() => {}}
               />
             ))
@@ -110,7 +112,7 @@ export default function ExploreSection({
                     icon: MapPinIcon,
                   }
                 }
-                id={Number(card.contentid) || 0}
+                id={Number(card.contentid)}
                 onClick={() => {}}
               />
             ))}

@@ -1,11 +1,15 @@
 import { getRequestConfig } from 'next-intl/server'
 
-export default getRequestConfig(async () => {
-  /* TODO: 추후 쿠키 or 로컬에서 언어 설정 받아오기 */
-  const locale = 'ko'
+import { routing } from './routing'
+
+export default getRequestConfig(async ({ requestLocale }) => {
+  const locale = await requestLocale
+  const resolvedLocale = routing.locales.includes(locale as any)
+    ? (locale as (typeof routing.locales)[number])
+    : routing.defaultLocale
 
   return {
-    locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    locale: resolvedLocale,
+    messages: (await import(`../../messages/${resolvedLocale}.json`)).default,
   }
 })
