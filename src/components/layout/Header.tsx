@@ -1,13 +1,13 @@
 'use client'
 
 import { LanguagesIcon } from 'lucide-react'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 import { ButtonClient } from '@/components/common/button'
 import DropDown from '@/components/common/DropDown'
 import { LANGUAGE_OPTIONS, NAV_ITEMS } from '@/constants/header/header'
+import { Link } from '@/i18n/navigation'
 import { cn } from '@/lib/cn'
 import { useAuthStore } from '@/store/auth'
 import { useLanguageStore } from '@/store/language/languageStore'
