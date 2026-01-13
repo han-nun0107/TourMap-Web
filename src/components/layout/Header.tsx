@@ -1,17 +1,23 @@
 'use client'
 
+import { LanguagesIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 import { ButtonClient } from '@/components/common/button'
-import { NAV_ITEMS } from '@/constants/header/header'
+import DropDown from '@/components/common/DropDown'
+import { LANGUAGE_OPTIONS, NAV_ITEMS } from '@/constants/header/header'
 import { cn } from '@/lib/cn'
 import { useAuthStore } from '@/store/auth'
+import { useLanguageStore } from '@/store/language/languageStore'
 
 export default function Header() {
   const pathname = usePathname()
   const isLogin = useAuthStore((state) => state.isLogin)
   const logout = useAuthStore((state) => state.logout)
+  const language = useLanguageStore((state) => state.language)
+  const t = useTranslations('Home')
 
   const handleLogout = () => {
     logout()
@@ -43,7 +49,7 @@ export default function Header() {
                   : 'hover:text-black-900 text-gray-600 hover:bg-gray-100'
               )}
             >
-              {item.label}
+              {t(item.labelKey)}
             </Link>
           )
         })}
@@ -52,7 +58,7 @@ export default function Header() {
       <div className="flex items-center gap-3">
         {isLogin ? (
           <ButtonClient variant="login" intent="clear" onClick={handleLogout}>
-            Logout
+            {t('layoutLogout')}
           </ButtonClient>
         ) : (
           <>
@@ -60,17 +66,24 @@ export default function Header() {
               href="/login"
               className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
             >
-              Login
+              {t('layoutLogin')}
             </Link>
             <Link
               href="/signup"
               className="inline-flex items-center justify-center rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
             >
-              Signup
+              {t('layoutSignup')}
             </Link>
           </>
         )}
       </div>
+      <DropDown>
+        <span className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900">
+          <LanguagesIcon className="h-4 w-4" />
+          {LANGUAGE_OPTIONS.find((option) => option.value === language)
+            ?.label || '한국어'}
+        </span>
+      </DropDown>
     </header>
   )
 }

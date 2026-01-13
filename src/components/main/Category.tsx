@@ -2,6 +2,7 @@ import { CategoryCard } from '@/components/card'
 import { CATEGORY_OPTIONS } from '@/constants/main/category'
 
 export default function Category() {
+  /* TODO: 추후 카테고리 목록 조회 후 카테고리 페이지로 이동 */
   return (
     <section className="w-full bg-gray-200 py-12">
       <div className="mx-auto flex w-full max-w-[332px] flex-col items-start gap-6 md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px]">
