@@ -4,7 +4,18 @@ import createNextIntlPlugin from 'next-intl/plugin'
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ['tong.visitkorea.or.kr'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'tong.visitkorea.or.kr',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'tong.visitkorea.or.kr',
+        pathname: '/**',
+      },
+    ],
   },
 }
 
