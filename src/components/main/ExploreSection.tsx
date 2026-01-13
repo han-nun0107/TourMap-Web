@@ -2,6 +2,7 @@
 
 import { ArrowRightIcon, MapPinIcon } from 'lucide-react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 
 import { TrendingCard } from '@/components/card'
@@ -44,6 +45,8 @@ export default function ExploreSection({
     return filterTourItems({ items, activeFilter, type })
   }, [activeFilter, data, type])
 
+  const t = useTranslations('Home')
+
   return (
     <div className="flex-center mx-auto w-full max-w-[332px] flex-col gap-6 py-12 md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px]">
       <div className="flex w-full max-w-[1320px] items-center justify-between">
@@ -66,7 +69,7 @@ export default function ExploreSection({
             <FilterBadge
               key={option.value}
               type="category"
-              name={option.name}
+              name={t(option.name)}
               active={activeFilter === option.value}
               onClick={() => setActiveFilter(option.value)}
             />

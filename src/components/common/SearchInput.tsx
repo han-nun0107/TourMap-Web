@@ -1,50 +1,38 @@
 'use client'
 
 import { SearchIcon, X } from 'lucide-react'
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useId, useRef, useState } from 'react'
 
 import { ButtonClient } from '@/components/common/button'
 import { useDebounce } from '@/hooks/search/useDebounce'
+import { useDebouncedChange } from '@/hooks/search/useDebouncedChange'
 
 type Props = {
   defaultValue?: string
   debounceMs?: number
   onDebouncedChange: (q: string) => void
+  placeholder: string
+  ariaHint: string
 }
 
 export function SearchInput({
   defaultValue = '',
   debounceMs = 300,
   onDebouncedChange,
+  placeholder,
+  ariaHint,
 }: Props) {
   const [value, setValue] = useState(defaultValue)
   const { debouncedValue } = useDebounce(value, debounceMs)
   const inputRef = useRef<HTMLInputElement>(null)
-  const isInitialMountRef = useRef(true)
   const skipNextDebouncedEffectRef = useRef(false)
   const onDebouncedChangeRef = useRef(onDebouncedChange)
 
-  useEffect(() => {
-    onDebouncedChangeRef.current = onDebouncedChange
+  useDebouncedChange({
+    debouncedValue,
+    onDebouncedChange,
+    skipNextDebouncedEffectRef,
   })
-
-  useEffect(() => {
-    const q = debouncedValue.trim()
-
-    if (skipNextDebouncedEffectRef.current) {
-      skipNextDebouncedEffectRef.current = false
-      return
-    }
-
-    if (isInitialMountRef.current) {
-      isInitialMountRef.current = false
-      if (q === '') {
-        return
-      }
-    }
-
-    onDebouncedChangeRef.current(q)
-  }, [debouncedValue])
 
   const inputId = useId()
 
@@ -67,7 +55,7 @@ export function SearchInput({
   return (
     <div role="search" aria-label="Site search" className="w-full">
       <label htmlFor={inputId} className="sr-only">
-        Search destinations, attractions, restaurants
+        {placeholder}
       </label>
 
       <div className="relative">
@@ -80,7 +68,7 @@ export function SearchInput({
           autoComplete="off"
           autoCorrect="off"
           spellCheck={false}
-          placeholder="Search destinations, attractions, restaurants..."
+          placeholder={placeholder}
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={onKeyDown}
@@ -101,7 +89,7 @@ export function SearchInput({
       </div>
 
       <p id={`${inputId}-hint`} className="sr-only" aria-live="polite">
-        Type to search. Results update automatically.
+        {ariaHint}
       </p>
     </div>
   )

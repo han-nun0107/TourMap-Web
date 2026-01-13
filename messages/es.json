@@ -1,13 +1,73 @@
 {
   "Home": {
-    "bannerTitle": "Descubre Corea",
-    "bannerSubtitle": "Explora la belleza de Corea",
-    "bannerDescription": "Desde palacios antiguos hasta vibrante comida callejera, descubre los mejores destinos de viaje en toda la península coreana.",
-    "bannerStartButton": "Comenzar a explorar",
-    "bannerMapButton": "Ver mapa",
-    "trendingTitle": "Tendencias",
-    "trendingSubtitle": "Destinos populares de esta temporada",
-    "regionsTitle": "Regiones",
-    "regionsSubtitle": "Descubre diversos destinos por región"
+    "banner": {
+      "Title": "Descubre Corea",
+      "Subtitle": "Explora la belleza de Corea",
+      "Description": "Desde palacios antiguos hasta vibrante comida callejera, descubre los mejores destinos de viaje en toda la península coreana.",
+      "StartButton": "Comenzar a explorar",
+      "MapButton": "Ver mapa"
+    },
+
+    "trending": {
+      "Title": "Tendencias",
+      "Subtitle": "Destinos populares de esta temporada"
+    },
+
+    "regionsName": {
+      "Title": "Regiones",
+      "Subtitle": "Descubre diversos destinos por región"
+    },
+
+    "layout": {
+      "Home": "Inicio",
+      "Search": "Buscar",
+      "Map": "Mapa",
+      "Favorite": "Favoritos",
+      "Login": "Iniciar sesión",
+      "Signup": "Registrarse",
+      "Logout": "Cerrar sesión"
+    },
+
+    "categories": {
+      "Title": "Explorar por categoría",
+      "Attractions": "Atracción",
+      "Culture": "Cultura",
+      "Festival": "Festival",
+      "TourCourse": "Ruta turística",
+      "Leisure": "Ocio",
+      "Stay": "Alojamiento",
+      "Shopping": "Compras",
+      "Food": "Gastronomía"
+    },
+
+    "region": {
+      "all": "Todos",
+      "seoul": "Seúl",
+      "busan": "Busán",
+      "daegu": "Daegu",
+      "incheon": "Incheon",
+      "gwangju": "Gwangju",
+      "daejeon": "Daejeon",
+      "ulsan": "Ulsan",
+      "sejong": "Sejong",
+      "gyeonggi": "Gyeonggi",
+      "gangwon": "Gangwon",
+      "chungbuk": "Chungbuk",
+      "chungnam": "Chungnam",
+      "jeonbuk": "Jeonbuk",
+      "jeonnam": "Jeonnam",
+      "gyeongbuk": "Gyeongbuk",
+      "gyeongnam": "Gyeongnam",
+      "jeju": "Jeju"
+    },
+    "search": {
+      "Title": "Página de búsqueda",
+      "placeholder": "Buscar destinos, atracciones y restaurantes",
+      "ariaHint": "Escribe para buscar. Los resultados se actualizan automáticamente.",
+      "resultFound": "{count, plural, one {Se encontró # resultado.} other {Se encontraron # resultados.}}"
+    },
+    "map": {
+      "title": "Lugares cercanos"
+    }
   }
 }

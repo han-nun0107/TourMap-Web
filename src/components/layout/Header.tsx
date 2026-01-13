@@ -32,12 +32,13 @@ export default function Header() {
         <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-600 text-sm font-bold text-white">
           T
         </div>
-        <span className="text-black-900 text-lg font-bold">TourApi</span>
+        <span className="text-lg font-bold text-gray-900">TourApi</span>
       </Link>
 
-      <nav className="hidden items-center gap-1 md:flex">
+      <nav className="hidden items-center gap-2 md:flex">
         {NAV_ITEMS.map((item) => {
           const isActive = pathname === item.href
+
           return (
             <Link
               key={item.href}
@@ -46,7 +47,7 @@ export default function Header() {
                 'rounded-lg px-4 py-2 text-sm font-medium transition-colors',
                 isActive
                   ? 'bg-blue-600/10 text-blue-600'
-                  : 'hover:text-black-900 text-gray-600 hover:bg-gray-100'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
               )}
             >
               {t(item.labelKey)}
@@ -58,7 +59,7 @@ export default function Header() {
       <div className="flex items-center gap-3">
         {isLogin ? (
           <ButtonClient variant="login" intent="clear" onClick={handleLogout}>
-            {t('layoutLogout')}
+            {t('layout.Logout')}
           </ButtonClient>
         ) : (
           <>
@@ -66,24 +67,24 @@ export default function Header() {
               href="/login"
               className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
             >
-              {t('layoutLogin')}
+              {t('layout.Login')}
             </Link>
             <Link
               href="/signup"
-              className="inline-flex items-center justify-center rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
+              className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900"
             >
-              {t('layoutSignup')}
+              {t('layout.Signup')}
             </Link>
           </>
         )}
+        <DropDown>
+          <span className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900">
+            <LanguagesIcon className="h-4 w-4" />
+            {LANGUAGE_OPTIONS.find((option) => option.value === language)
+              ?.label || '한국어'}
+          </span>
+        </DropDown>
       </div>
-      <DropDown>
-        <span className="flex cursor-pointer items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900">
-          <LanguagesIcon className="h-4 w-4" />
-          {LANGUAGE_OPTIONS.find((option) => option.value === language)
-            ?.label || '한국어'}
-        </span>
-      </DropDown>
     </header>
   )
 }

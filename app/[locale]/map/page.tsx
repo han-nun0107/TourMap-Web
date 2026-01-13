@@ -1,6 +1,7 @@
 'use client'
 
 import { MousePointer2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 import { Map, MapMarker } from 'react-kakao-maps-sdk'
 
@@ -11,20 +12,23 @@ import { searchCardMock } from '@/mocks'
 
 export default function MapPage() {
   const [activeFilter, setActiveFilter] = useState<string | null>('attraction')
+  const t = useTranslations('Home')
   return (
     <>
       <div className="w-full border-b border-gray-200/50 bg-gray-100">
         <div className="mx-auto flex h-28 w-full max-w-[1400px] flex-col justify-center gap-3 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <MousePointer2 size={20} className="rotate-90 text-blue-600" />
-            <h1 className="text-black-900 text-xl font-bold">Nearby Places</h1>
+            <h1 className="text-black-900 text-xl font-bold">
+              {t('map.title')}
+            </h1>
           </div>
           <div className="flex w-full flex-wrap items-start justify-start gap-2 sm:gap-3 md:gap-4">
             {CATEGORY_OPTIONS.map((option) => (
               <FilterBadge
                 key={option.value}
                 type="category"
-                name={option.title}
+                name={t(option.title)}
                 active={activeFilter === option.value}
                 onClick={() => setActiveFilter(option.value)}
                 className="h-8"

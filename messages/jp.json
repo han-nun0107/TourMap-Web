@@ -1,13 +1,73 @@
 {
   "Home": {
-    "bannerTitle": "韓国を発見しよう",
-    "bannerSubtitle": "韓国の美しさを探検しよう",
-    "bannerDescription": "古宮から活気ある屋台グルメまで、朝鮮半島全域の最高の旅行先を発見してください。",
-    "bannerStartButton": "探索を始める",
-    "bannerMapButton": "地図を見る",
-    "trendingTitle": "トレンド",
-    "trendingSubtitle": "今シーズン人気の旅行先",
-    "regionsTitle": "地域",
-    "regionsSubtitle": "地域別に多彩な旅行先を探す"
+    "banner": {
+      "Title": "韓国を発見しよう",
+      "Subtitle": "韓国の美しさを探検しよう",
+      "Description": "古宮から活気ある屋台グルメまで、朝鮮半島全域の最高の旅行先を発見してください。",
+      "StartButton": "探索を始める",
+      "MapButton": "地図を見る"
+    },
+
+    "trending": {
+      "Title": "トレンド",
+      "Subtitle": "今シーズン人気の旅行先"
+    },
+
+    "regionsName": {
+      "Title": "地域",
+      "Subtitle": "地域別に多彩な旅行先を探す"
+    },
+
+    "layout": {
+      "Home": "ホーム",
+      "Search": "検索",
+      "Map": "地図",
+      "Favorite": "お気に入り",
+      "Login": "ログイン",
+      "Signup": "新規登録",
+      "Logout": "ログアウト"
+    },
+
+    "categories": {
+      "Title": "カテゴリー別に見る",
+      "Attractions": "観光名所",
+      "Culture": "文化",
+      "Festival": "祭り",
+      "TourCourse": "観光コース",
+      "Leisure": "レジャー",
+      "Stay": "宿泊",
+      "Shopping": "ショッピング",
+      "Food": "グルメ"
+    },
+
+    "region": {
+      "all": "すべて",
+      "seoul": "ソウル",
+      "busan": "釜山",
+      "daegu": "大邱",
+      "incheon": "仁川",
+      "gwangju": "光州",
+      "daejeon": "大田",
+      "ulsan": "蔚山",
+      "sejong": "世宗",
+      "gyeonggi": "京畿",
+      "gangwon": "江原",
+      "chungbuk": "忠清北道",
+      "chungnam": "忠清南道",
+      "jeonbuk": "全羅北道",
+      "jeonnam": "全羅南道",
+      "gyeongbuk": "慶尚北道",
+      "gyeongnam": "慶尚南道",
+      "jeju": "済州"
+    },
+    "search": {
+      "Title": "検索ページ",
+      "placeholder": "旅行先・観光地・グルメを検索",
+      "ariaHint": "入力すると検索が実行され、結果が自動的に更新されます。",
+      "resultFound": "{count} 件の検索結果があります。"
+    },
+    "map": {
+      "title": "周辺スポット"
+    }
   }
 }

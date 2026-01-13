@@ -1,18 +1,18 @@
 export const NAV_ITEMS = [
   {
-    labelKey: 'layoutHome',
+    labelKey: 'layout.Home',
     href: '/',
   },
   {
-    labelKey: 'layoutSearch',
+    labelKey: 'layout.Search',
     href: '/search',
   },
   {
-    labelKey: 'layoutMap',
+    labelKey: 'layout.Map',
     href: '/map',
   },
   {
-    labelKey: 'layoutFavorite',
+    labelKey: 'layout.Favorite',
     href: '/favorites',
   },
 ]
