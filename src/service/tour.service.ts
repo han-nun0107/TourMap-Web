@@ -49,18 +49,18 @@ export const BASE_BY_LANG: Record<AppLocale, string> = {
   ru: '/RusService2',
 }
 
-export async function getTourList(
+export async function getTourList<T = unknown>(
   lang: AppLocale,
   endpoint: keyof typeof TOUR_ENDPOINT = 'areaCode2',
   params: Partial<Record<string, string>> = {},
   pageNo: string = '1'
-) {
+): Promise<T> {
   const serviceKey = process.env.NEXT_PUBLIC_TOUR_API_KEY || ''
   if (!serviceKey) {
     throw new Error('NEXT_PUBLIC_TOUR_API_KEY is not set')
   }
   const fullUrl = `${BASE_URL}${BASE_BY_LANG[lang]}/${TOUR_ENDPOINT[endpoint]}`
-  return getTours(fullUrl, {
+  return getTours<T>(fullUrl, {
     serviceKey,
     numOfRows: '12',
     pageNo: pageNo,

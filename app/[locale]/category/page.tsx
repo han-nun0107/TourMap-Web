@@ -3,16 +3,17 @@
 import { MapPinIcon } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
-import { useEffect, useMemo } from 'react'
+import { Suspense, useEffect, useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
 import { CONTENT_TYPE_LABEL } from '@/constants/main/contentTypeMapping'
 import { useCategoryTours } from '@/hooks/category/useCategoryTours'
 import { useInfiniteScroll } from '@/hooks/useIntersectionObserver'
+import type { AppLocale } from '@/i18n/routing'
 import { useLanguageStore } from '@/store/language/languageStore'
 import { parseTourApiResponse } from '@/utils/tourApiParser'
 
-export default function CategoryPage() {
+function CategoryContent() {
   const t = useTranslations('Home')
   const locale = useLocale()
   const language = useLanguageStore((state) => state.language)
@@ -20,7 +21,7 @@ export default function CategoryPage() {
   const contentTypeId = searchParams.get('contentTypeId')
 
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useCategoryTours(locale as 'ko', contentTypeId || undefined)
+    useCategoryTours(locale as AppLocale, contentTypeId || undefined)
 
   // 페이지 진입 시 스크롤을 맨 위로 이동
   useEffect(() => {
@@ -114,5 +115,19 @@ export default function CategoryPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function CategoryPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      }
+    >
+      <CategoryContent />
+    </Suspense>
   )
 }
