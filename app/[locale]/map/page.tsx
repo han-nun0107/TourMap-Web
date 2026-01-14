@@ -3,16 +3,19 @@
 import { MousePointer2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
-import { Map, MapMarker } from 'react-kakao-maps-sdk'
+import { Map } from 'react-kakao-maps-sdk'
 
 import SearchCard from '@/components/card/SearchCard'
 import { FilterBadge } from '@/components/common'
 import { CATEGORY_OPTIONS } from '@/constants/main/category'
+import { useGeolocation } from '@/hooks/map/useGeolocation'
 import { searchCardMock } from '@/mocks'
 
 export default function MapPage() {
   const [activeFilter, setActiveFilter] = useState<string | null>('attraction')
   const t = useTranslations('Home')
+  const { coordinates } = useGeolocation()
+
   return (
     <>
       <div className="w-full border-b border-gray-200/50 bg-gray-100">
@@ -41,13 +44,12 @@ export default function MapPage() {
         <Map
           id="map"
           style={{ width: '80%', height: '81vh' }}
-          center={{ lat: 37.5665, lng: 126.978 }}
+          center={{
+            lat: coordinates?.lat ?? 37.5665,
+            lng: coordinates?.lng ?? 126.978,
+          }}
           level={3}
-        >
-          <MapMarker position={{ lat: 37.5665, lng: 126.978 }}>
-            <div>마커</div>
-          </MapMarker>
-        </Map>
+        />
         <div className="mx-auto flex flex-col gap-3 pt-4">
           <p className="text-sm font-light text-gray-600">
             {searchCardMock.length} places nearby
