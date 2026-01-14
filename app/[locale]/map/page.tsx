@@ -2,7 +2,7 @@
 
 import { MousePointer2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Map } from 'react-kakao-maps-sdk'
 
 import SearchCard from '@/components/card/SearchCard'
@@ -11,7 +11,26 @@ import { CATEGORY_OPTIONS } from '@/constants/main/category'
 import { useGeolocation } from '@/hooks/map/useGeolocation'
 import { searchCardMock } from '@/mocks'
 
+type Bounds = {
+  sw: { latitude: number; longitude: number }
+  ne: { latitude: number; longitude: number }
+}
+
+type LatLng = {
+  latitude: number
+  longitude: number
+}
+
 export default function MapPage() {
+  const mapRef = useRef<kakao.maps.Map | null>(null)
+  const [center, setCenter] = useState<LatLng>({
+    latitude: 37.5665,
+    longitude: 126.978,
+  })
+  const [bounds, setBounds] = useState<Bounds>({
+    sw: { latitude: 37.5665, longitude: 126.978 },
+    ne: { latitude: 37.5665, longitude: 126.978 },
+  })
   const [activeFilter, setActiveFilter] = useState<string | null>('attraction')
   const t = useTranslations('Home')
   const { coordinates } = useGeolocation()
@@ -49,6 +68,30 @@ export default function MapPage() {
             lng: coordinates?.lng ?? 126.978,
           }}
           level={3}
+          onCreate={(map) => {
+            mapRef.current = map
+          }}
+          onBoundsChanged={(map) => {
+            const c = map.getCenter()
+            const b = map.getBounds()
+            const sw = b.getSouthWest()
+            const ne = b.getNorthEast()
+
+            setCenter({
+              latitude: c.getLat(),
+              longitude: c.getLng(),
+            })
+            setBounds({
+              sw: {
+                latitude: sw.getLat(),
+                longitude: sw.getLng(),
+              },
+              ne: {
+                latitude: ne.getLat(),
+                longitude: ne.getLng(),
+              },
+            })
+          }}
         />
         <div className="mx-auto flex flex-col gap-3 pt-4">
           <p className="text-sm font-light text-gray-600">
