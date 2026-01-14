@@ -82,25 +82,26 @@ function CategoryContent() {
         ) : (
           <>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {cards.map((card) => (
-                <TrendingCard
-                  key={card.contentid}
-                  title={card.title}
-                  image={card.firstimage || card.firstimage2}
-                  location={card.addr1}
-                  tag={
-                    CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
-                    '기타'
-                  }
-                  tagIcon={
-                    CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
-                      name: '기타',
-                      icon: MapPinIcon,
+              {cards.map((card) => {
+                const contentTypeMeta =
+                  CONTENT_TYPE_LABEL[language][card.contenttypeid]
+                return (
+                  <TrendingCard
+                    key={card.contentid}
+                    title={card.title}
+                    image={card.firstimage || card.firstimage2}
+                    location={card.addr1}
+                    tag={contentTypeMeta?.name ?? '기타'}
+                    tagIcon={
+                      contentTypeMeta ?? {
+                        name: '기타',
+                        icon: MapPinIcon,
+                      }
                     }
-                  }
-                  id={Number(card.contentid)}
-                />
-              ))}
+                    id={Number(card.contentid)}
+                  />
+                )
+              })}
             </div>
 
             {/* 로딩 트리거 요소 */}
