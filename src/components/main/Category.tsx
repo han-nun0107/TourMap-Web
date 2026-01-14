@@ -1,11 +1,28 @@
-import { useTranslations } from 'next-intl'
+'use client'
+
+import { useLocale, useTranslations } from 'next-intl'
 
 import { CategoryCard } from '@/components/card'
-import { CATEGORY_OPTIONS } from '@/constants/main/category'
+import {
+  CATEGORY_OPTIONS,
+  CATEGORY_TO_CONTENT_TYPE_ID,
+} from '@/constants/main/category'
+import { useRouter } from '@/i18n/navigation'
+import type { AppLocale } from '@/i18n/routing'
 
 export default function Category({ title }: { title: string }) {
   const t = useTranslations('Home')
-  /* TODO: 추후 카테고리 목록 조회 후 카테고리 페이지로 이동 */
+  const locale = useLocale() as AppLocale
+  const router = useRouter()
+
+  const handleCategoryClick = (categoryValue: string) => {
+    const contentTypeId = CATEGORY_TO_CONTENT_TYPE_ID[categoryValue]?.[locale]
+    if (contentTypeId) {
+      // 카테고리 페이지로 이동
+      router.push(`/category?contentTypeId=${contentTypeId}`)
+    }
+  }
+
   return (
     <section className="w-full bg-gray-200 py-12">
       <div className="mx-auto flex w-full max-w-[332px] flex-col items-start gap-6 md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px]">
@@ -18,6 +35,7 @@ export default function Category({ title }: { title: string }) {
               key={option.value}
               title={t(option.title)}
               Icon={option.Icon}
+              onClick={() => handleCategoryClick(option.value)}
             />
           ))}
         </div>
