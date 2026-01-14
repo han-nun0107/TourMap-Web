@@ -3,13 +3,13 @@
 import { MapPinIcon } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
 import { CONTENT_TYPE_LABEL } from '@/constants/main/contentTypeMapping'
-import { useTour } from '@/hooks/tour/useTour'
+import { useCategoryTours } from '@/hooks/category/useCategoryTours'
+import { useInfiniteScroll } from '@/hooks/useIntersectionObserver'
 import { useLanguageStore } from '@/store/language/languageStore'
-import type { AreaBasedList } from '@/types/tour/areaBasedList'
 import { parseTourApiResponse } from '@/utils/tourApiParser'
 
 export default function CategoryPage() {
@@ -19,20 +19,38 @@ export default function CategoryPage() {
   const searchParams = useSearchParams()
   const contentTypeId = searchParams.get('contentTypeId')
 
-  const { data, isLoading } = useTour(
-    'areaBasedList2',
-    locale as 'ko',
-    contentTypeId ? { contentTypeId } : {}
-  )
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useCategoryTours(locale as 'ko', contentTypeId || undefined)
+
+  // 페이지 진입 시 스크롤을 맨 위로 이동
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [contentTypeId])
+
+  const loadMoreRef = useInfiniteScroll({
+    enabled: !!hasNextPage && !isFetchingNextPage,
+    onLoadMore: fetchNextPage,
+    isLoading: isFetchingNextPage,
+  })
 
   const cards = useMemo(() => {
-    return parseTourApiResponse(data as AreaBasedList | undefined)
+    if (!data?.pages) return []
+    return data.pages.flatMap((page) => parseTourApiResponse(page))
   }, [data])
 
   const categoryName = useMemo(() => {
     if (!contentTypeId) return ''
     return CONTENT_TYPE_LABEL[language][contentTypeId]?.name ?? ''
   }, [contentTypeId, language])
+
+  // contentTypeId가 없으면 early return
+  if (!contentTypeId) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <p className="text-gray-600">{t('search.selectCategory')}</p>
+      </div>
+    )
+  }
 
   if (isLoading) {
     return (
@@ -58,34 +76,41 @@ export default function CategoryPage() {
 
         {cards.length === 0 ? (
           <div className="flex min-h-[400px] items-center justify-center">
-            <p className="text-gray-600">
-              {contentTypeId
-                ? t('search.noResults')
-                : t('search.selectCategory')}
-            </p>
+            <p className="text-gray-600">{t('search.noResults')}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {cards.map((card) => (
-              <TrendingCard
-                key={card.contentid}
-                title={card.title}
-                image={card.firstimage || card.firstimage2}
-                location={card.addr1}
-                tag={
-                  CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
-                  '기타'
-                }
-                tagIcon={
-                  CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
-                    name: '기타',
-                    icon: MapPinIcon,
+          <>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {cards.map((card) => (
+                <TrendingCard
+                  key={card.contentid}
+                  title={card.title}
+                  image={card.firstimage || card.firstimage2}
+                  location={card.addr1}
+                  tag={
+                    CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
+                    '기타'
                   }
-                }
-                id={Number(card.contentid)}
-              />
-            ))}
-          </div>
+                  tagIcon={
+                    CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
+                      name: '기타',
+                      icon: MapPinIcon,
+                    }
+                  }
+                  id={Number(card.contentid)}
+                />
+              ))}
+            </div>
+
+            {/* 로딩 트리거 요소 */}
+            {hasNextPage && <div ref={loadMoreRef} className="h-20 w-full" />}
+
+            {isFetchingNextPage && (
+              <div className="flex justify-center py-4">
+                <p className="text-gray-600">Loading more...</p>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

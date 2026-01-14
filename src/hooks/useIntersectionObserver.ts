@@ -1,22 +1,44 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
-export const useIntersectionObserver = (ref: React.RefObject<HTMLElement>) => {
-  const [isIntersecting, setIsIntersecting] = useState(false)
+type UseInfiniteScrollProps = {
+  enabled: boolean
+  onLoadMore: () => void
+  isLoading?: boolean
+}
+
+export const useInfiniteScroll = ({
+  enabled,
+  onLoadMore,
+  isLoading = false,
+}: UseInfiniteScrollProps) => {
+  const observerTarget = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const element = ref.current
-    if (!element) return
+    if (!enabled) {
+      return
+    }
 
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsIntersecting(entry.isIntersecting)
-    })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && enabled && !isLoading) {
+          onLoadMore()
+        }
+      },
+      { threshold: 0.1 }
+    )
 
-    observer.observe(element)
+    const currentTarget = observerTarget.current
+    if (currentTarget) {
+      observer.observe(currentTarget)
+    }
 
     return () => {
-      observer.unobserve(element)
+      if (currentTarget) {
+        observer.unobserve(currentTarget)
+      }
+      observer.disconnect()
     }
-  }, [ref])
+  }, [enabled, onLoadMore, isLoading])
 
-  return { isIntersecting }
+  return observerTarget
 }
