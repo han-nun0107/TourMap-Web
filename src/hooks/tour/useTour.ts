@@ -6,10 +6,11 @@ import { getTourList, TOUR_ENDPOINT } from '@/service/tour.service'
 export const useTour = (
   endpoint: keyof typeof TOUR_ENDPOINT = 'areaCode2',
   lang: AppLocale = 'ko',
-  params: Partial<Record<string, string>> = {}
+  params: Partial<Record<string, string>> = {},
+  pageNo: string = '1'
 ) => {
   return useQuery({
     queryKey: ['tours', endpoint, lang, params],
-    queryFn: () => getTourList(lang, endpoint, params),
+    queryFn: () => getTourList(lang, endpoint, params, pageNo),
   })
 }

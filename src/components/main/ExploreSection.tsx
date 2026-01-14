@@ -10,11 +10,8 @@ import { FilterBadge } from '@/components/common'
 import { CONTENT_TYPE_LABEL } from '@/constants/main/contentTypeMapping'
 import { FILTER_OPTIONS } from '@/constants/main/filterOptions'
 import { useLanguageStore } from '@/store/language/languageStore'
-import type {
-  AreaBasedList,
-  AreaBasedListItem,
-} from '@/types/tour/areaBasedList'
-import { unwrapTourApiResponse } from '@/types/tour/common'
+import type { AreaBasedList } from '@/types/tour/areaBasedList'
+import { parseTourApiResponse } from '@/utils/tourApiParser'
 import { filterTourItems } from '@/utils/tourFilter'
 type ExploreSectionProps = {
   type: 'trending' | 'region'
@@ -33,15 +30,8 @@ export default function ExploreSection({
   const language = useLanguageStore((state) => state.language)
 
   const cards = useMemo(() => {
-    const inner = unwrapTourApiResponse(data)
-    const raw = inner?.body?.items?.item
-
-    if (!raw) return []
-
-    const items: AreaBasedListItem[] = (
-      Array.isArray(raw) ? raw : [raw]
-    ).filter((item) => item.contentid && !isNaN(Number(item.contentid)))
-
+    if (!data) return []
+    const items = parseTourApiResponse(data)
     return filterTourItems({ items, activeFilter, type })
   }, [activeFilter, data, type])
 

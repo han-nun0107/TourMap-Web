@@ -1,17 +1,28 @@
+import { ButtonClient } from '@/components/common/button'
 import Card from '@/components/common/Card'
 
 type CategoryCardProps = {
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
   title: string
+  onClick?: () => void
 }
 
-export default function CategoryCard({ Icon, title }: CategoryCardProps) {
+export default function CategoryCard({
+  Icon,
+  title,
+  onClick,
+}: CategoryCardProps) {
   return (
     <Card>
-      <div className="flex-center h-24 w-32 flex-col gap-2 rounded-2xl sm:w-28 md:w-40 lg:w-40">
+      <ButtonClient
+        type="button"
+        onClick={onClick}
+        variant="category"
+        intent="clear"
+      >
         <Icon aria-hidden="true" className="h-9 w-10" />
         <p className="text-black-900 text-sm font-medium">{title}</p>
-      </div>
+      </ButtonClient>
     </Card>
   )
 }

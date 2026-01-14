@@ -1,8 +1,9 @@
-export const getTours = async (url: string, params: Record<string, string>) => {
-  const query = new URLSearchParams(params).toString()
-  const response = await fetch(`${url}?${query}`)
-  if (!response.ok) {
-    throw new Error(`Failed to fetch tours: ${response.statusText}`)
-  }
-  return response.json()
+import axios from 'axios'
+
+export const getTours = async <T = unknown>(
+  url: string,
+  params: Record<string, string>
+): Promise<T> => {
+  const { data } = await axios.get<T>(url, { params })
+  return data
 }

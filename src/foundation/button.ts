@@ -11,6 +11,8 @@ export const buttonVariants = cva(
         clear: 'absolute top-1/2 right-3 -translate-y-1/2 rounded px-2 py-1',
         login:
           'rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900',
+        category:
+          'flex-center h-24 w-32 flex-col gap-2 rounded-2xl sm:w-28 md:w-40 lg:w-40',
       },
       intent: {
         main: 'px-8 py-3',

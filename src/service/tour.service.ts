@@ -52,7 +52,8 @@ export const BASE_BY_LANG: Record<AppLocale, string> = {
 export async function getTourList(
   lang: AppLocale,
   endpoint: keyof typeof TOUR_ENDPOINT = 'areaCode2',
-  params: Partial<Record<string, string>> = {}
+  params: Partial<Record<string, string>> = {},
+  pageNo: string = '1'
 ) {
   const serviceKey = process.env.NEXT_PUBLIC_TOUR_API_KEY || ''
   if (!serviceKey) {
@@ -61,8 +62,8 @@ export async function getTourList(
   const fullUrl = `${BASE_URL}${BASE_BY_LANG[lang]}/${TOUR_ENDPOINT[endpoint]}`
   return getTours(fullUrl, {
     serviceKey,
-    numOfRows: '10',
-    pageNo: '1',
+    numOfRows: '12',
+    pageNo: pageNo,
     MobileOS: 'ETC',
     MobileApp: 'TestApp',
     _type: 'json',
