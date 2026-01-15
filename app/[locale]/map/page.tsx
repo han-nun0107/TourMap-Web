@@ -2,17 +2,68 @@
 
 import { MousePointer2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useState } from 'react'
-import { Map, MapMarker } from 'react-kakao-maps-sdk'
+import { useEffect, useRef, useState } from 'react'
+import { CustomOverlayMap, Map } from 'react-kakao-maps-sdk'
 
 import SearchCard from '@/components/card/SearchCard'
 import { FilterBadge } from '@/components/common'
+import OverlayBubble from '@/components/map/OverlayBubble'
 import { CATEGORY_OPTIONS } from '@/constants/main/category'
-import { searchCardMock } from '@/mocks'
+import { CONTENT_TYPE_LABEL } from '@/constants/main/contentTypeMapping'
+import { useDebounceCallback } from '@/hooks/map/useDebounceCallback'
+import { useGeolocation } from '@/hooks/map/useGeolocation'
+import { useLocationBasedTours } from '@/hooks/map/useLocationBasedTours'
+import { useLanguageStore } from '@/store/language/languageStore'
+
+type LatLng = {
+  lat: number
+  lng: number
+}
+type Bounds = {
+  sw: LatLng
+  ne: LatLng
+}
 
 export default function MapPage() {
+  const language = useLanguageStore((state) => state.language)
+  const mapRef = useRef<kakao.maps.Map | null>(null)
+  const [center, setCenter] = useState<LatLng>({
+    lat: 37.5665,
+    lng: 126.978,
+  })
+
   const [activeFilter, setActiveFilter] = useState<string | null>('attraction')
   const t = useTranslations('Home')
+  const { coordinates } = useGeolocation()
+
+  const DEFAULT_LAT = 37.5665
+  const DEFAULT_LNG = 126.978
+
+  const handleBoundsChanged = useDebounceCallback((map: kakao.maps.Map) => {
+    setCenter({
+      lat: map.getCenter().getLat(),
+      lng: map.getCenter().getLng(),
+    })
+  }, 500)
+
+  const { filteredItems, overlays } = useLocationBasedTours({
+    language,
+    center: {
+      latitude: center.lat,
+      longitude: center.lng,
+    },
+    radius: 1500,
+    activeCategory: activeFilter ?? 'attraction',
+  })
+
+  useEffect(() => {
+    if (coordinates) {
+      setTimeout(() => {
+        setCenter({ lat: coordinates.lat, lng: coordinates.lng })
+      }, 0)
+    }
+  }, [coordinates])
+
   return (
     <>
       <div className="w-full border-b border-gray-200/50 bg-gray-100">
@@ -41,29 +92,47 @@ export default function MapPage() {
         <Map
           id="map"
           style={{ width: '80%', height: '81vh' }}
-          center={{ lat: 37.5665, lng: 126.978 }}
-          level={3}
+          center={{
+            lat: coordinates?.lat ?? DEFAULT_LAT,
+            lng: coordinates?.lng ?? DEFAULT_LNG,
+          }}
+          level={5}
+          onCreate={(map) => {
+            mapRef.current = map
+          }}
+          onBoundsChanged={handleBoundsChanged}
         >
-          <MapMarker position={{ lat: 37.5665, lng: 126.978 }}>
-            <div>마커</div>
-          </MapMarker>
+          <CustomOverlayMap
+            position={{
+              lat: coordinates?.lat ?? DEFAULT_LAT,
+              lng: coordinates?.lng ?? DEFAULT_LNG,
+            }}
+          >
+            <OverlayBubble label="내 위치" />
+          </CustomOverlayMap>
+          {overlays.map((overlay) => (
+            <CustomOverlayMap key={overlay.key} position={overlay.position}>
+              <OverlayBubble label={overlay.title} />
+            </CustomOverlayMap>
+          ))}
         </Map>
-        <div className="mx-auto flex flex-col gap-3 pt-4">
+        <div className="mx-auto flex flex-col gap-3 px-2 pt-4">
           <p className="text-sm font-light text-gray-600">
-            {searchCardMock.length} places nearby
+            {filteredItems.length} places nearby
           </p>
           <div className="scrollbar-hide h-[76vh] overflow-y-auto">
             <div className="flex flex-col gap-3">
-              {searchCardMock.map((card) => (
+              {filteredItems.map((card) => (
                 <SearchCard
-                  key={card.id}
-                  id={card.id}
-                  image={card.image}
+                  key={`${card.mapx}-${card.mapy}`}
+                  id={card.contentid}
+                  image={card.firstimage}
                   title={card.title}
-                  location={card.location}
-                  tag={card.tag}
-                  tagIcon={card.tagIcon}
-                  distance={card.distance}
+                  location={card.addr1}
+                  tag={
+                    CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
+                    '기타'
+                  }
                 />
               ))}
             </div>

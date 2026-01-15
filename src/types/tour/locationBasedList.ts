@@ -1,6 +1,6 @@
 import { TourApiBodyBase, TourApiPaging, TourApiResponse } from './common'
 
-type LocationBasedListItem = {
+export type LocationBasedListItem = {
   zipcode: string
   lclsSystm3: string
   contentid: string
@@ -27,6 +27,7 @@ type LocationBasedListItem = {
   lDongSignguCd: string
   lclsSystm1: string
   lclsSystm2: string
+  radius: string
 }
 
 type LocationBasedListBody = TourApiBodyBase<LocationBasedListItem> &

@@ -5,6 +5,7 @@ import {
   nationalMuseum,
   seoulLanternFestival,
 } from '@/assets/images/card'
+import { noImage } from '@/assets/images/map/index'
 
 export const IMAGE_URLS = {
   background,
@@ -13,5 +14,8 @@ export const IMAGE_URLS = {
     gyeongbokgungPalace,
     nationalMuseum,
     seoulLanternFestival,
+  },
+  map: {
+    noImage,
   },
 }
