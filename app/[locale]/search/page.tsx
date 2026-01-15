@@ -3,9 +3,8 @@
 import { useTranslations } from 'next-intl'
 
 import { TrendingCard } from '@/components/card'
-import { SearchInput } from '@/components/common'
-import { FilterBadge } from '@/components/common/FilterBadge'
-import { CATEGORY_OPTIONS } from '@/constants/main/category'
+import { FilterBadge, SearchInput } from '@/components/common'
+import { CATEGORY_OPTIONS } from '@/constants/main'
 import { useSearchFilter } from '@/hooks/search'
 import { searchCardMock } from '@/mocks'
 import { getIconByTag } from '@/utils/iconMapper'

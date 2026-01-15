@@ -1,5 +1,4 @@
-import { ButtonClient } from '@/components/common/button'
-import Card from '@/components/common/Card'
+import { ButtonClient, Card } from '@/components/common'
 
 type CategoryCardProps = {
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>

@@ -1,7 +1,7 @@
 'use client'
 
 import { TrendingCard } from '@/components/card'
-import { useLikeStore } from '@/store/like/likeStore'
+import { useLikeStore } from '@/store/like'
 import { getIconByTag } from '@/utils/iconMapper'
 
 export default function FavoritesPage() {

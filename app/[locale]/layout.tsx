@@ -4,7 +4,7 @@ import Script from 'next/script'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 
-import Header from '@/components/layout/Header'
+import { Header } from '@/components/layout'
 import { routing } from '@/i18n/routing'
 import { ReactQueryProvider } from '@/providers/react-query-provider'
 

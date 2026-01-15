@@ -2,7 +2,7 @@
 
 import { useLocale } from 'next-intl'
 
-import { ButtonClient } from '@/components/common/button'
+import { ButtonClient } from '@/components/common'
 import { useRouter } from '@/i18n/navigation'
 import { useAuthStore } from '@/store/auth'
 
@@ -45,4 +45,3 @@ export default function LoginPage() {
     </div>
   )
 }
-

@@ -3,11 +3,9 @@
 import { HeartIcon, LucideIcon, MapPinIcon } from 'lucide-react'
 import Image from 'next/image'
 
-import { Badge } from '@/components/common'
-import { ButtonClient } from '@/components/common/button'
-import Card from '@/components/common/Card'
-import { IMAGE_URLS } from '@/constants/imageUrls'
-import { useLikeStore } from '@/store/like/likeStore'
+import { Badge, ButtonClient, Card } from '@/components/common'
+import { IMAGE_URLS } from '@/constants'
+import { useLikeStore } from '@/store/like'
 
 type SearchCardProps = {
   image?: string

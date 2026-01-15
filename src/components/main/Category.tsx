@@ -3,10 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl'
 
 import { CategoryCard } from '@/components/card'
-import {
-  CATEGORY_OPTIONS,
-  CATEGORY_TO_CONTENT_TYPE_ID,
-} from '@/constants/main/category'
+import { CATEGORY_OPTIONS, CATEGORY_TO_CONTENT_TYPE_ID } from '@/constants/main'
 import { useRouter } from '@/i18n/navigation'
 import type { AppLocale } from '@/i18n/routing'
 

@@ -1,5 +1,5 @@
 import { buttonVariants, type ButtonVariants } from '@/foundation/button'
-import { cn } from '@/lib/cn'
+import { cn } from '@/lib'
 
 type ButtonBaseProps = Omit<
   React.ButtonHTMLAttributes<HTMLButtonElement>,

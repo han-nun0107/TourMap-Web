@@ -1,7 +1,7 @@
 'use client'
 
 import { buttonVariants, type ButtonVariants } from '@/foundation/button'
-import { cn } from '@/lib/cn'
+import { cn } from '@/lib'
 
 type ButtonClientProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   ButtonVariants & {

@@ -6,11 +6,11 @@ import { useLocale, useTranslations } from 'next-intl'
 import { Suspense, useEffect, useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
-import { CONTENT_TYPE_LABEL } from '@/constants/main/contentTypeMapping'
+import { CONTENT_TYPE_LABEL } from '@/constants/main'
 import { useCategoryTours } from '@/hooks/category/useCategoryTours'
 import { useInfiniteScroll } from '@/hooks/useIntersectionObserver'
 import type { AppLocale } from '@/i18n/routing'
-import { useLanguageStore } from '@/store/language/languageStore'
+import { useLanguageStore } from '@/store/language'
 import { parseTourApiResponse } from '@/utils/tourApiParser'
 
 function CategoryContent() {
