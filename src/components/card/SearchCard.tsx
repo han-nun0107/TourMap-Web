@@ -1,21 +1,21 @@
 'use client'
 
 import { HeartIcon, LucideIcon, MapPinIcon } from 'lucide-react'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 
 import { Badge } from '@/components/common'
 import { ButtonClient } from '@/components/common/button'
 import Card from '@/components/common/Card'
+import { IMAGE_URLS } from '@/constants/imageUrls'
 import { useLikeStore } from '@/store/like/likeStore'
 
 type SearchCardProps = {
-  image: StaticImageData
+  image?: string
   title: string
   location: string
   tag: string
-  tagIcon: LucideIcon
-  distance: string
-  id: number
+  tagIcon?: LucideIcon | React.ComponentType<React.SVGProps<SVGSVGElement>>
+  id: string
 }
 
 export default function SearchCard({
@@ -24,18 +24,17 @@ export default function SearchCard({
   location,
   tag,
   tagIcon,
-  distance,
   id,
 }: SearchCardProps) {
   const { hasHydrated, isLiked, toggleLike } = useLikeStore()
 
-  const liked = hasHydrated ? isLiked(id) : false
+  const liked = hasHydrated ? isLiked(Number(id)) : false
 
   return (
     <Card className="h-30 w-88 rounded-2xl">
-      <div className="flex-center h-full w-full gap-4">
+      <div className="flex-center h-full w-full gap-4 px-2">
         <Image
-          src={image}
+          src={image || IMAGE_URLS.map.noImage}
           alt={title}
           width={96}
           height={96}
@@ -55,7 +54,14 @@ export default function SearchCard({
             intent="heart"
             aria-label="좋아요"
             onClick={() =>
-              toggleLike({ id, title, image, location, tag, tagIcon })
+              toggleLike({
+                id: Number(id),
+                title,
+                image: image || IMAGE_URLS.map.noImage,
+                location,
+                tag,
+                tagIcon,
+              })
             }
           >
             <HeartIcon
@@ -65,7 +71,6 @@ export default function SearchCard({
               }
             />
           </ButtonClient>
-          <p className="text-sm font-medium text-gray-600">{distance}</p>
         </div>
       </div>
     </Card>
