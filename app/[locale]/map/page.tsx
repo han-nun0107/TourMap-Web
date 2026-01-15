@@ -31,10 +31,7 @@ export default function MapPage() {
     lat: 37.5665,
     lng: 126.978,
   })
-  const [_bounds, setBounds] = useState<Bounds>({
-    sw: { lat: 37.5665, lng: 126.978 },
-    ne: { lat: 37.5665, lng: 126.978 },
-  })
+
   const [activeFilter, setActiveFilter] = useState<string | null>('attraction')
   const t = useTranslations('Home')
   const { coordinates } = useGeolocation()
@@ -46,16 +43,6 @@ export default function MapPage() {
     setCenter({
       lat: map.getCenter().getLat(),
       lng: map.getCenter().getLng(),
-    })
-    setBounds({
-      sw: {
-        lat: map.getBounds().getSouthWest().getLat(),
-        lng: map.getBounds().getSouthWest().getLng(),
-      },
-      ne: {
-        lat: map.getBounds().getNorthEast().getLat(),
-        lng: map.getBounds().getNorthEast().getLng(),
-      },
     })
   }, 500)
 
