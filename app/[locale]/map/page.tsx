@@ -39,6 +39,9 @@ export default function MapPage() {
   const t = useTranslations('Home')
   const { coordinates } = useGeolocation()
 
+  const DEFAULT_LAT = 37.5665
+  const DEFAULT_LNG = 126.978
+
   const handleBoundsChanged = useDebounceCallback((map: kakao.maps.Map) => {
     setCenter({
       lat: map.getCenter().getLat(),
@@ -103,10 +106,10 @@ export default function MapPage() {
           id="map"
           style={{ width: '80%', height: '81vh' }}
           center={{
-            lat: coordinates?.lat ?? 37.5665,
-            lng: coordinates?.lng ?? 126.978,
+            lat: coordinates?.lat ?? DEFAULT_LAT,
+            lng: coordinates?.lng ?? DEFAULT_LNG,
           }}
-          level={3}
+          level={5}
           onCreate={(map) => {
             mapRef.current = map
           }}
@@ -114,8 +117,8 @@ export default function MapPage() {
         >
           <CustomOverlayMap
             position={{
-              lat: coordinates?.lat ?? 37.5665,
-              lng: coordinates?.lng ?? 126.978,
+              lat: coordinates?.lat ?? DEFAULT_LAT,
+              lng: coordinates?.lng ?? DEFAULT_LNG,
             }}
           >
             <OverlayBubble label="내 위치" />

@@ -15,7 +15,7 @@ type SearchCardProps = {
   location: string
   tag: string
   tagIcon?: LucideIcon | React.ComponentType<React.SVGProps<SVGSVGElement>>
-  id: string
+  id: string | number
 }
 
 export default function SearchCard({
@@ -28,7 +28,8 @@ export default function SearchCard({
 }: SearchCardProps) {
   const { hasHydrated, isLiked, toggleLike } = useLikeStore()
 
-  const liked = hasHydrated ? isLiked(Number(id)) : false
+  const numericId = typeof id === 'number' ? id : Number(id)
+  const liked = hasHydrated ? isLiked(numericId) : false
 
   return (
     <Card className="h-auto w-88 rounded-2xl py-2">
@@ -55,7 +56,7 @@ export default function SearchCard({
             aria-label="좋아요"
             onClick={() =>
               toggleLike({
-                id: Number(id),
+                id: numericId,
                 title,
                 image: image || IMAGE_URLS.map.noImage,
                 location,
