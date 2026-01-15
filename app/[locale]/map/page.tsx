@@ -2,7 +2,7 @@
 
 import { MousePointer2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CustomOverlayMap, Map } from 'react-kakao-maps-sdk'
 
 import SearchCard from '@/components/card/SearchCard'
@@ -65,6 +65,14 @@ export default function MapPage() {
     radius: 1500,
     activeCategory: activeFilter ?? 'attraction',
   })
+
+  useEffect(() => {
+    if (coordinates) {
+      setTimeout(() => {
+        setCenter({ lat: coordinates.lat, lng: coordinates.lng })
+      }, 0)
+    }
+  }, [coordinates])
 
   return (
     <>

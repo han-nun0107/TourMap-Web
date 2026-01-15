@@ -31,7 +31,7 @@ export default function SearchCard({
   const liked = hasHydrated ? isLiked(Number(id)) : false
 
   return (
-    <Card className="h-30 w-88 rounded-2xl">
+    <Card className="h-auto w-88 rounded-2xl py-2">
       <div className="flex-center h-full w-full gap-4 px-2">
         <Image
           src={image || IMAGE_URLS.map.noImage}

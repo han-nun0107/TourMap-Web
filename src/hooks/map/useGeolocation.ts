@@ -32,7 +32,7 @@ export const useGeolocation = () => {
   useEffect(() => {
     if (!isSupported) return
 
-    navigator.geolocation.watchPosition(
+    const watcherId = navigator.geolocation.watchPosition(
       (pos: GeolocationPosition) => {
         setState({
           loaded: true,
@@ -55,6 +55,9 @@ export const useGeolocation = () => {
         maximumAge: 180000,
       }
     )
+    return () => {
+      navigator.geolocation.clearWatch(watcherId)
+    }
   }, [isSupported])
 
   return state
