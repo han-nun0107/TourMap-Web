@@ -4,13 +4,12 @@ import { LanguagesIcon } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
-import { ButtonClient } from '@/components/common/button'
-import DropDown from '@/components/common/DropDown'
-import { LANGUAGE_OPTIONS, NAV_ITEMS } from '@/constants/header/header'
+import { ButtonClient, DropDown } from '@/components/common'
+import { LANGUAGE_OPTIONS, NAV_ITEMS } from '@/constants/header'
 import { Link } from '@/i18n/navigation'
-import { cn } from '@/lib/cn'
+import { cn } from '@/lib'
 import { useAuthStore } from '@/store/auth'
-import { useLanguageStore } from '@/store/language/languageStore'
+import { useLanguageStore } from '@/store/language'
 
 export default function Header() {
   const pathname = usePathname()

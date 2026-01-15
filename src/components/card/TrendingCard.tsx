@@ -3,10 +3,8 @@
 import { HeartIcon, LucideIcon, MapPin } from 'lucide-react'
 import Image, { StaticImageData } from 'next/image'
 
-import { Badge } from '@/components/common'
-import { ButtonClient } from '@/components/common/button'
-import Card from '@/components/common/Card'
-import { useLikeStore } from '@/store/like/likeStore'
+import { Badge, ButtonClient, Card } from '@/components/common'
+import { useLikeStore } from '@/store/like'
 
 type TrendingCardProps = {
   image: StaticImageData | string

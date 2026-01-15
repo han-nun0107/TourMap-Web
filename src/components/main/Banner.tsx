@@ -4,8 +4,8 @@ import { MapIcon, MapPinIcon, SearchIcon } from 'lucide-react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-import { ButtonClient } from '@/components/common/button'
-import { IMAGE_URLS } from '@/constants/imageUrls'
+import { ButtonClient } from '@/components/common'
+import { IMAGE_URLS } from '@/constants'
 
 type BannerProps = {
   title: string

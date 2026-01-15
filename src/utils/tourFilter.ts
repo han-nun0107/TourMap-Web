@@ -1,5 +1,7 @@
-import { CATEGORY_TO_CONTENT_TYPE_ID } from '@/constants/main/category'
-import { AREA_CODE_BY_FILTER_VALUE } from '@/constants/main/filterOptions'
+import {
+  AREA_CODE_BY_FILTER_VALUE,
+  CATEGORY_TO_CONTENT_TYPE_ID,
+} from '@/constants/main'
 import type { AppLocale } from '@/i18n/routing'
 
 type FilterMode = 'region' | 'category'

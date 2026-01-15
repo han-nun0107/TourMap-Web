@@ -3,9 +3,8 @@
 import { SearchIcon, X } from 'lucide-react'
 import { useCallback, useId, useRef, useState } from 'react'
 
-import { ButtonClient } from '@/components/common/button'
-import { useDebounce } from '@/hooks/search/useDebounce'
-import { useDebouncedChange } from '@/hooks/search/useDebouncedChange'
+import { ButtonClient } from '@/components/common'
+import { useDebounce, useDebouncedChange } from '@/hooks/search'
 
 type Props = {
   defaultValue?: string

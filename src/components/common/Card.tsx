@@ -1,6 +1,6 @@
 'use client'
 
-import { cn } from '@/lib/cn'
+import { cn } from '@/lib'
 
 type CardProps = {
   className?: string

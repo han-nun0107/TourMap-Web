@@ -7,10 +7,10 @@ import {
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu'
 
-import { LANGUAGE_OPTIONS } from '@/constants/header/header'
+import { LANGUAGE_OPTIONS } from '@/constants/header'
 import { usePathname, useRouter } from '@/i18n/navigation'
-import { cn } from '@/lib/cn'
-import { useLanguageStore } from '@/store/language/languageStore'
+import { cn } from '@/lib'
+import { useLanguageStore } from '@/store/language'
 
 export default function DropDown({ children }: { children: React.ReactNode }) {
   const language = useLanguageStore((state) => state.language)

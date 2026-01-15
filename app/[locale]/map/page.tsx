@@ -5,23 +5,20 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import { CustomOverlayMap, Map } from 'react-kakao-maps-sdk'
 
-import SearchCard from '@/components/card/SearchCard'
+import { SearchCard } from '@/components/card'
 import { FilterBadge } from '@/components/common'
-import OverlayBubble from '@/components/map/OverlayBubble'
-import { CATEGORY_OPTIONS } from '@/constants/main/category'
-import { CONTENT_TYPE_LABEL } from '@/constants/main/contentTypeMapping'
-import { useDebounceCallback } from '@/hooks/map/useDebounceCallback'
-import { useGeolocation } from '@/hooks/map/useGeolocation'
-import { useLocationBasedTours } from '@/hooks/map/useLocationBasedTours'
-import { useLanguageStore } from '@/store/language/languageStore'
+import { OverlayBubble } from '@/components/map'
+import { CATEGORY_OPTIONS, CONTENT_TYPE_LABEL } from '@/constants/main'
+import {
+  useDebounceCallback,
+  useGeolocation,
+  useLocationBasedTours,
+} from '@/hooks/map'
+import { useLanguageStore } from '@/store/language'
 
 type LatLng = {
   lat: number
   lng: number
-}
-type Bounds = {
-  sw: LatLng
-  ne: LatLng
 }
 
 export default function MapPage() {
