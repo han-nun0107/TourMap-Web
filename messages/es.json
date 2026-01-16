@@ -62,9 +62,12 @@
     },
     "search": {
       "Title": "Página de búsqueda",
-      "placeholder": "Buscar destinos, atracciones y restaurantes",
+      "placeholder": "Buscar parques, museos y museos de arte",
       "ariaHint": "Escribe para buscar. Los resultados se actualizan automáticamente.",
-      "resultFound": "{count, plural, one {Se encontró # resultado.} other {Se encontraron # resultados.}}"
+      "resultFound": "{count, plural, one {Se encontró # resultado.} other {Se encontraron # resultados.}}",
+      "loading": "Cargando...",
+      "initialSearch": "Los resultados cambiarán cuando introduzcas un término de búsqueda",
+      "initialSearchKeyword": "parque"
     },
     "map": {
       "title": "Lugares cercanos"

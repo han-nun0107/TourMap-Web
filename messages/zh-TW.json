@@ -62,9 +62,12 @@
     },
     "search": {
       "Title": "搜尋頁面",
-      "placeholder": "搜尋旅遊地點・景點・美食",
+      "placeholder": "搜尋公園、博物館、美術館等",
       "ariaHint": "輸入即可搜尋，結果會自動更新。",
-      "resultFound": "找到 {count} 個結果。"
+      "resultFound": "找到 {count} 個結果。",
+      "loading": "載入中...",
+      "initialSearch": "輸入搜尋詞後，結果會改變",
+      "initialSearchKeyword": "公園"
     },
     "map": {
       "title": "附近地點"

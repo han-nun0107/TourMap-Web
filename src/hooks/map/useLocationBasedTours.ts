@@ -20,12 +20,12 @@ type Overlay = {
   title: string
 }
 
-function toValidNumber(value: string): number | null {
+const toValidNumber = (value: string): number | null => {
   const n = Number(value)
   return Number.isFinite(n) ? n : null
 }
 
-function getItemPosition(item: LocationBasedListItem) {
+const getItemPosition = (item: LocationBasedListItem) => {
   const lat = toValidNumber(item.mapy)
   const lng = toValidNumber(item.mapx)
   if (lat === null || lng === null) return null

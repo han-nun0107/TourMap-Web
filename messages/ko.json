@@ -63,9 +63,12 @@
 
     "search": {
       "Title": "검색 페이지",
-      "placeholder": "여행지 · 관광지 · 맛집 검색",
+      "placeholder": "공원 · 박물관 · 미술관 등 검색",
       "ariaHint": "검색어를 입력하면 결과가 자동으로 업데이트됩니다.",
-      "resultFound": "{count}개의 결과가 있습니다."
+      "resultFound": "{count}개의 결과가 있습니다.",
+      "loading": "로딩중...",
+      "initialSearch": "검색어를 입력하면 결과가 바뀌어요",
+      "initialSearchKeyword": "공원"
     },
 
     "map": {
