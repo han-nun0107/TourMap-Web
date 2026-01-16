@@ -48,8 +48,7 @@ export const useTourDetail = (contentId: string, language: AppLocale) => {
   return {
     detailCommonItem,
     detailIntroItem,
-    isLoading: detailCommonLoading,
-    isIntroLoading: detailIntroLoading,
+    isLoading: detailCommonLoading && detailIntroLoading,
     hasError: isDetailCommonError || isDetailIntroError,
   }
 }

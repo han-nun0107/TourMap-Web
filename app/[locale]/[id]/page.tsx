@@ -17,13 +17,8 @@ export default function TourDetailPage() {
   const language = useLanguageStore((state) => state.language)
   const { id } = useParams<{ locale: string; id: string }>()
 
-  const {
-    detailCommonItem,
-    detailIntroItem,
-    isLoading,
-    isIntroLoading,
-    hasError,
-  } = useTourDetail(id, language)
+  const { detailCommonItem, detailIntroItem, isLoading, hasError } =
+    useTourDetail(id, language)
 
   if (isLoading) {
     return <LoadingState />
@@ -43,10 +38,7 @@ export default function TourDetailPage() {
             {detailCommonItem.overview && (
               <OverviewSection overview={detailCommonItem.overview} />
             )}
-            <DetailInfoSection
-              item={detailIntroItem}
-              isLoading={isIntroLoading}
-            />
+            <DetailInfoSection item={detailIntroItem} isLoading={isLoading} />
           </div>
 
           <ContactSidebar item={detailCommonItem} />
