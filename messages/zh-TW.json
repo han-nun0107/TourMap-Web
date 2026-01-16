@@ -3,14 +3,15 @@
     "banner": {
       "Title": "探索韓國",
       "Subtitle": "探索韓國之美",
-      "Description": "從古宮到熱鬧的街頭美食，探索整個韓半島最精彩的旅遊景點。",
+      "Description": "從古宮到熱鬧的街頭美食，探索韓國各地最精彩的旅遊景點。",
       "StartButton": "開始探索",
       "MapButton": "查看地圖"
     },
 
     "trending": {
       "Title": "熱門趨勢",
-      "Subtitle": "本季最受歡迎的旅遊目的地"
+      "Subtitle": "本季最受歡迎的旅遊目的地",
+      "SeeAll": "查看全部"
     },
 
     "regionsName": {
@@ -60,17 +61,56 @@
       "gyeongnam": "慶尚南道",
       "jeju": "濟州"
     },
+
     "search": {
       "Title": "搜尋頁面",
       "placeholder": "搜尋公園、博物館、美術館等",
-      "ariaHint": "輸入即可搜尋，結果會自動更新。",
-      "resultFound": "找到 {count} 個結果。",
+      "ariaHint": "輸入關鍵字即可搜尋，結果會自動更新。",
+      "resultFound": "共找到 {count} 個結果",
       "loading": "載入中...",
       "initialSearch": "輸入搜尋詞後，結果會改變",
-      "initialSearchKeyword": "公園"
+      "initialSearchKeyword": "公園",
+      "etc": "其他",
+      "noResults": "未找到相關結果。",
+      "clearSearch": "清除搜尋",
+      "search": "搜尋"
     },
+
     "map": {
-      "title": "附近地點"
+      "title": "附近地點",
+      "placesNearby": "附近地點（{count} 個）",
+      "myLocation": "我的位置"
+    },
+
+    "detail": {
+      "loading": "載入中...",
+      "detailInfo": "詳細資訊",
+      "error": "找不到資料。",
+      "goHome": "返回首頁",
+      "noImage": "暫無圖片",
+      "imagesOfTouristAttractions": "觀光景點圖片",
+      "homepage": "官方網站",
+      "phoneNumber": "電話號碼",
+      "phoneInfo": "聯絡資訊",
+      "postcode": "郵遞區號",
+      "overview": "概覽",
+      "address": "地址",
+      "infocenter": "諮詢處",
+      "usetime": "開放時間",
+      "restdate": "休息日",
+      "usefee": "門票費用",
+      "expguide": "體驗指南"
+    },
+
+    "favorites": {
+      "favorites": "收藏",
+      "savedPlaces": "已儲存的地點（{count} 個）",
+      "noFavorites": "目前尚無收藏。",
+      "startAdding": "快把感興趣的地點加入收藏吧！"
+    },
+
+    "card": {
+      "like": "喜歡"
     }
   }
 }

@@ -48,7 +48,7 @@ export default function ExploreSection({
             href="/search"
             className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
           >
-            See all <ArrowRightIcon className="h-4 w-4" />
+            {t('trending.SeeAll')} <ArrowRightIcon className="h-4 w-4" />
           </Link>
         )}
       </div>
@@ -68,45 +68,54 @@ export default function ExploreSection({
       <div className="mx-auto flex flex-wrap justify-center gap-5">
         {type === 'trending'
           ? cards.slice(0, 8).map((card) => (
-              <TrendingCard
+              <Link
+                href={`/${language}/${card.contentid}`}
                 key={card.contentid}
-                title={card.title}
-                image={card.firstimage || card.firstimage2}
-                location={card.addr1}
-                tag={
-                  CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
-                  '기타'
-                }
-                tagIcon={
-                  CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
-                    name: '기타',
-                    icon: MapPinIcon,
+              >
+                <TrendingCard
+                  key={card.contentid}
+                  title={card.title}
+                  image={card.firstimage || card.firstimage2}
+                  location={card.addr1}
+                  tag={
+                    CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
+                    t('search.etc')
                   }
-                }
-                id={Number(card.contentid)}
-                onClick={() => {}}
-              />
+                  tagIcon={
+                    CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
+                      name: t('search.etc'),
+                      icon: MapPinIcon,
+                    }
+                  }
+                  id={Number(card.contentid)}
+                  onClick={() => {}}
+                />
+              </Link>
             ))
-          : /* TODO: 지역 별 카드 추가 (페이지 내 지역 목록 조회 후 추가) */
-            cards.map((card) => (
-              <TrendingCard
+          : cards.map((card) => (
+              <Link
+                href={`/${language}/${card.contentid}`}
                 key={card.contentid}
-                title={card.title}
-                image={card.firstimage}
-                location={card.addr1}
-                tag={
-                  CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
-                  '기타'
-                }
-                tagIcon={
-                  CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
-                    name: '기타',
-                    icon: MapPinIcon,
+              >
+                <TrendingCard
+                  key={card.contentid}
+                  title={card.title}
+                  image={card.firstimage}
+                  location={card.addr1}
+                  tag={
+                    CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
+                    t('search.etc')
                   }
-                }
-                id={Number(card.contentid)}
-                onClick={() => {}}
-              />
+                  tagIcon={
+                    CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
+                      name: t('search.etc'),
+                      icon: MapPinIcon,
+                    }
+                  }
+                  id={Number(card.contentid)}
+                  onClick={() => {}}
+                />
+              </Link>
             ))}
       </div>
     </div>

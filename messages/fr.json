@@ -10,7 +10,8 @@
 
     "trending": {
       "Title": "Tendances",
-      "Subtitle": "Destinations populaires cette saison"
+      "Subtitle": "Destinations populaires cette saison",
+      "SeeAll": "Voir tout"
     },
 
     "regionsName": {
@@ -30,7 +31,7 @@
 
     "categories": {
       "Title": "Parcourir par catégorie",
-      "Attractions": "Attraction",
+      "Attractions": "Attractions",
       "Culture": "Culture",
       "Festival": "Festival",
       "TourCourse": "Circuit touristique",
@@ -60,17 +61,56 @@
       "gyeongnam": "Gyeongnam",
       "jeju": "Jeju"
     },
+
     "search": {
       "Title": "Page de recherche",
-      "placeholder": "Rechercher des parcs, musées et musées d’art",
+      "placeholder": "Rechercher des parcs, musées et musées d’art...",
       "ariaHint": "Saisissez un terme de recherche. Les résultats se mettent à jour automatiquement.",
-      "resultFound": "{count, plural, one {1 résultat trouvé.} other {# résultats trouvés.}}",
+      "resultFound": "{count, plural, one {1 résultat trouvé} other {# résultats trouvés}}",
       "loading": "Chargement...",
       "initialSearch": "Les résultats changeront lorsque vous saisirez un mot-clé",
-      "initialSearchKeyword": "parc"
+      "initialSearchKeyword": "parc",
+      "etc": "Autre",
+      "noResults": "Aucun résultat de recherche trouvé.",
+      "clearSearch": "Effacer la recherche",
+      "search": "Rechercher"
     },
+
     "map": {
-      "title": "Lieux à proximité"
+      "title": "Lieux à proximité",
+      "placesNearby": "Lieux à proximité ({count})",
+      "myLocation": "Ma position"
+    },
+
+    "detail": {
+      "loading": "Chargement...",
+      "detailInfo": "Informations détaillées",
+      "error": "Aucune donnée trouvée.",
+      "goHome": "Retour à l’accueil",
+      "noImage": "Aucune image",
+      "imagesOfTouristAttractions": "Images des attractions touristiques",
+      "homepage": "Site web",
+      "phoneNumber": "Numéro de téléphone",
+      "phoneInfo": "Informations de contact",
+      "postcode": "Code postal",
+      "overview": "Aperçu",
+      "address": "Adresse",
+      "infocenter": "Centre d’information",
+      "usetime": "Heures d’ouverture",
+      "restdate": "Jours de fermeture",
+      "usefee": "Frais d’entrée",
+      "expguide": "Guide des expériences"
+    },
+
+    "favorites": {
+      "favorites": "Favoris",
+      "savedPlaces": "Lieux enregistrés ({count})",
+      "noFavorites": "Aucun favori pour le moment.",
+      "startAdding": "Commencez à ajouter des lieux à vos favoris !"
+    },
+
+    "card": {
+      "like": "J’aime"
     }
   }
 }

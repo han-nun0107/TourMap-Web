@@ -2,6 +2,7 @@
 
 import { HeartIcon, LucideIcon, MapPinIcon } from 'lucide-react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 import { Badge, ButtonClient, Card } from '@/components/common'
 import { IMAGE_URLS } from '@/constants'
@@ -25,7 +26,7 @@ export default function SearchCard({
   id,
 }: SearchCardProps) {
   const { hasHydrated, isLiked, toggleLike } = useLikeStore()
-
+  const t = useTranslations('Home')
   const numericId = typeof id === 'number' ? id : Number(id)
   const liked = hasHydrated ? isLiked(numericId) : false
 
@@ -51,8 +52,10 @@ export default function SearchCard({
           <ButtonClient
             variant="heart"
             intent="heart"
-            aria-label="좋아요"
-            onClick={() =>
+            aria-label={t('card.like')}
+            onClick={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
               toggleLike({
                 id: numericId,
                 title,
@@ -61,7 +64,7 @@ export default function SearchCard({
                 tag,
                 tagIcon,
               })
-            }
+            }}
           >
             <HeartIcon
               size={24}

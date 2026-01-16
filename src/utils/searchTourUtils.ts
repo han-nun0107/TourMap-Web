@@ -49,18 +49,18 @@ function getContentTypeMeta(
   return CONTENT_TYPE_LABEL[locale]?.[contentTypeId]
 }
 
-export function convertToTourCard(
+export function ConvertToTourCard(
   item: SearchKeywordListItem,
-  language: AppLocale
+  language: AppLocale,
+  getTranslation: (key: string) => string
 ): SearchTourCard {
   const meta = getContentTypeMeta(language, item.contenttypeid)
-
   return {
     id: Number(item.contentid),
     title: getTrimmed(item.title),
     location: getTrimmed(item.addr1),
     image: getCardImage(item),
-    tag: meta?.name ?? '기타',
+    tag: meta?.name ?? getTranslation('search.etc'),
     tagIcon: meta?.icon ?? MapPinIcon,
   }
 }
@@ -68,11 +68,13 @@ export function convertToTourCard(
 type ProcessSearchTourDataParams = {
   pages: SearchKeyword[] | undefined
   language: AppLocale
+  getTranslation: (key: string) => string
 }
 
 export function processSearchTourData({
   pages,
   language,
+  getTranslation,
 }: ProcessSearchTourDataParams): SearchTourCard[] {
   if (!pages) return []
 
@@ -82,5 +84,5 @@ export function processSearchTourData({
 
   return allItems
     .filter((item) => item.contentid && !isNaN(Number(item.contentid)))
-    .map((item) => convertToTourCard(item, language))
+    .map((item) => ConvertToTourCard(item, language, getTranslation))
 }

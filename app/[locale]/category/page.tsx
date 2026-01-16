@@ -1,11 +1,13 @@
 'use client'
 
 import { MapPinIcon } from 'lucide-react'
+import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { Suspense, useEffect, useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
+import { LoadingState } from '@/components/detail'
 import { CONTENT_TYPE_LABEL } from '@/constants/main'
 import { useCategoryTours } from '@/hooks/category/useCategoryTours'
 import { useInfiniteScroll } from '@/hooks/useIntersectionObserver'
@@ -54,11 +56,7 @@ function CategoryContent() {
   }
 
   if (isLoading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-gray-600">Loading...</p>
-      </div>
-    )
+    return <LoadingState />
   }
 
   return (
@@ -86,20 +84,24 @@ function CategoryContent() {
                 const contentTypeMeta =
                   CONTENT_TYPE_LABEL[language][card.contenttypeid]
                 return (
-                  <TrendingCard
+                  <Link
+                    href={`/${language}/${card.contentid}`}
                     key={card.contentid}
-                    title={card.title}
-                    image={card.firstimage || card.firstimage2}
-                    location={card.addr1}
-                    tag={contentTypeMeta?.name ?? '기타'}
-                    tagIcon={
-                      contentTypeMeta ?? {
-                        name: '기타',
-                        icon: MapPinIcon,
+                  >
+                    <TrendingCard
+                      title={card.title}
+                      image={card.firstimage || card.firstimage2}
+                      location={card.addr1}
+                      tag={contentTypeMeta?.name ?? t('search.etc')}
+                      tagIcon={
+                        contentTypeMeta ?? {
+                          name: t('search.etc'),
+                          icon: MapPinIcon,
+                        }
                       }
-                    }
-                    id={Number(card.contentid)}
-                  />
+                      id={Number(card.contentid)}
+                    />
+                  </Link>
                 )
               })}
             </div>
@@ -109,7 +111,7 @@ function CategoryContent() {
 
             {isFetchingNextPage && (
               <div className="flex justify-center py-4">
-                <p className="text-gray-600">Loading more...</p>
+                <p className="text-gray-600">{t('detail.loading')}</p>
               </div>
             )}
           </>
@@ -121,13 +123,7 @@ function CategoryContent() {
 
 export default function CategoryPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="flex min-h-screen items-center justify-center">
-          <p className="text-gray-600">Loading...</p>
-        </div>
-      }
-    >
+    <Suspense fallback={<LoadingState />}>
       <CategoryContent />
     </Suspense>
   )
