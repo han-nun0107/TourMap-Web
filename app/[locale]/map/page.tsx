@@ -126,7 +126,6 @@ export default function MapPage() {
                   key={card.contentid}
                 >
                   <SearchCard
-                    key={`${card.mapx}-${card.mapy}`}
                     id={card.contentid}
                     image={card.firstimage}
                     title={card.title}

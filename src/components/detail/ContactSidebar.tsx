@@ -1,5 +1,7 @@
+import DOMPurify from 'dompurify'
 import { Globe, MapPin, Phone } from 'lucide-react'
 import { useTranslations } from 'next-intl'
+import { useMemo } from 'react'
 
 import { ContactItem } from '@/components/detail'
 import type { DetailCommonItem } from '@/types/tour/detailCommon'
@@ -11,6 +13,13 @@ type ContactSidebarProps = {
 export default function ContactSidebar({ item }: ContactSidebarProps) {
   const address = [item.addr1, item.addr2].filter(Boolean).join(' ')
   const t = useTranslations('Home')
+  const sanitizedHomepage = useMemo(() => {
+    if (!item.homepage) return ''
+    if (typeof window !== 'undefined') {
+      return DOMPurify.sanitize(item.homepage)
+    }
+    return item.homepage
+  }, [item.homepage])
 
   return (
     <aside className="lg:col-span-1">
@@ -40,7 +49,7 @@ export default function ContactSidebar({ item }: ContactSidebarProps) {
               >
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: item.homepage,
+                    __html: sanitizedHomepage,
                   }}
                   className="break-all [&_a]:text-blue-600 [&_a]:transition-colors [&_a]:hover:text-blue-700 [&_a]:hover:underline"
                 />

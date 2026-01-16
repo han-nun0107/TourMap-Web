@@ -9,10 +9,13 @@ import { useTour } from './useTour'
 
 export const useTourDetail = (contentId: string, language: AppLocale) => {
   /* 디테일 공통 데이터 */
-  const { data: detailCommonData, isLoading: detailCommonLoading } =
-    useTour<DetailCommon>('detailCommon2', language, {
-      contentId,
-    })
+  const {
+    data: detailCommonData,
+    isLoading: detailCommonLoading,
+    isError: isDetailCommonError,
+  } = useTour<DetailCommon>('detailCommon2', language, {
+    contentId,
+  })
 
   /* 디테일 공통 아이템 */
   const detailCommonItem = useMemo(
@@ -27,11 +30,14 @@ export const useTourDetail = (contentId: string, language: AppLocale) => {
   )
 
   /* 디테일 소개 데이터 */
-  const { data: detailIntroData, isLoading: detailIntroLoading } =
-    useTour<DetailIntro>('detailIntro2', language, {
-      contentId,
-      contentTypeId: contentTypeId,
-    })
+  const {
+    data: detailIntroData,
+    isLoading: detailIntroLoading,
+    isError: isDetailIntroError,
+  } = useTour<DetailIntro>('detailIntro2', language, {
+    contentId,
+    contentTypeId,
+  })
 
   /* 디테일 소개 아이템 */
   const detailIntroItem = useMemo(
@@ -44,6 +50,6 @@ export const useTourDetail = (contentId: string, language: AppLocale) => {
     detailIntroItem,
     isLoading: detailCommonLoading,
     isIntroLoading: detailIntroLoading,
-    hasError: !detailCommonData || !detailCommonItem,
+    hasError: isDetailCommonError || isDetailIntroError,
   }
 }

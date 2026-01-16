@@ -1,4 +1,6 @@
+import DOMPurify from 'dompurify'
 import { useTranslations } from 'next-intl'
+import { useMemo } from 'react'
 
 type OverviewSectionProps = {
   overview: string
@@ -6,6 +8,12 @@ type OverviewSectionProps = {
 
 export default function OverviewSection({ overview }: OverviewSectionProps) {
   const t = useTranslations('Home')
+  const sanitizedOverview = useMemo(() => {
+    if (typeof window !== 'undefined') {
+      return DOMPurify.sanitize(overview)
+    }
+    return overview
+  }, [overview])
 
   return (
     <section className="mb-8 rounded-2xl bg-white p-8 shadow-md transition-shadow hover:shadow-lg">
@@ -15,7 +23,7 @@ export default function OverviewSection({ overview }: OverviewSectionProps) {
       <div
         className="prose prose-gray prose-p:mb-4 prose-p:last:mb-0 max-w-none leading-relaxed text-gray-700"
         dangerouslySetInnerHTML={{
-          __html: overview,
+          __html: sanitizedOverview,
         }}
       />
     </section>
