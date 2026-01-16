@@ -38,7 +38,7 @@ export default function TourDetailPage() {
             {detailCommonItem.overview && (
               <OverviewSection overview={detailCommonItem.overview} />
             )}
-            <DetailInfoSection item={detailIntroItem} isLoading={isLoading} />
+            <DetailInfoSection item={detailIntroItem} />
           </div>
 
           <ContactSidebar item={detailCommonItem} />

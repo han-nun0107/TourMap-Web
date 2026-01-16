@@ -1,2 +1,2 @@
 export { useTour } from './useTour'
-export { useTourDetail } from './useTourDetail'
+export { useTourDetail } from '../detail/useTourDetail'

@@ -66,57 +66,31 @@ export default function ExploreSection({
         </div>
       )}
       <div className="mx-auto flex flex-wrap justify-center gap-5">
-        {type === 'trending'
-          ? cards.slice(0, 8).map((card) => (
-              <Link
-                href={`/${language}/${card.contentid}`}
-                key={card.contentid}
-              >
-                <TrendingCard
-                  key={card.contentid}
-                  title={card.title}
-                  image={card.firstimage || card.firstimage2}
-                  location={card.addr1}
-                  tag={
-                    CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
-                    t('search.etc')
-                  }
-                  tagIcon={
-                    CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
-                      name: t('search.etc'),
-                      icon: MapPinIcon,
-                    }
-                  }
-                  id={Number(card.contentid)}
-                  onClick={() => {}}
-                />
-              </Link>
-            ))
-          : cards.map((card) => (
-              <Link
-                href={`/${language}/${card.contentid}`}
-                key={card.contentid}
-              >
-                <TrendingCard
-                  key={card.contentid}
-                  title={card.title}
-                  image={card.firstimage}
-                  location={card.addr1}
-                  tag={
-                    CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
-                    t('search.etc')
-                  }
-                  tagIcon={
-                    CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
-                      name: t('search.etc'),
-                      icon: MapPinIcon,
-                    }
-                  }
-                  id={Number(card.contentid)}
-                  onClick={() => {}}
-                />
-              </Link>
-            ))}
+        {(type === 'trending' ? cards.slice(0, 8) : cards).map((card) => (
+          <Link href={`/${language}/${card.contentid}`} key={card.contentid}>
+            <TrendingCard
+              title={card.title}
+              image={
+                type === 'trending'
+                  ? card.firstimage || card.firstimage2
+                  : card.firstimage
+              }
+              location={card.addr1}
+              tag={
+                CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
+                t('search.etc')
+              }
+              tagIcon={
+                CONTENT_TYPE_LABEL[language][card.contenttypeid] ?? {
+                  name: t('search.etc'),
+                  icon: MapPinIcon,
+                }
+              }
+              id={Number(card.contentid)}
+              onClick={() => {}}
+            />
+          </Link>
+        ))}
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+import DOMPurify from 'dompurify'
 import { Globe, MapPin, Phone } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
@@ -8,26 +9,58 @@ import type { DetailCommonItem } from '@/types/tour/detailCommon'
 type ContactSidebarProps = { item: DetailCommonItem }
 
 // homepage가 "<a href='...'>text</a>" 형태로 올 때 href/text만 안전하게 추출
+// DOMPurify를 사용하여 HTML을 소독한 후 안전한 링크 추출
 const extractHomepageLink = (input: string) => {
-  // href 추출
-  const hrefMatch = input.match(/href\s*=\s*["']([^"']+)["']/i)
-  const href = hrefMatch?.[1]?.trim()
+  if (typeof window === 'undefined') {
+    // SSR 환경에서는 기본 파싱만 수행
+    const hrefMatch = input.match(/href\s*=\s*["']([^"']+)["']/i)
+    const href = hrefMatch?.[1]?.trim()
+    const text = input.replace(/<[^>]*>/g, '').trim()
+    if (!href) return null
+    return { href, text: text || href }
+  }
 
-  // 텍스트 추출(태그 제거)
-  const text = input.replace(/<[^>]*>/g, '').trim()
+  // DOMPurify로 HTML 소독
+  const sanitized = DOMPurify.sanitize(input, {
+    ALLOWED_TAGS: ['a'],
+    ALLOWED_ATTR: ['href'],
+  })
 
-  if (!href) return null
+  // 소독된 HTML에서 링크 추출
+  const tempDiv = document.createElement('div')
+  tempDiv.innerHTML = sanitized
+  const anchor = tempDiv.querySelector('a')
 
-  // 스킴 화이트리스트 (javascript: 같은 거 차단)
+  if (!anchor || !anchor.href) {
+    // <a> 태그가 없으면 텍스트만 추출
+    const text = DOMPurify.sanitize(input, { ALLOWED_TAGS: [] })
+    const trimmedText = text.trim()
+    if (!trimmedText) return null
+
+    // URL인지 확인
+    try {
+      const url = new URL(trimmedText, 'https://example.com')
+      const protocol = url.protocol.toLowerCase()
+      if (protocol !== 'http:' && protocol !== 'https:') return null
+      return { href: trimmedText, text: trimmedText }
+    } catch {
+      return null
+    }
+  }
+
+  const href = anchor.href
+  const text = anchor.textContent?.trim() || href
+
+  // 스킴 화이트리스트 검증 (javascript: 같은 거 차단)
   try {
-    const url = new URL(href, 'https://example.com') // 상대경로 대비
+    const url = new URL(href)
     const protocol = url.protocol.toLowerCase()
     if (protocol !== 'http:' && protocol !== 'https:') return null
   } catch {
     return null
   }
 
-  return { href, text: text || href }
+  return { href, text }
 }
 
 export default function ContactSidebar({ item }: ContactSidebarProps) {

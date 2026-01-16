@@ -1,11 +1,9 @@
 import { useMemo } from 'react'
 
+import { useTour } from '@/hooks/tour/useTour'
 import type { AppLocale } from '@/i18n/routing'
-import { DetailCommon } from '@/types/tour/detailCommon'
-import { DetailIntro } from '@/types/tour/detailIntro'
+import { type DetailCommon, type DetailIntro } from '@/types/tour'
 import { getContentTypeId, getDetailCommonItem } from '@/utils/getContentTypeId'
-
-import { useTour } from './useTour'
 
 export const useTourDetail = (contentId: string, language: AppLocale) => {
   /* 디테일 공통 데이터 */
@@ -48,7 +46,7 @@ export const useTourDetail = (contentId: string, language: AppLocale) => {
   return {
     detailCommonItem,
     detailIntroItem,
-    isLoading: detailCommonLoading && detailIntroLoading,
+    isLoading: detailCommonLoading || detailIntroLoading,
     hasError: isDetailCommonError || isDetailIntroError,
   }
 }

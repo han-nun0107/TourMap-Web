@@ -13,30 +13,10 @@ type DetailIntroItem = {
 
 type DetailInfoSectionProps = {
   item: DetailIntroItem | null | undefined
-  isLoading: boolean
 }
 
-export default function DetailInfoSection({
-  item,
-  isLoading,
-}: DetailInfoSectionProps) {
+export default function DetailInfoSection({ item }: DetailInfoSectionProps) {
   const t = useTranslations('Home')
-
-  if (isLoading) {
-    return (
-      <div className="rounded-2xl bg-white p-8 shadow-md">
-        <div className="mb-6 h-8 w-40 animate-pulse rounded-lg bg-gray-200" />
-        <div className="space-y-5">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="space-y-2">
-              <div className="h-5 w-24 animate-pulse rounded bg-gray-200" />
-              <div className="h-6 w-full animate-pulse rounded bg-gray-200" />
-            </div>
-          ))}
-        </div>
-      </div>
-    )
-  }
 
   if (!item) {
     return null

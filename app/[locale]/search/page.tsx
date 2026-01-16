@@ -12,7 +12,7 @@ import { useSearchTour } from '@/hooks/tour/useSearchTour'
 import { useInfiniteScroll } from '@/hooks/useIntersectionObserver'
 import { useLanguageStore } from '@/store/language'
 import {
-  processSearchTourData,
+  ProcessSearchTourData,
   type SearchTourCard,
 } from '@/utils/searchTourUtils'
 
@@ -40,7 +40,7 @@ export default function SearchPage() {
 
   const cards: SearchTourCard[] = useMemo(
     () =>
-      processSearchTourData({
+      ProcessSearchTourData({
         pages: searchKeywordData?.pages,
         language,
         getTranslation: (key: string) => t(key),

@@ -73,7 +73,7 @@ type ProcessSearchTourDataParams = {
   getTranslation: (key: string) => string
 }
 
-export const processSearchTourData = ({
+export const ProcessSearchTourData = ({
   pages,
   language,
   getTranslation,
