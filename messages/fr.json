@@ -66,7 +66,8 @@
       "ariaHint": "Saisissez un terme de recherche. Les résultats se mettent à jour automatiquement.",
       "resultFound": "{count, plural, one {1 résultat trouvé.} other {# résultats trouvés.}}",
       "loading": "Chargement...",
-      "initialSearch": "Les résultats changeront lorsque vous saisirez un mot-clé"
+      "initialSearch": "Les résultats changeront lorsque vous saisirez un mot-clé",
+      "initialSearchKeyword": "parc"
     },
     "map": {
       "title": "Lieux à proximité"

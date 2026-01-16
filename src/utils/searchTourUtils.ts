@@ -7,7 +7,6 @@ import type { ContetntTypeMeta } from '@/constants/main'
 import type { AppLocale } from '@/i18n/routing'
 import type { SearchKeyword } from '@/types/tour/searchKeyword'
 import { parseTourApiItemArray } from '@/utils/tourApiParser'
-import { filterTourItems } from '@/utils/tourFilter'
 
 export type SearchKeywordListItem = {
   contentid?: string
@@ -68,13 +67,11 @@ export function convertToTourCard(
 
 type ProcessSearchTourDataParams = {
   pages: SearchKeyword[] | undefined
-  activeFilter: string | null
   language: AppLocale
 }
 
 export function processSearchTourData({
   pages,
-  activeFilter,
   language,
 }: ProcessSearchTourDataParams): SearchTourCard[] {
   if (!pages) return []
@@ -83,16 +80,7 @@ export function processSearchTourData({
     parseTourApiItemArray<SearchKeywordListItem>(page)
   )
 
-  const filteredItems = activeFilter
-    ? filterTourItems({
-        items: allItems,
-        activeFilter,
-        mode: 'category',
-        locale: language,
-      })
-    : allItems
-
-  return filteredItems
+  return allItems
     .filter((item) => item.contentid && !isNaN(Number(item.contentid)))
     .map((item) => convertToTourCard(item, language))
 }

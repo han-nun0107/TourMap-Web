@@ -5,16 +5,16 @@ import type {
 import type { TourApiBodyBase, TourApiResponse } from '@/types/tour/common'
 import { unwrapTourApiResponse } from '@/types/tour/common'
 
-export function normalizeToArray<T>(value: T | T[] | undefined): T[] {
+export const normalizeToArray = <T>(value: T | T[] | undefined): T[] => {
   if (!value) return []
   if (Array.isArray(value)) return value
   return [value]
 }
 
 // Tour API 응답에서 body.items.item을 배열로 추출
-export function parseTourApiItemArray<TItem>(
+export const parseTourApiItemArray = <TItem>(
   data: TourApiResponse<TourApiBodyBase<TItem>> | undefined
-): TItem[] {
+): TItem[] => {
   const inner = unwrapTourApiResponse(data)
   const raw = inner?.body?.items?.item
   return normalizeToArray(raw)

@@ -6,11 +6,11 @@ type UseDebouncedChangeOptions = {
   skipNextDebouncedEffectRef: React.MutableRefObject<boolean>
 }
 
-export function useDebouncedChange({
+export const useDebouncedChange = ({
   debouncedValue,
   onDebouncedChange,
   skipNextDebouncedEffectRef,
-}: UseDebouncedChangeOptions) {
+}: UseDebouncedChangeOptions) => {
   const isInitialMountRef = useRef(true)
   const onDebouncedChangeRef = useRef(onDebouncedChange)
 

@@ -1,4 +1,8 @@
-import { unwrapTourApiResponse } from '@/types/tour/common'
+import {
+  TourApiBodyPaged,
+  TourApiResponse,
+  unwrapTourApiResponse,
+} from '@/types/tour/common'
 
 /**
  * Tour API 응답(body에 numOfRows/pageNo/totalCount가 있는 형태)에서
@@ -7,26 +11,21 @@ import { unwrapTourApiResponse } from '@/types/tour/common'
  * - 다음 페이지가 있으면: pageNo + 1
  * - 없으면: undefined
  */
-export function getNextPageParamFromTourApi(
-  lastPage: unknown
-): number | undefined {
-  const inner = unwrapTourApiResponse(lastPage as never)
-  const body = (inner as { body?: unknown } | undefined)?.body as
-    | { numOfRows?: unknown; pageNo?: unknown; totalCount?: unknown }
-    | undefined
-
-  const numOfRows = body?.numOfRows
-  const pageNo = body?.pageNo
-  const totalCount = body?.totalCount
+export const getNextPageParamFromTourApi = (
+  lastPage: TourApiResponse<TourApiBodyPaged<unknown>>
+): number | undefined => {
+  const inner = unwrapTourApiResponse(lastPage)
+  const body = inner?.body
 
   if (
-    typeof numOfRows !== 'number' ||
-    typeof pageNo !== 'number' ||
-    typeof totalCount !== 'number'
+    !body ||
+    typeof body.numOfRows !== 'number' ||
+    typeof body.pageNo !== 'number' ||
+    typeof body.totalCount !== 'number'
   ) {
     return undefined
   }
 
-  const hasNext = pageNo * numOfRows < totalCount
-  return hasNext ? pageNo + 1 : undefined
+  const hasNext = body.pageNo * body.numOfRows < body.totalCount
+  return hasNext ? body.pageNo + 1 : undefined
 }

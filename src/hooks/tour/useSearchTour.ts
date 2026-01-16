@@ -32,6 +32,6 @@ export const useSearchTour = (
       ),
     getNextPageParam: getNextPageParamFromTourApi,
     initialPageParam: 1,
-    enabled: !!activeFilter,
+    enabled: true,
   })
 }

@@ -23,10 +23,10 @@ export default function SearchPage() {
     (option) => option.value !== 'all-regions'
   )
 
-  const INITIAL_KEYWORD = '공원'
-  const isInitialSearch = searchQuery.trim() === ''
-
   const t = useTranslations('Home')
+
+  const INITIAL_KEYWORD = t('search.initialSearchKeyword')
+  const isInitialSearch = searchQuery.trim() === ''
 
   const {
     data: searchKeywordData,
@@ -39,10 +39,9 @@ export default function SearchPage() {
     () =>
       processSearchTourData({
         pages: searchKeywordData?.pages,
-        activeFilter,
         language,
       }),
-    [searchKeywordData?.pages, activeFilter, language]
+    [searchKeywordData?.pages, language]
   )
 
   const resultCount = cards.length

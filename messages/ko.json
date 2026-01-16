@@ -67,7 +67,8 @@
       "ariaHint": "검색어를 입력하면 결과가 자동으로 업데이트됩니다.",
       "resultFound": "{count}개의 결과가 있습니다.",
       "loading": "로딩중...",
-      "initialSearch": "검색어를 입력하면 결과가 바뀌어요"
+      "initialSearch": "검색어를 입력하면 결과가 바뀌어요",
+      "initialSearchKeyword": "공원"
     },
 
     "map": {
