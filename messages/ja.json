@@ -62,7 +62,7 @@
     },
     "search": {
       "Title": "検索ページ",
-      "placeholder": "旅行先・観光地・グルメを検索",
+      "placeholder": "公園・博物館・美術館などを検索",
       "ariaHint": "入力すると検索が実行され、結果が自動的に更新されます。",
       "resultFound": "{count} 件の検索結果があります。"
     },

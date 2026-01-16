@@ -62,7 +62,7 @@
     },
     "search": {
       "Title": "搜索页面",
-      "placeholder": "搜索旅游目的地、景点、美食",
+      "placeholder": "搜索公园、博物馆、美术馆等",
       "ariaHint": "输入即可搜索，结果会自动更新。",
       "resultFound": "找到 {count} 个结果。"
     },

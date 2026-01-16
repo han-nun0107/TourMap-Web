@@ -62,7 +62,7 @@
     },
     "search": {
       "Title": "Página de búsqueda",
-      "placeholder": "Buscar destinos, atracciones y restaurantes",
+      "placeholder": "Buscar parques, museos y museos de arte",
       "ariaHint": "Escribe para buscar. Los resultados se actualizan automáticamente.",
       "resultFound": "{count, plural, one {Se encontró # resultado.} other {Se encontraron # resultados.}}"
     },

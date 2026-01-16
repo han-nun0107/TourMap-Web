@@ -62,7 +62,7 @@
     },
     "search": {
       "Title": "Search Page",
-      "placeholder": "Search destinations, attractions, restaurants...",
+      "placeholder": "Search parks, museums, art museums...",
       "ariaHint": "Type to search. Results update automatically.",
       "resultFound": "{count, plural, one {1 result found} other {{count} results found}}"
     },
