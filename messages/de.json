@@ -64,7 +64,9 @@
       "Title": "Suchseite",
       "placeholder": "Park · Museum · Kunstmuseum suchen",
       "ariaHint": "Geben Sie einen Suchbegriff ein. Die Ergebnisse werden automatisch aktualisiert.",
-      "resultFound": "{count, plural, one {1 Ergebnis gefunden.} other {# Ergebnisse gefunden.}}"
+      "resultFound": "{count, plural, one {1 Ergebnis gefunden.} other {# Ergebnisse gefunden.}}",
+      "loading": "Wird geladen…",
+      "initialSearch": "Die Ergebnisse ändern sich, wenn Sie einen Suchbegriff eingeben"
     },
     "map": {
       "title": "Orte in der Nähe"

@@ -5,6 +5,7 @@ import { IMAGE_URLS } from '@/constants'
 import { CONTENT_TYPE_LABEL } from '@/constants/main'
 import type { ContetntTypeMeta } from '@/constants/main'
 import type { AppLocale } from '@/i18n/routing'
+import type { SearchKeyword } from '@/types/tour/searchKeyword'
 import { parseTourApiItemArray } from '@/utils/tourApiParser'
 import { filterTourItems } from '@/utils/tourFilter'
 
@@ -66,7 +67,7 @@ export function convertToTourCard(
 }
 
 type ProcessSearchTourDataParams = {
-  pages: unknown[] | undefined
+  pages: SearchKeyword[] | undefined
   activeFilter: string | null
   language: AppLocale
 }
@@ -78,8 +79,8 @@ export function processSearchTourData({
 }: ProcessSearchTourDataParams): SearchTourCard[] {
   if (!pages) return []
 
-  const allItems = pages.flatMap((page: unknown) =>
-    parseTourApiItemArray<SearchKeywordListItem>(page as never)
+  const allItems = pages.flatMap((page) =>
+    parseTourApiItemArray<SearchKeywordListItem>(page)
   )
 
   const filteredItems = activeFilter

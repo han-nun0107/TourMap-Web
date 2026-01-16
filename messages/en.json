@@ -64,7 +64,9 @@
       "Title": "Search Page",
       "placeholder": "Search parks, museums, art museums...",
       "ariaHint": "Type to search. Results update automatically.",
-      "resultFound": "{count, plural, one {1 result found} other {{count} results found}}"
+      "resultFound": "{count, plural, one {1 result found} other {{count} results found}}",
+      "loading": "Loading...",
+      "initialSearch": "Results will change when you enter a search term"
     },
 
     "map": {

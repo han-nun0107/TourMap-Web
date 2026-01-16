@@ -64,7 +64,9 @@
       "Title": "Page de recherche",
       "placeholder": "Rechercher des parcs, musées et musées d’art",
       "ariaHint": "Saisissez un terme de recherche. Les résultats se mettent à jour automatiquement.",
-      "resultFound": "{count, plural, one {1 résultat trouvé.} other {# résultats trouvés.}}"
+      "resultFound": "{count, plural, one {1 résultat trouvé.} other {# résultats trouvés.}}",
+      "loading": "Chargement...",
+      "initialSearch": "Les résultats changeront lorsque vous saisirez un mot-clé"
     },
     "map": {
       "title": "Lieux à proximité"

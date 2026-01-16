@@ -23,6 +23,9 @@ export default function SearchPage() {
     (option) => option.value !== 'all-regions'
   )
 
+  const INITIAL_KEYWORD = '공원'
+  const isInitialSearch = searchQuery.trim() === ''
+
   const t = useTranslations('Home')
 
   const {
@@ -30,7 +33,7 @@ export default function SearchPage() {
     hasNextPage,
     isFetchingNextPage,
     fetchNextPage,
-  } = useSearchTour(searchQuery, language, activeFilter)
+  } = useSearchTour(searchQuery, language, activeFilter, INITIAL_KEYWORD)
 
   const cards: SearchTourCard[] = useMemo(
     () =>
@@ -82,8 +85,11 @@ export default function SearchPage() {
             />
           ))}
         </div>
-        <p className="mt-8 text-sm font-light text-gray-600">
+        <p className="mt-8 flex flex-col gap-2 text-sm font-light text-gray-600">
           {t('search.resultFound', { count: resultCount })}
+          {isInitialSearch && (
+            <span className="text-gray-600">{t('search.initialSearch')}</span>
+          )}
         </p>
       </div>
       <div className="mx-auto mb-6 w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
@@ -107,7 +113,7 @@ export default function SearchPage() {
 
         {isFetchingNextPage && (
           <div className="flex justify-center py-4">
-            <p className="text-gray-600">Loading more...</p>
+            <p className="text-gray-600">{t('search.loading')}</p>
           </div>
         )}
       </div>

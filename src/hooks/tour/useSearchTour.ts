@@ -9,9 +9,10 @@ import { getNextPageParamFromTourApi } from '@/utils/tourApiPagination'
 export const useSearchTour = (
   searchQuery: string,
   lang: AppLocale = 'ko',
-  activeFilter: string | null
+  activeFilter: string | null,
+  intialKeyword: string
 ) => {
-  const keyword = searchQuery.trim() || '공원'
+  const keyword = searchQuery.trim() || intialKeyword
   const areaNumber = activeFilter
     ? AREA_CODE_BY_FILTER_VALUE[activeFilter]
     : '1'

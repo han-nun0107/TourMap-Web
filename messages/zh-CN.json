@@ -64,7 +64,9 @@
       "Title": "搜索页面",
       "placeholder": "搜索公园、博物馆、美术馆等",
       "ariaHint": "输入即可搜索，结果会自动更新。",
-      "resultFound": "找到 {count} 个结果。"
+      "resultFound": "找到 {count} 个结果。",
+      "loading": "加载中...",
+      "initialSearch": "输入搜索词后，结果会发生变化"
     },
     "map": {
       "title": "附近地点"
