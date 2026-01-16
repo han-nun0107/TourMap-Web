@@ -10,9 +10,9 @@ export const useSearchTour = (
   searchQuery: string,
   lang: AppLocale = 'ko',
   activeFilter: string | null,
-  intialKeyword: string
+  initialKeyword: string
 ) => {
-  const keyword = searchQuery.trim() || intialKeyword
+  const keyword = searchQuery.trim() || initialKeyword
   const areaNumber = activeFilter
     ? AREA_CODE_BY_FILTER_VALUE[activeFilter]
     : '1'
