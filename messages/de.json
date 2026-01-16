@@ -10,7 +10,8 @@
 
     "trending": {
       "Title": "Im Trend",
-      "Subtitle": "Beliebte Reiseziele dieser Saison"
+      "Subtitle": "Beliebte Reiseziele dieser Saison",
+      "SeeAll": "Alle anzeigen"
     },
 
     "regionsName": {
@@ -60,6 +61,7 @@
       "gyeongnam": "Gyeongnam",
       "jeju": "Jeju"
     },
+
     "search": {
       "Title": "Suchseite",
       "placeholder": "Park · Museum · Kunstmuseum suchen",
@@ -67,10 +69,48 @@
       "resultFound": "{count, plural, one {1 Ergebnis gefunden.} other {# Ergebnisse gefunden.}}",
       "loading": "Wird geladen…",
       "initialSearch": "Die Ergebnisse ändern sich, wenn Sie einen Suchbegriff eingeben",
-      "initialSearchKeyword": "Park"
+      "initialSearchKeyword": "Park",
+      "etc": "Sonstiges",
+      "noResults": "Keine Suchergebnisse gefunden.",
+      "clearSearch": "Suchbegriff löschen",
+      "search": "Suchen"
     },
+
     "map": {
-      "title": "Orte in der Nähe"
+      "title": "Orte in der Nähe",
+      "placesNearby": "Orte in der Nähe ({count})",
+      "myLocation": "Mein Standort"
+    },
+
+    "detail": {
+      "loading": "Wird geladen...",
+      "detailInfo": "Detailinformationen",
+      "error": "Daten konnten nicht gefunden werden.",
+      "goHome": "Zur Startseite",
+      "noImage": "Kein Bild",
+      "imagesOfTouristAttractions": "Bilder von Sehenswürdigkeiten",
+      "homepage": "Webseite",
+      "phoneNumber": "Telefonnummer",
+      "phoneInfo": "Kontaktinformationen",
+      "postcode": "Postleitzahl",
+      "overview": "Übersicht",
+      "address": "Adresse",
+      "infocenter": "Informationszentrum",
+      "usetime": "Öffnungszeiten",
+      "restdate": "Ruhetage",
+      "usefee": "Eintrittsgebühr",
+      "expguide": "Erlebnisanleitung"
+    },
+
+    "favorites": {
+      "favorites": "Favoriten",
+      "savedPlaces": "Gespeicherte Orte ({count})",
+      "noFavorites": "Noch keine Favoriten.",
+      "startAdding": "Fügen Sie Orte zu Ihren Favoriten hinzu!"
+    },
+
+    "card": {
+      "like": "Gefällt mir"
     }
   }
 }

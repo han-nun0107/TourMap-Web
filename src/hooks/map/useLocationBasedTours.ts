@@ -43,13 +43,17 @@ export const useLocationBasedTours = ({
   radius?: number
   activeCategory?: string
 }) => {
-  const { data } = useTour<LocationBasedList>('locationBasedList2', language, {
-    numOfRows: '20',
-    pageNo: '1',
-    mapX: center.longitude.toString(),
-    mapY: center.latitude.toString(),
-    radius: String(radius),
-  })
+  const { data, isLoading } = useTour<LocationBasedList>(
+    'locationBasedList2',
+    language,
+    {
+      numOfRows: '20',
+      pageNo: '1',
+      mapX: center.longitude.toString(),
+      mapY: center.latitude.toString(),
+      radius: String(radius),
+    }
+  )
 
   const items = useMemo(
     () => parseTourApiItemArray<LocationBasedListItem>(data),
@@ -75,5 +79,5 @@ export const useLocationBasedTours = ({
       .filter((v): v is NonNullable<typeof v> => v !== null)
   }, [filteredItems])
 
-  return { data, items, filteredItems, overlays }
+  return { data, items, filteredItems, overlays, isLoading }
 }

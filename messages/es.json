@@ -10,7 +10,8 @@
 
     "trending": {
       "Title": "Tendencias",
-      "Subtitle": "Destinos populares de esta temporada"
+      "Subtitle": "Destinos populares de esta temporada",
+      "SeeAll": "Ver todo"
     },
 
     "regionsName": {
@@ -30,7 +31,7 @@
 
     "categories": {
       "Title": "Explorar por categoría",
-      "Attractions": "Atracción",
+      "Attractions": "Atracciones",
       "Culture": "Cultura",
       "Festival": "Festival",
       "TourCourse": "Ruta turística",
@@ -60,17 +61,56 @@
       "gyeongnam": "Gyeongnam",
       "jeju": "Jeju"
     },
+
     "search": {
       "Title": "Página de búsqueda",
-      "placeholder": "Buscar parques, museos y museos de arte",
+      "placeholder": "Buscar parques, museos y museos de arte...",
       "ariaHint": "Escribe para buscar. Los resultados se actualizan automáticamente.",
-      "resultFound": "{count, plural, one {Se encontró # resultado.} other {Se encontraron # resultados.}}",
+      "resultFound": "{count, plural, one {Se encontró # resultado} other {Se encontraron # resultados}}",
       "loading": "Cargando...",
       "initialSearch": "Los resultados cambiarán cuando introduzcas un término de búsqueda",
-      "initialSearchKeyword": "parque"
+      "initialSearchKeyword": "parque",
+      "etc": "Otro",
+      "noResults": "No se encontraron resultados de búsqueda.",
+      "clearSearch": "Borrar búsqueda",
+      "search": "Buscar"
     },
+
     "map": {
-      "title": "Lugares cercanos"
+      "title": "Lugares cercanos",
+      "placesNearby": "Lugares cercanos ({count})",
+      "myLocation": "Mi ubicación"
+    },
+
+    "detail": {
+      "loading": "Cargando...",
+      "detailInfo": "Información detallada",
+      "error": "No se encontraron datos.",
+      "goHome": "Volver al inicio",
+      "noImage": "Sin imagen",
+      "imagesOfTouristAttractions": "Imágenes de atracciones turísticas",
+      "homepage": "Página web",
+      "phoneNumber": "Número de teléfono",
+      "phoneInfo": "Información de contacto",
+      "postcode": "Código postal",
+      "overview": "Resumen",
+      "address": "Dirección",
+      "infocenter": "Centro de información",
+      "usetime": "Horario de apertura",
+      "restdate": "Días de cierre",
+      "usefee": "Tarifa de entrada",
+      "expguide": "Guía de experiencias"
+    },
+
+    "favorites": {
+      "favorites": "Favoritos",
+      "savedPlaces": "Lugares guardados ({count})",
+      "noFavorites": "Aún no hay favoritos.",
+      "startAdding": "¡Empieza a añadir lugares a tus favoritos!"
+    },
+
+    "card": {
+      "like": "Me gusta"
     }
   }
 }

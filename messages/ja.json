@@ -3,14 +3,15 @@
     "banner": {
       "Title": "韓国を発見しよう",
       "Subtitle": "韓国の美しさを探検しよう",
-      "Description": "古宮から活気ある屋台グルメまで、朝鮮半島全域の最高の旅行先を発見してください。",
+      "Description": "古宮から活気ある屋台グルメまで、韓国各地の魅力的な旅行先を発見してください。",
       "StartButton": "探索を始める",
       "MapButton": "地図を見る"
     },
 
     "trending": {
       "Title": "トレンド",
-      "Subtitle": "今シーズン人気の旅行先"
+      "Subtitle": "今シーズン人気の旅行先",
+      "SeeAll": "すべて見る"
     },
 
     "regionsName": {
@@ -60,17 +61,56 @@
       "gyeongnam": "慶尚南道",
       "jeju": "済州"
     },
+
     "search": {
       "Title": "検索ページ",
       "placeholder": "公園・博物館・美術館などを検索",
-      "ariaHint": "入力すると検索が実行され、結果が自動的に更新されます。",
-      "resultFound": "{count} 件の検索結果があります。",
+      "ariaHint": "検索語を入力すると、結果が自動的に更新されます。",
+      "resultFound": "{count}件の検索結果があります",
       "loading": "読み込み中...",
       "initialSearch": "検索語を入力すると結果が変わります",
-      "initialSearchKeyword": "公園"
+      "initialSearchKeyword": "公園",
+      "etc": "その他",
+      "noResults": "検索結果が見つかりませんでした。",
+      "clearSearch": "検索をクリア",
+      "search": "検索"
     },
+
     "map": {
-      "title": "周辺スポット"
+      "title": "周辺スポット",
+      "placesNearby": "周辺スポット（{count}件）",
+      "myLocation": "現在地"
+    },
+
+    "detail": {
+      "loading": "読み込み中...",
+      "detailInfo": "詳細情報",
+      "error": "データが見つかりません。",
+      "goHome": "ホームに戻る",
+      "noImage": "画像なし",
+      "imagesOfTouristAttractions": "観光地の画像",
+      "homepage": "公式サイト",
+      "phoneNumber": "電話番号",
+      "phoneInfo": "連絡先情報",
+      "postcode": "郵便番号",
+      "overview": "概要",
+      "address": "住所",
+      "infocenter": "案内所",
+      "usetime": "利用時間",
+      "restdate": "休業日",
+      "usefee": "利用料金",
+      "expguide": "体験案内"
+    },
+
+    "favorites": {
+      "favorites": "お気に入り",
+      "savedPlaces": "保存済みの場所（{count}件）",
+      "noFavorites": "まだお気に入りはありません。",
+      "startAdding": "気になる場所をお気に入りに追加してみましょう！"
+    },
+
+    "card": {
+      "like": "いいね"
     }
   }
 }

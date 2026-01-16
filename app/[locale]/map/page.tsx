@@ -1,6 +1,7 @@
 'use client'
 
 import { MousePointer2 } from 'lucide-react'
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef, useState } from 'react'
 import { CustomOverlayMap, Map } from 'react-kakao-maps-sdk'
@@ -120,17 +121,21 @@ export default function MapPage() {
           <div className="scrollbar-hide h-[76vh] overflow-y-auto">
             <div className="flex flex-col gap-3">
               {filteredItems.map((card) => (
-                <SearchCard
-                  key={`${card.mapx}-${card.mapy}`}
-                  id={card.contentid}
-                  image={card.firstimage}
-                  title={card.title}
-                  location={card.addr1}
-                  tag={
-                    CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
-                    '기타'
-                  }
-                />
+                <Link
+                  href={`/${language}/${card.contentid}`}
+                  key={card.contentid}
+                >
+                  <SearchCard
+                    id={card.contentid}
+                    image={card.firstimage}
+                    title={card.title}
+                    location={card.addr1}
+                    tag={
+                      CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??
+                      '기타'
+                    }
+                  />
+                </Link>
               ))}
             </div>
           </div>

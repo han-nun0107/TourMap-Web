@@ -26,12 +26,14 @@ export type SearchTourCard = {
   tagIcon: React.ComponentType<React.SVGProps<SVGSVGElement>>
 }
 
-function getTrimmed(value: string | undefined): string {
+const getTrimmed = (value: string | undefined): string => {
   if (!value) return ''
   return value.trim()
 }
 
-function getCardImage(item: SearchKeywordListItem): string | StaticImageData {
+const getCardImage = (
+  item: SearchKeywordListItem
+): string | StaticImageData => {
   const first = getTrimmed(item.firstimage)
   if (first) return first
 
@@ -41,26 +43,26 @@ function getCardImage(item: SearchKeywordListItem): string | StaticImageData {
   return IMAGE_URLS.map.noImage
 }
 
-function getContentTypeMeta(
+const getContentTypeMeta = (
   locale: AppLocale,
   contentTypeId: string | undefined
-): ContetntTypeMeta | undefined {
+): ContetntTypeMeta | undefined => {
   if (!contentTypeId) return undefined
   return CONTENT_TYPE_LABEL[locale]?.[contentTypeId]
 }
 
-export function convertToTourCard(
+export const ConvertToTourCard = (
   item: SearchKeywordListItem,
-  language: AppLocale
-): SearchTourCard {
+  language: AppLocale,
+  getTranslation: (key: string) => string
+): SearchTourCard => {
   const meta = getContentTypeMeta(language, item.contenttypeid)
-
   return {
     id: Number(item.contentid),
     title: getTrimmed(item.title),
     location: getTrimmed(item.addr1),
     image: getCardImage(item),
-    tag: meta?.name ?? '기타',
+    tag: meta?.name ?? getTranslation('search.etc'),
     tagIcon: meta?.icon ?? MapPinIcon,
   }
 }
@@ -68,12 +70,14 @@ export function convertToTourCard(
 type ProcessSearchTourDataParams = {
   pages: SearchKeyword[] | undefined
   language: AppLocale
+  getTranslation: (key: string) => string
 }
 
-export function processSearchTourData({
+export const ProcessSearchTourData = ({
   pages,
   language,
-}: ProcessSearchTourDataParams): SearchTourCard[] {
+  getTranslation,
+}: ProcessSearchTourDataParams): SearchTourCard[] => {
   if (!pages) return []
 
   const allItems = pages.flatMap((page) =>
@@ -82,5 +86,5 @@ export function processSearchTourData({
 
   return allItems
     .filter((item) => item.contentid && !isNaN(Number(item.contentid)))
-    .map((item) => convertToTourCard(item, language))
+    .map((item) => ConvertToTourCard(item, language, getTranslation))
 }

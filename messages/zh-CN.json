@@ -3,14 +3,15 @@
     "banner": {
       "Title": "探索韩国",
       "Subtitle": "探索韩国之美",
-      "Description": "从古代宫殿到热闹的街头美食，探索整个韩半岛最精彩的旅行目的地。",
+      "Description": "从古代宫殿到热闹的街头美食，探索韩国各地最精彩的旅行目的地。",
       "StartButton": "开始探索",
       "MapButton": "查看地图"
     },
 
     "trending": {
       "Title": "热门趋势",
-      "Subtitle": "本季最受欢迎的旅行目的地"
+      "Subtitle": "本季最受欢迎的旅行目的地",
+      "SeeAll": "查看全部"
     },
 
     "regionsName": {
@@ -25,7 +26,7 @@
       "Favorite": "收藏",
       "Login": "登录",
       "Signup": "注册",
-      "Logout": "注销"
+      "Logout": "退出登录"
     },
 
     "categories": {
@@ -60,17 +61,56 @@
       "gyeongnam": "庆尚南道",
       "jeju": "济州"
     },
+
     "search": {
       "Title": "搜索页面",
       "placeholder": "搜索公园、博物馆、美术馆等",
-      "ariaHint": "输入即可搜索，结果会自动更新。",
-      "resultFound": "找到 {count} 个结果。",
+      "ariaHint": "输入关键词即可搜索，结果会自动更新。",
+      "resultFound": "共找到 {count} 个结果",
       "loading": "加载中...",
       "initialSearch": "输入搜索词后，结果会发生变化",
-      "initialSearchKeyword": "公园"
+      "initialSearchKeyword": "公园",
+      "etc": "其他",
+      "noResults": "未找到相关结果。",
+      "clearSearch": "清除搜索",
+      "search": "搜索"
     },
+
     "map": {
-      "title": "附近地点"
+      "title": "附近地点",
+      "placesNearby": "附近地点（{count}个）",
+      "myLocation": "我的位置"
+    },
+
+    "detail": {
+      "loading": "加载中...",
+      "detailInfo": "详细信息",
+      "error": "未找到数据。",
+      "goHome": "返回首页",
+      "noImage": "暂无图片",
+      "imagesOfTouristAttractions": "旅游景点图片",
+      "homepage": "官方网站",
+      "phoneNumber": "电话号码",
+      "phoneInfo": "联系方式",
+      "postcode": "邮政编码",
+      "overview": "概览",
+      "address": "地址",
+      "infocenter": "咨询处",
+      "usetime": "开放时间",
+      "restdate": "休息日",
+      "usefee": "门票费用",
+      "expguide": "体验指南"
+    },
+
+    "favorites": {
+      "favorites": "收藏",
+      "savedPlaces": "已保存的地点（{count}个）",
+      "noFavorites": "暂无收藏。",
+      "startAdding": "快把感兴趣的地点加入收藏吧！"
+    },
+
+    "card": {
+      "like": "喜欢"
     }
   }
 }

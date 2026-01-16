@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 
+import { LoadingState } from '@/components/detail'
 import { Banner, Category, ExploreSection } from '@/components/main'
 import { useTour } from '@/hooks/tour/useTour'
 import { useLanguageStore } from '@/store/language'
@@ -9,12 +10,20 @@ import type { AreaBasedList } from '@/types/tour/areaBasedList'
 
 export default function Home() {
   const language = useLanguageStore((state) => state.language)
-  const { data } = useTour<AreaBasedList>('areaBasedList2', language, {
-    numOfRows: '20',
-    pageNo: '1',
-  })
+  const { data, isLoading } = useTour<AreaBasedList>(
+    'areaBasedList2',
+    language,
+    {
+      numOfRows: '20',
+      pageNo: '1',
+    }
+  )
 
   const t = useTranslations('Home')
+
+  if (isLoading) {
+    return <LoadingState />
+  }
 
   return (
     <main>

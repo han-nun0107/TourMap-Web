@@ -63,6 +63,7 @@ export default function TrendingCard({
           intent="clear"
           onClick={(e) => {
             e.stopPropagation()
+            e.preventDefault()
             toggleLike({
               id,
               title,

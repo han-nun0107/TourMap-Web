@@ -1,6 +1,7 @@
 'use client'
 
 import { SearchIcon, X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useCallback, useId, useRef, useState } from 'react'
 
 import { ButtonClient } from '@/components/common'
@@ -26,7 +27,7 @@ export function SearchInput({
   const inputRef = useRef<HTMLInputElement>(null)
   const skipNextDebouncedEffectRef = useRef(false)
   const onDebouncedChangeRef = useRef(onDebouncedChange)
-
+  const t = useTranslations('Home')
   useDebouncedChange({
     debouncedValue,
     onDebouncedChange,
@@ -52,7 +53,7 @@ export function SearchInput({
   )
 
   return (
-    <div role="search" aria-label="Site search" className="w-full">
+    <div role="search" aria-label={t('search.search')} className="w-full">
       <label htmlFor={inputId} className="sr-only">
         {placeholder}
       </label>
@@ -80,7 +81,7 @@ export function SearchInput({
             variant="clear"
             intent="clear"
             onClick={clear}
-            aria-label="Clear search"
+            aria-label={t('search.clearSearch')}
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </ButtonClient>

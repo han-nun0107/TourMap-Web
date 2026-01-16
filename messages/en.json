@@ -10,7 +10,8 @@
 
     "trending": {
       "Title": "Trending",
-      "Subtitle": "Popular destinations this season"
+      "Subtitle": "Popular destinations this season",
+      "SeeAll": "See all"
     },
 
     "regionsName": {
@@ -22,15 +23,15 @@
       "Home": "Home",
       "Search": "Search",
       "Map": "Map",
-      "Favorite": "Favorite",
-      "Login": "Login",
-      "Signup": "Signup",
-      "Logout": "Logout"
+      "Favorite": "Favorites",
+      "Login": "Log in",
+      "Signup": "Sign up",
+      "Logout": "Log out"
     },
 
     "categories": {
       "Title": "Browse by Category",
-      "Attractions": "Attraction",
+      "Attractions": "Attractions",
       "Culture": "Culture",
       "Festival": "Festival",
       "TourCourse": "Tour Course",
@@ -60,18 +61,56 @@
       "gyeongnam": "Gyeongnam",
       "jeju": "Jeju"
     },
+
     "search": {
       "Title": "Search Page",
       "placeholder": "Search parks, museums, art museums...",
       "ariaHint": "Type to search. Results update automatically.",
-      "resultFound": "{count, plural, one {1 result found} other {{count} results found}}",
+      "resultFound": "{count, plural, one {1 result found} other {# results found}}",
       "loading": "Loading...",
       "initialSearch": "Results will change when you enter a search term",
-      "initialSearchKeyword": "park"
+      "initialSearchKeyword": "park",
+      "etc": "Other",
+      "noResults": "No search results found.",
+      "clearSearch": "Clear search",
+      "search": "Search"
     },
 
     "map": {
-      "title": "Nearby Places"
+      "title": "Nearby Places",
+      "placesNearby": "Nearby places ({count})",
+      "myLocation": "My location"
+    },
+
+    "detail": {
+      "loading": "Loading...",
+      "detailInfo": "Detailed Information",
+      "error": "Data not found.",
+      "goHome": "Go home",
+      "noImage": "No image",
+      "imagesOfTouristAttractions": "Images of Tourist Attractions",
+      "homepage": "Homepage",
+      "phoneNumber": "Phone Number",
+      "phoneInfo": "Contact Information",
+      "postcode": "Postal Code",
+      "overview": "Overview",
+      "address": "Address",
+      "infocenter": "Information Center",
+      "usetime": "Opening Hours",
+      "restdate": "Closed Days",
+      "usefee": "Admission Fee",
+      "expguide": "Experience Guide"
+    },
+
+    "favorites": {
+      "favorites": "Favorites",
+      "savedPlaces": "Saved places ({count})",
+      "noFavorites": "No favorites yet.",
+      "startAdding": "Start adding places to your favorites!"
+    },
+
+    "card": {
+      "like": "Like"
     }
   }
 }

@@ -1,16 +1,18 @@
 'use client'
 
+import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 
 import { TrendingCard } from '@/components/card'
 import { FilterBadge, SearchInput } from '@/components/common'
+import { LoadingState } from '@/components/detail'
 import { FILTER_OPTIONS } from '@/constants/main'
 import { useSearchTour } from '@/hooks/tour/useSearchTour'
 import { useInfiniteScroll } from '@/hooks/useIntersectionObserver'
 import { useLanguageStore } from '@/store/language'
 import {
-  processSearchTourData,
+  ProcessSearchTourData,
   type SearchTourCard,
 } from '@/utils/searchTourUtils'
 
@@ -33,15 +35,17 @@ export default function SearchPage() {
     hasNextPage,
     isFetchingNextPage,
     fetchNextPage,
+    isLoading,
   } = useSearchTour(searchQuery, language, activeFilter, INITIAL_KEYWORD)
 
   const cards: SearchTourCard[] = useMemo(
     () =>
-      processSearchTourData({
+      ProcessSearchTourData({
         pages: searchKeywordData?.pages,
         language,
+        getTranslation: (key: string) => t(key),
       }),
-    [searchKeywordData?.pages, language]
+    [searchKeywordData?.pages, language, t]
   )
 
   const resultCount = cards.length
@@ -51,6 +55,10 @@ export default function SearchPage() {
     onLoadMore: fetchNextPage,
     isLoading: isFetchingNextPage,
   })
+
+  if (isLoading) {
+    return <LoadingState />
+  }
 
   return (
     <div className="min-h-screen w-full bg-gray-100">
@@ -94,18 +102,19 @@ export default function SearchPage() {
       <div className="mx-auto mb-6 w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {cards.map((card) => (
-            <TrendingCard
-              key={card.id}
-              image={card.image}
-              title={card.title}
-              location={card.location}
-              tag={card.tag}
-              tagIcon={{
-                name: card.tag,
-                icon: card.tagIcon,
-              }}
-              id={card.id}
-            />
+            <Link href={`/${language}/${card.id}`} key={card.id}>
+              <TrendingCard
+                image={card.image}
+                title={card.title}
+                location={card.location}
+                tag={card.tag}
+                tagIcon={{
+                  name: card.tag,
+                  icon: card.tagIcon,
+                }}
+                id={card.id}
+              />
+            </Link>
           ))}
         </div>
         {hasNextPage && <div ref={loadMoreRef} className="h-20 w-full" />}

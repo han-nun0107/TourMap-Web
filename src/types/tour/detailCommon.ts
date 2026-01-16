@@ -1,6 +1,6 @@
 import { TourApiBodyPaged, TourApiResponse } from './common'
 
-type DetailCommonItem = {
+export type DetailCommonItem = {
   overview: string
   contentid: string
   sigungucode: string
