@@ -10,7 +10,7 @@
 
 ## 🔗 배포 주소
 
-- tour-map-web.vercel.app
+- [Live Demo](https://tour-map-web.vercel.app)
 
 ---
 
