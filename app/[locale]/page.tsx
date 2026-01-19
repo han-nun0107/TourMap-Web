@@ -22,7 +22,7 @@ export default function Home() {
     {
       numOfRows: '20',
       pageNo: '1',
-      areaCode: areaNumber,
+      ...(areaNumber && { areaCode: areaNumber }),
     }
   )
   const { data: festivalData, isLoading: isFestivalLoading } = useTour<SearchFestival>(
