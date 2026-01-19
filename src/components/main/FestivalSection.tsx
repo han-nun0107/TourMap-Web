@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
+import { LoadingState } from '@/components/detail'
 import { CONTENT_TYPE_LABEL } from '@/constants/main'
 import { useLanguageStore } from '@/store/language'
 import type { TourApiBodyBase, TourApiResponse } from '@/types/tour/common'
@@ -26,15 +27,18 @@ type TourItemCommon = {
 type FestivalSectionProps<TItem extends TourItemCommon> = {
   sectionTitle: string
   subtitle: string
+  loading: boolean
   data?: TourApiResponse<TourApiBodyBase<TItem>>
 }
 
 export default function FestivalSection<TItem extends TourItemCommon>({
   sectionTitle,
   subtitle,
+  loading,
   data,
 }: FestivalSectionProps<TItem>) {
   const language = useLanguageStore((state) => state.language)
+
 
   const cards = useMemo(() => {
     if (!data) return []
@@ -43,6 +47,11 @@ export default function FestivalSection<TItem extends TourItemCommon>({
   }, [data])
 
   const t = useTranslations('Home')
+
+  
+  if (loading) {
+    return <LoadingState />
+  }
 
   return (
     <div className="flex-center mx-auto w-full max-w-[332px] flex-col gap-6 py-12 md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px]">

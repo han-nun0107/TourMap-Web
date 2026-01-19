@@ -3,10 +3,11 @@
 import { MapPinIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
 import { FilterBadge } from '@/components/common'
+import { LoadingState } from '@/components/detail'
 import { CONTENT_TYPE_LABEL, FILTER_OPTIONS } from '@/constants/main'
 import { useLanguageStore } from '@/store/language'
 import type { TourApiBodyBase, TourApiResponse } from '@/types/tour/common'
@@ -26,16 +27,20 @@ type TourItemCommon = {
 type RegionSectionProps<TItem extends TourItemCommon> = {
   sectionTitle: string
   subtitle: string
+  loading: boolean
   data?: TourApiResponse<TourApiBodyBase<TItem>>
+  activeFilter: string
+  setActiveFilter: (filter: string) => void
 }
 
 export default function RegionSection<TItem extends TourItemCommon>({
   sectionTitle,
   subtitle,
-    data,
-  
+  loading,
+  data,
+  activeFilter,
+  setActiveFilter,
 }: RegionSectionProps<TItem>) {
-  const [activeFilter, setActiveFilter] = useState<string>('all-regions')
   const language = useLanguageStore((state) => state.language)
 
   const cards = useMemo(() => {
@@ -45,6 +50,10 @@ export default function RegionSection<TItem extends TourItemCommon>({
   }, [activeFilter, data])
 
   const t = useTranslations('Home')
+
+  if (loading) {
+    return <LoadingState />
+  }
 
   return (
     <div className="flex-center mx-auto w-full max-w-[332px] flex-col gap-6 py-12 md:max-w-[689px] lg:max-w-[1009px] xl:max-w-[1440px]">
