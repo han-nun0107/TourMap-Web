@@ -1,3 +1,4 @@
 export { default as Banner } from './Banner'
-export { default as ExploreSection } from './ExploreSection'
 export { default as Category } from './Category'
+export { default as FestivalSection } from './FestivalSection'
+export { default as RegionSection } from './RegionSection'

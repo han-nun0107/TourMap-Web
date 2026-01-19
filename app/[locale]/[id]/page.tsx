@@ -12,6 +12,7 @@ import {
 } from '@/components/detail'
 import { useTourDetail } from '@/hooks/tour'
 import { useLanguageStore } from '@/store/language'
+import { isFestivalContentTypeId } from '@/utils/getFestivalContentTypeId'
 
 export default function TourDetailPage() {
   const language = useLanguageStore((state) => state.language)
@@ -28,9 +29,14 @@ export default function TourDetailPage() {
     return <ErrorState />
   }
 
+  const isFestival = isFestivalContentTypeId(
+    detailCommonItem.contenttypeid,
+    language
+  )
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <HeroSection item={detailCommonItem} />
+      <HeroSection item={detailCommonItem} type={isFestival ? 'festival' : 'default'} />
 
       <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-8 lg:grid-cols-3 lg:gap-12">
@@ -41,7 +47,11 @@ export default function TourDetailPage() {
             <DetailInfoSection item={detailIntroItem} />
           </div>
 
-          <ContactSidebar item={detailCommonItem} />
+          <ContactSidebar
+            item={detailCommonItem}
+            detailIntroItem={detailIntroItem}
+            type={isFestival ? 'festival' : 'default'}
+          />
         </div>
       </div>
     </div>

@@ -8,9 +8,9 @@
       "MapButton": "Voir la carte"
     },
 
-    "trending": {
-      "Title": "Tendances",
-      "Subtitle": "Destinations populaires cette saison",
+    "festival": {
+      "Title": "Festival",
+      "Subtitle": "Vérifiez les festivals à venir",
       "SeeAll": "Voir tout"
     },
 
