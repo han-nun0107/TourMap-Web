@@ -8,9 +8,9 @@
       "MapButton": "查看地圖"
     },
 
-    "trending": {
-      "Title": "熱門趨勢",
-      "Subtitle": "本季最受歡迎的旅遊目的地",
+    "festival": {
+      "Title": "節日",
+      "Subtitle": "檢查即將到來的節日",
       "SeeAll": "查看全部"
     },
 

@@ -1,12 +1,23 @@
+import { format } from 'date-fns'
 import DOMPurify from 'dompurify'
-import { Globe, MapPin, Phone } from 'lucide-react'
+import { Calendar, Globe, MapPin, Phone } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useMemo } from 'react'
 
 import { ContactItem } from '@/components/detail'
 import type { DetailCommonItem } from '@/types/tour/detailCommon'
 
-type ContactSidebarProps = { item: DetailCommonItem }
+type DetailIntroItem = {
+  eventstartdate?: string
+  eventenddate?: string
+  [key: string]: unknown
+}
+
+type ContactSidebarProps = {
+  item: DetailCommonItem
+  detailIntroItem?: DetailIntroItem | null
+  type?: 'festival' | 'default'
+}
 
 // homepage가 "<a href='...'>text</a>" 형태로 올 때 href/text만 안전하게 추출
 // DOMPurify를 사용하여 HTML을 소독한 후 안전한 링크 추출
@@ -63,7 +74,11 @@ const extractHomepageLink = (input: string) => {
   return { href, text }
 }
 
-export default function ContactSidebar({ item }: ContactSidebarProps) {
+export default function ContactSidebar({
+  item,
+  detailIntroItem,
+  type = 'default',
+}: ContactSidebarProps) {
   const address = [item.addr1, item.addr2].filter(Boolean).join(' ')
   const t = useTranslations('Home')
 
@@ -72,15 +87,62 @@ export default function ContactSidebar({ item }: ContactSidebarProps) {
     return extractHomepageLink(item.homepage)
   }, [item.homepage])
 
+  const formatFestivalDate = (dateStr: string) => {
+    if (!dateStr || dateStr.length !== 8) return dateStr
+    try {
+      const year = dateStr.substring(0, 4)
+      const month = dateStr.substring(4, 6)
+      const day = dateStr.substring(6, 8)
+      const date = new Date(`${year}-${month}-${day}`)
+      return format(date, 'yyyy.MM.dd')
+    } catch {
+      return dateStr
+    }
+  }
+
+  const festivalDateRange = useMemo(() => {
+    if (
+      type !== 'festival' ||
+      !detailIntroItem?.eventstartdate ||
+      !detailIntroItem?.eventenddate
+    )
+      return null
+
+    const startDate = formatFestivalDate(detailIntroItem.eventstartdate)
+    const endDate = formatFestivalDate(detailIntroItem.eventenddate)
+
+    return { startDate, endDate }
+  }, [type, detailIntroItem])
+
   return (
     <aside className="lg:col-span-1">
       <div className="sticky top-6 space-y-6">
-        <div className="rounded-2xl bg-white p-6 shadow-md transition-shadow hover:shadow-lg">
-          <h2 className="mb-6 text-xl font-bold text-gray-900">
-            {t('detail.phoneInfo')}
+        <div
+          className={`rounded-2xl p-6 shadow-md transition-shadow hover:shadow-lg ${
+            type === 'festival'
+              ? 'bg-linear-to-br from-purple-50 to-pink-50 border-2 border-purple-200'
+              : 'bg-white'
+          }`}
+        >
+          <h2
+            className={`mb-6 text-xl font-bold ${
+              type === 'festival' ? 'text-purple-900' : 'text-gray-900'
+            }`}
+          >
+            {type === 'festival' ? t('detail.festivalInfo') : t('detail.phoneInfo')}
           </h2>
 
           <div className="space-y-5">
+            {festivalDateRange && (
+              <ContactItem
+                icon={<Calendar size={20} />}
+                label={t('detail.eventPeriod')}
+              >
+                <p className="text-gray-900">
+                  {festivalDateRange.startDate} ~ {festivalDateRange.endDate}
+                </p>
+              </ContactItem>
+            )}
             {item.tel && (
               <ContactItem
                 icon={<Phone size={20} />}

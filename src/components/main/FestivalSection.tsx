@@ -3,17 +3,16 @@
 import { ArrowRightIcon, MapPinIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
-import { FilterBadge } from '@/components/common'
-import { CONTENT_TYPE_LABEL, FILTER_OPTIONS } from '@/constants/main'
+import { CONTENT_TYPE_LABEL } from '@/constants/main'
 import { useLanguageStore } from '@/store/language'
 import type { TourApiBodyBase, TourApiResponse } from '@/types/tour/common'
 import { parseTourApiResponse } from '@/utils/tourApiParser'
 import { filterTourItems } from '@/utils/tourFilter'
 
-// ExploreSection에서 사용하는 공통 필드 인터페이스
+// FestivalSection에서 사용하는 공통 필드 인터페이스
 type TourItemCommon = {
   contentid: string
   contenttypeid: string
@@ -24,27 +23,24 @@ type TourItemCommon = {
   areacode?: string
 }
 
-type ExploreSectionProps<TItem extends TourItemCommon> = {
-  type: 'festival' | 'region'
+type FestivalSectionProps<TItem extends TourItemCommon> = {
   sectionTitle: string
   subtitle: string
   data?: TourApiResponse<TourApiBodyBase<TItem>>
 }
 
-export default function ExploreSection<TItem extends TourItemCommon>({  
+export default function FestivalSection<TItem extends TourItemCommon>({
   sectionTitle,
   subtitle,
-  type,
   data,
-}: ExploreSectionProps<TItem>) {
-  const [activeFilter, setActiveFilter] = useState<string>('all-regions')
+}: FestivalSectionProps<TItem>) {
   const language = useLanguageStore((state) => state.language)
 
   const cards = useMemo(() => {
     if (!data) return []
     const items = parseTourApiResponse<TItem>(data)
-    return filterTourItems({ items, activeFilter, type })
-  }, [activeFilter, data, type])
+    return filterTourItems({ items, activeFilter: '', type: 'trending' })
+  }, [data])
 
   const t = useTranslations('Home')
 
@@ -55,38 +51,19 @@ export default function ExploreSection<TItem extends TourItemCommon>({
           <h1 className="text-black-900 text-2xl font-bold">{sectionTitle}</h1>
           <p className="text-sm font-light text-gray-600">{subtitle}</p>
         </div>
-        {type === 'festival' && (
-          <Link
-            href="/search"
-            className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
-          >
-            {t('festival.SeeAll')} <ArrowRightIcon className="h-4 w-4" />
-          </Link>
-        )}
+        <Link
+          href="/search"
+          className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
+        >
+          {t('festival.SeeAll')} <ArrowRightIcon className="h-4 w-4" />
+        </Link>
       </div>
-      {type === 'region' && (
-        <div className="flex w-full max-w-[1320px] flex-wrap items-start justify-start gap-2 sm:gap-3 md:gap-4">
-          {FILTER_OPTIONS.map((option) => (
-            <FilterBadge
-              key={option.value}
-              type="category"
-              name={t(option.name)}
-              active={activeFilter === option.value}
-              onClick={() => setActiveFilter(option.value)}
-            />
-          ))}
-        </div>
-      )}
       <div className="mx-auto flex flex-wrap justify-center gap-5">
         {cards.map((card: TItem) => (
           <Link href={`/${language}/${card.contentid}`} key={card.contentid}>
             <TrendingCard
               title={card.title}
-              image={
-                (type === 'festival'
-                  ? card.firstimage || card.firstimage2
-                  : card.firstimage) || ''
-              }
+              image={(card.firstimage || card.firstimage2) || ''}
               location={card.addr1}
               tag={
                 CONTENT_TYPE_LABEL[language][card.contenttypeid]?.name ??

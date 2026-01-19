@@ -8,9 +8,9 @@
       "MapButton": "지도 보기"
     },
 
-    "trending": {
-      "Title": "트렌드",
-      "Subtitle": "이번 시즌 인기 여행지",
+    "festival": {
+      "Title": "축제",
+      "Subtitle": "다가오는 축제를 확인해보세요",
       "SeeAll": "더보기"
     },
 
@@ -106,7 +106,9 @@
       "usetime": "이용 시간",
       "restdate": "휴무일",
       "usefee": "이용 요금",
-      "expguide": "체험 안내"
+      "expguide": "체험 안내",
+      "festivalInfo": "축제 정보",
+      "eventPeriod": "축제 기간"
     },
 
     "card": {

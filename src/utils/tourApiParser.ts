@@ -1,7 +1,3 @@
-import type {
-  AreaBasedList,
-  AreaBasedListItem,
-} from '@/types/tour/areaBasedList'
 import type { TourApiBodyBase, TourApiResponse } from '@/types/tour/common'
 import { unwrapTourApiResponse } from '@/types/tour/common'
 
@@ -20,11 +16,11 @@ export const parseTourApiItemArray = <TItem>(
   return normalizeToArray(raw)
 }
 
-// Tour API 응답에서 AreaBasedListItem 배열을 추출하는 유틸리티 함수
-export const parseTourApiResponse = (
-  data: AreaBasedList | undefined
-): AreaBasedListItem[] => {
-  const items = parseTourApiItemArray<AreaBasedListItem>(data).filter(
+// Tour API 응답에서 아이템 배열을 추출하는 유틸리티 함수 (제네릭)
+export const parseTourApiResponse = <TItem extends { contentid: string }>(
+  data: TourApiResponse<TourApiBodyBase<TItem>> | undefined
+): TItem[] => {
+  const items = parseTourApiItemArray<TItem>(data).filter(
     (item) => item.contentid && !isNaN(Number(item.contentid))
   )
 

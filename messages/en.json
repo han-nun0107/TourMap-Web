@@ -8,9 +8,9 @@
       "MapButton": "View Map"
     },
 
-    "trending": {
-      "Title": "Trending",
-      "Subtitle": "Popular destinations this season",
+    "festival": {
+      "Title": "Festival",
+      "Subtitle": "Check out the upcoming festivals",
       "SeeAll": "See all"
     },
 
@@ -99,7 +99,9 @@
       "usetime": "Opening Hours",
       "restdate": "Closed Days",
       "usefee": "Admission Fee",
-      "expguide": "Experience Guide"
+      "expguide": "Experience Guide",
+      "festivalInfo": "Festival Information",
+      "eventPeriod": "Festival Period"
     },
 
     "favorites": {

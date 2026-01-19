@@ -8,9 +8,9 @@
       "MapButton": "地図を見る"
     },
 
-    "trending": {
-      "Title": "トレンド",
-      "Subtitle": "今シーズン人気の旅行先",
+    "festival": {
+      "Title": "祭り",
+      "Subtitle": "近くの祭りをチェックしてみましょう",
       "SeeAll": "すべて見る"
     },
 

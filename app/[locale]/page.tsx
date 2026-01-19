@@ -3,14 +3,16 @@
 import { useTranslations } from 'next-intl'
 
 import { LoadingState } from '@/components/detail'
-import { Banner, Category, ExploreSection } from '@/components/main'
+import { Banner, Category, FestivalSection, RegionSection } from '@/components/main'
 import { useTour } from '@/hooks/tour/useTour'
 import { useLanguageStore } from '@/store/language'
 import type { AreaBasedList } from '@/types/tour/areaBasedList'
+import { SearchFestival } from '@/types/tour/searchFestival'
+import { getToday } from '@/utils/getToday'
 
 export default function Home() {
   const language = useLanguageStore((state) => state.language)
-  const { data, isLoading } = useTour<AreaBasedList>(
+  const { data: areaBasedListData, isLoading: isAreaBasedListLoading } = useTour<AreaBasedList>(
     'areaBasedList2',
     language,
     {
@@ -18,10 +20,19 @@ export default function Home() {
       pageNo: '1',
     }
   )
+  const { data: festivalData, isLoading: isFestivalLoading } = useTour<SearchFestival>(
+    'searchFestival2',
+    language,
+    {
+      numOfRows: '8',
+      pageNo: '1',
+      eventStartDate: getToday(),
+    }
+  )
 
   const t = useTranslations('Home')
 
-  if (isLoading) {
+  if (isAreaBasedListLoading || isFestivalLoading) {
     return <LoadingState />
   }
 
@@ -35,18 +46,16 @@ export default function Home() {
         ViewMapButtonText={t('banner.MapButton')}
       />
       <div className="flex flex-col bg-gray-100">
-        <ExploreSection
-          sectionTitle={t('trending.Title')}
-          subtitle={t('trending.Subtitle')}
-          type="trending"
-          data={data}
+        <FestivalSection
+          sectionTitle={t('festival.Title')}
+          subtitle={t('festival.Subtitle')}
+          data={festivalData}
         />
         <Category title={t('categories.Title')} />
-        <ExploreSection
+        <RegionSection
           sectionTitle={t('regionsName.Title')}
           subtitle={t('regionsName.Subtitle')}
-          type="region"
-          data={data}
+          data={areaBasedListData}
         />
       </div>
     </main>
