@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tour API 프로젝트
 
-## Getting Started
+### 🗺️ Tour API + Kakao Map 기반 관광 정보 플랫폼 (Frontend)
 
-First, run the development server:
+공공데이터(한국관광공사 Tour API)와 Kakao Map을 활용하여  
+지역/키워드/위치 기반으로 관광 정보를 탐색할 수 있는 웹 서비스입니다.  
+또한 **i18n(총 9개 언어)** 을 적용하여 언어 변경 시 **해당 언어로 Tour API를 재호출**하도록 구성했습니다.
+
+---
+
+## 🔗 배포 주소
+
+- tour-map-web.vercel.app
+
+---
+
+## 🛠 기술 스택
+
+### Frontend
+- **Next.js 16**
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS 4**
+- **next-intl (i18n)**
+
+### State / Data Fetching
+- **Zustand (persist)** – 좋아요(찜) 데이터 로컬 저장
+- **TanStack Query** – 서버 상태 관리
+- **Axios** – API 통신
+
+### Map / Location
+- **Kakao Map**
+- **react-kakao-maps-sdk**
+- **Geolocation API**
+
+---
+
+## 📡 사용 API (KTO Tour API)
+
+| 페이지 | 사용 엔드포인트 | 설명 |
+|------|----------------|------|
+| 메인 | `areaBasedList2` | 지역 기반 관광지 목록 |
+| 메인 | `searchFestival2` | 축제 목록 |
+| 검색 | `searchKeyword2` | 키워드 검색 |
+| 지도 | `locationBasedList2` | 좌표 기반 주변 관광지 조회 |
+
+---
+
+## 🌐 국제화(i18n)
+
+- `src/i18n` 기반 라우팅/요청 분리 구성
+- 언어 변경 시:
+  - UI 텍스트 변경
+  - Tour API 요청 파라미터(언어/지역) 반영 → **해당 언어로 데이터 재호출**
+
+---
+
+## ⭐ 주요 기능
+
+- **메인 페이지**
+  - 지역 기반 관광지 리스트
+  - 축제 리스트
+
+- **검색 페이지**
+  - 키워드 검색
+  - 필터 적용 및 디바운스 기반 입력 최적화
+
+- **지도 페이지**
+  - Geolocation으로 현재 위치 획득
+  - 지도 드래그 시 좌표 변경 → 주변 관광지 재조회
+  - 마커 오버레이(OverlayBubble) 제공
+
+- **좋아요(찜) 페이지**
+  - Zustand persist로 로컬 저장
+  - 저장된 관광지 목록 렌더링
+
+---
+
+## 📁 프로젝트 구조
+
+아래 구조는 실제 프로젝트 `src` 기준입니다.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+src
+├── api
+│   └── tour.api.ts                 # Tour API 통신 모듈
+├── assets
+│   └── images                      # 정적 이미지 리소스
+├── components
+│   ├── card                        # 카드 UI (카테고리/트렌딩/검색)
+│   ├── common                      # 공통 UI (Button, Badge, Input 등)
+│   ├── detail                      # 상세 페이지 섹션/상태 컴포넌트
+│   ├── layout                      # Header 등 레이아웃 컴포넌트
+│   ├── main                        # 메인 페이지 섹션 컴포넌트
+│   └── map                         # 지도 오버레이 등 지도 컴포넌트
+├── constants
+│   ├── detail                      # 상세 페이지 상수/필드 정의
+│   ├── header                      # 헤더 관련 상수
+│   └── main                        # 메인 페이지 필터/매핑 상수
+├── foundation                      # UI 베이스 스타일(버튼/뱃지 등)
+├── hooks
+│   ├── category                    # 카테고리 기반 투어 조회 훅
+│   ├── detail                      # 상세 조회 훅
+│   ├── map                         # 지도/위치 기반 훅 (geo, debounce 등)
+│   ├── search                      # 검색 디바운스/필터 훅
+│   └── tour                        # 투어 리스트/검색 훅
+├── i18n
+│   ├── navigation.ts               # i18n 네비게이션
+│   ├── request.ts                  # i18n 요청 처리
+│   └── routing.ts                  # i18n 라우팅 설정
+├── lib
+│   ├── react-query-client.ts       # React Query client 설정
+│   └── cn.ts                       # className 유틸
+├── mocks                           # 개발용 mock 데이터
+├── providers
+│   └── react-query-provider.tsx    # Query Provider
+├── service
+│   └── tour.service.ts             # API 응답 가공/도메인 로직
+├── store
+│   ├── auth                        # 인증 스토어
+│   ├── language                    # 언어 스토어
+│   └── like                        # 좋아요 스토어(persist)
+├── types
+│   ├── badge                       # Badge 타입
+│   └── tour                         # Tour API 응답 타입들
+└── utils
+    ├── tourApiParser.ts            # Tour API 응답 파서
+    ├── tourApiPagination.ts        # 페이지네이션 유틸
+    ├── tourFilter.ts               # 필터 유틸
+    └── (etc)                       # 날짜/매핑/검색 유틸
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ▶️ 실행 방법
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# install
+yarn
 
-## Learn More
+# dev
+yarn dev
 
-To learn more about Next.js, take a look at the following resources:
+# build
+yarn build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# start
+yarn start
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# lint
+yarn lint
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✅ 폴더별 역할 요약
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **api/**: Axios 기반 Tour API 요청 모듈
+- **service/**: 응답 데이터 파싱/정규화 등 도메인 로직
+- **hooks/**: 페이지별 데이터 패칭/상태 처리 로직 분리
+- **store/**: language / like(persist) 등 전역 상태
+- **i18n/**: 언어 라우팅 및 요청 처리(next-intl 기반)
+- **utils/**: 파서/필터/페이지네이션/매핑 유틸
+
+---
