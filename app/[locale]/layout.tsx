@@ -21,7 +21,13 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Tour Map | Interactive Travel Guide & Attractions',
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://tour-map.com'
+  ),
+  title: {
+    default: 'Tour Map | Interactive Travel Guide & Attractions',
+    template: '%s | Tour Map',
+  },
   icons: {
     icon: '/og/logo.png',
     shortcut: '/og/logo.png',
@@ -36,13 +42,54 @@ export const metadata: Metadata = {
     'tourist attractions',
     'city tour',
     'travel guide',
+    'seoul tour',
+    'korea travel',
   ],
+  authors: [{ name: 'Tour Map Team' }],
+  creator: 'Tour Map',
+  publisher: 'Tour Map',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: '/',
+    languages: {
+      'ko-KR': '/ko',
+      'en-US': '/en',
+      'de-DE': '/de',
+      'es-ES': '/es',
+      'fr-FR': '/fr',
+      'ja-JP': '/ja',
+      'ru-RU': '/ru',
+      'zh-CN': '/zh-CN',
+      'zh-TW': '/zh-TW',
+    },
+  },
   openGraph: {
     title: 'Tour Map – Interactive Travel Guide',
     description:
       'An interactive tour map to explore attractions, routes, and must-see destinations.',
-    url: '/tour-map',
+    url: '/',
     siteName: 'Tour Map',
+    locale: 'ko_KR',
+    alternateLocale: [
+      'en_US',
+      'de_DE',
+      'es_ES',
+      'fr_FR',
+      'ja_JP',
+      'ru_RU',
+      'zh_CN',
+      'zh_TW',
+    ],
     images: [
       {
         url: '/og/logo.png',
@@ -60,6 +107,11 @@ export const metadata: Metadata = {
       'Discover destinations and attractions with our interactive tour map.',
     images: ['/og/logo.png'],
   },
+  /* TODO: 추후 구글 연동시 연결 */
+  /*   verification: {
+    google: 'your-google-verification-code',
+    // naver: 'your-naver-verification-code',
+  }, */
 }
 
 export function generateStaticParams() {

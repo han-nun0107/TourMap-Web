@@ -1,5 +1,3 @@
-/* TODO: 추후 i18n으로 변환 */
-
 import {
   MapPinIcon,
   BuildingIcon,
