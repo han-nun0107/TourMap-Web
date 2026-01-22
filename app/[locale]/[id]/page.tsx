@@ -78,17 +78,7 @@ export default async function TourDetailPage({ params }: Props) {
             {detailCommonItem.overview && (
               <OverviewSection overview={detailCommonItem.overview} />
             )}
-            <DetailInfoSection
-              item={
-                (detailIntroItem as {
-                  infocenter?: string
-                  usetime?: string
-                  restdate?: string
-                  usefee?: string
-                  expguide?: string
-                }) || null
-              }
-            />
+            <DetailInfoSection item={detailIntroItem || null} />
           </div>
 
           <ContactSidebar
