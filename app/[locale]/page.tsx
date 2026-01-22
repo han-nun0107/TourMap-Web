@@ -1,41 +1,67 @@
-'use client'
+import { getTranslations } from 'next-intl/server'
 
-import { useTranslations } from 'next-intl'
-import { useState } from 'react'
-
-import { Banner, Category, FestivalSection, RegionSection } from '@/components/main'
+import {
+  Banner,
+  Category,
+  FestivalSectionClient,
+  RegionSectionClient,
+} from '@/components/main'
 import { AREA_CODE_BY_FILTER_VALUE } from '@/constants/main/filterOptions'
-import { useTour } from '@/hooks/tour/useTour'
-import { useLanguageStore } from '@/store/language'
+import { routing, type AppLocale } from '@/i18n/routing'
+import { getTourList } from '@/service/tour.service'
 import type { AreaBasedList } from '@/types/tour/areaBasedList'
 import { SearchFestival } from '@/types/tour/searchFestival'
 import { getToday } from '@/utils/getToday'
 
-export default function Home() {
-  const language = useLanguageStore((state) => state.language)
-  const [activeFilter, setActiveFilter] = useState<string>('seoul')
-  const areaNumber = AREA_CODE_BY_FILTER_VALUE[activeFilter] ?? null
+type Props = {
+  params: { locale: string }
+}
 
-  const { data: areaBasedListData, isLoading: isAreaBasedListLoading } = useTour<AreaBasedList>(
-    'areaBasedList2',
-    language,
-    {
-      numOfRows: '20',
-      pageNo: '1',
-      ...(areaNumber && { areaCode: areaNumber }),
-    }
-  )
-  const { data: festivalData, isLoading: isFestivalLoading } = useTour<SearchFestival>(
-    'searchFestival2',
-    language,
-    {
-      numOfRows: '8',
-      pageNo: '1',
-      eventStartDate: getToday(),
-    }
-  )
+function normalizeLocale(locale: string): AppLocale {
+  if (routing.locales.includes(locale as AppLocale)) {
+    return locale as AppLocale
+  }
+  return routing.defaultLocale
+}
 
-  const t = useTranslations('Home')
+async function getHomeData(locale: AppLocale) {
+  const defaultAreaCode = AREA_CODE_BY_FILTER_VALUE['seoul'] ?? null
+
+  const [areaBasedListData, festivalData] = await Promise.all([
+    getTourList<AreaBasedList>(
+      locale,
+      'areaBasedList2',
+      {
+        numOfRows: '20',
+        pageNo: '1',
+        ...(defaultAreaCode && { areaCode: defaultAreaCode }),
+      },
+      '1'
+    ),
+    getTourList<SearchFestival>(
+      locale,
+      'searchFestival2',
+      {
+        numOfRows: '8',
+        pageNo: '1',
+        eventStartDate: getToday(),
+      },
+      '1'
+    ),
+  ])
+
+  return {
+    areaBasedListData,
+    festivalData,
+  }
+}
+
+export default async function Home({ params }: Props) {
+  const { locale } = params
+  const appLocale = normalizeLocale(locale)
+  const t = await getTranslations('Home')
+
+  const { areaBasedListData, festivalData } = await getHomeData(appLocale)
 
   return (
     <main>
@@ -47,20 +73,19 @@ export default function Home() {
         ViewMapButtonText={t('banner.MapButton')}
       />
       <div className="flex flex-col bg-gray-100">
-        <FestivalSection
+        <FestivalSectionClient
           sectionTitle={t('festival.Title')}
           subtitle={t('festival.Subtitle')}
-          loading={isFestivalLoading}
-          data={festivalData}
+          initialData={festivalData}
+          locale={appLocale}
         />
         <Category title={t('categories.Title')} />
-        <RegionSection
+        <RegionSectionClient
           sectionTitle={t('regionsName.Title')}
           subtitle={t('regionsName.Subtitle')}
-          loading={isAreaBasedListLoading}
-          data={areaBasedListData}
-          activeFilter={activeFilter}
-          setActiveFilter={setActiveFilter}
+          initialData={areaBasedListData}
+          initialFilter="seoul"
+          locale={appLocale}
         />
       </div>
     </main>

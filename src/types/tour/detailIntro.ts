@@ -2,7 +2,7 @@ import { TourApiBodyPaged, TourApiResponse } from './common'
 
 type DetailIntroBody = TourApiBodyPaged<DetailIntroItem>
 
-type DetailIntroItem = {
+export type DetailIntroItem = {
   chkpetculture: string
   eventhomepage: string
   eventplace: string
