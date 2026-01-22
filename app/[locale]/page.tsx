@@ -1,7 +1,11 @@
 import { getTranslations } from 'next-intl/server'
 
-import { Banner, Category, FestivalSection } from '@/components/main'
-import RegionSectionClient from '@/components/main/RegionSectionClient'
+import {
+  Banner,
+  Category,
+  FestivalSectionClient,
+  RegionSectionClient,
+} from '@/components/main'
 import { AREA_CODE_BY_FILTER_VALUE } from '@/constants/main/filterOptions'
 import { routing, type AppLocale } from '@/i18n/routing'
 import { getTourList } from '@/service/tour.service'
@@ -69,11 +73,11 @@ export default async function Home({ params }: Props) {
         ViewMapButtonText={t('banner.MapButton')}
       />
       <div className="flex flex-col bg-gray-100">
-        <FestivalSection
+        <FestivalSectionClient
           sectionTitle={t('festival.Title')}
           subtitle={t('festival.Subtitle')}
-          loading={false}
-          data={festivalData}
+          initialData={festivalData}
+          locale={appLocale}
         />
         <Category title={t('categories.Title')} />
         <RegionSectionClient

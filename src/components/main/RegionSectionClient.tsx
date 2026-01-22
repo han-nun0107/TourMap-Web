@@ -1,5 +1,6 @@
 'use client'
 
+import { useLocale } from 'next-intl'
 import { useState } from 'react'
 
 import { AREA_CODE_BY_FILTER_VALUE } from '@/constants/main/filterOptions'
@@ -22,11 +23,19 @@ export default function RegionSectionClient({
   subtitle,
   initialData,
   initialFilter = 'seoul',
-  locale,
+  locale: initialLocale,
 }: RegionSectionClientProps) {
-  const language = locale
+  // URL의 현재 locale을 가져와서 사용 (언어 변경 시 자동으로 업데이트됨)
+  const currentLocale = useLocale() as AppLocale
+  const language = currentLocale
   const [activeFilter, setActiveFilter] = useState<string>(initialFilter)
   const areaNumber = AREA_CODE_BY_FILTER_VALUE[activeFilter] ?? null
+
+  // 초기 locale과 현재 locale이 같고, 필터가 초기 필터와 같을 때만 initialData 사용
+  const shouldUseInitialData =
+    currentLocale === initialLocale &&
+    activeFilter === initialFilter &&
+    initialData
 
   const { data: areaBasedListData, isLoading: isAreaBasedListLoading } =
     useTour<AreaBasedList>(
@@ -39,7 +48,7 @@ export default function RegionSectionClient({
       },
       '1',
       {
-        initialData: activeFilter === initialFilter ? initialData : undefined,
+        initialData: shouldUseInitialData ? initialData : undefined,
       }
     )
 
