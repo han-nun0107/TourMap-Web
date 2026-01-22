@@ -8,7 +8,7 @@ import {
   HeroSection,
   OverviewSection,
 } from '@/components/detail'
-import type { AppLocale } from '@/i18n/routing'
+import { routing, type AppLocale } from '@/i18n/routing'
 import { getTourDetailData } from '@/service/tour-detail.service'
 import type { DetailCommonItem } from '@/types/tour/detailCommon'
 import type { DetailIntroItem } from '@/types/tour/detailIntro'
@@ -19,12 +19,19 @@ import {
 } from '@/utils/tour-metadata'
 
 type Props = {
-  params: Promise<{ locale: string; id: string }>
+  params: { locale: string; id: string }
+}
+
+function normalizeLocale(locale: string): AppLocale {
+  if (routing.locales.includes(locale as AppLocale)) {
+    return locale as AppLocale
+  }
+  return routing.defaultLocale
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, id } = await params
-  const appLocale = locale as AppLocale
+  const { locale, id } = params
+  const appLocale = normalizeLocale(locale)
 
   try {
     const { detailCommonItem } = await getTourDetailData(id, appLocale)
@@ -35,8 +42,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function TourDetailPage({ params }: Props) {
-  const { locale, id } = await params
-  const appLocale = locale as AppLocale
+  const { locale, id } = params
+  const appLocale = normalizeLocale(locale)
 
   let detailCommonItem: DetailCommonItem | undefined
   let detailIntroItem: DetailIntroItem | undefined

@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import { AREA_CODE_BY_FILTER_VALUE } from '@/constants/main/filterOptions'
 import { useTour } from '@/hooks/tour/useTour'
-import { useLanguageStore } from '@/store/language'
+import type { AppLocale } from '@/i18n/routing'
 import type { AreaBasedList } from '@/types/tour/areaBasedList'
 
 import RegionSection from './RegionSection'
@@ -14,6 +14,7 @@ type RegionSectionClientProps = {
   subtitle: string
   initialData?: AreaBasedList
   initialFilter?: string
+  locale: AppLocale
 }
 
 export default function RegionSectionClient({
@@ -21,8 +22,9 @@ export default function RegionSectionClient({
   subtitle,
   initialData,
   initialFilter = 'seoul',
+  locale,
 }: RegionSectionClientProps) {
-  const language = useLanguageStore((state) => state.language)
+  const language = locale
   const [activeFilter, setActiveFilter] = useState<string>(initialFilter)
   const areaNumber = AREA_CODE_BY_FILTER_VALUE[activeFilter] ?? null
 

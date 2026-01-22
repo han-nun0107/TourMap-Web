@@ -3,14 +3,21 @@ import { getTranslations } from 'next-intl/server'
 import { Banner, Category, FestivalSection } from '@/components/main'
 import RegionSectionClient from '@/components/main/RegionSectionClient'
 import { AREA_CODE_BY_FILTER_VALUE } from '@/constants/main/filterOptions'
-import type { AppLocale } from '@/i18n/routing'
+import { routing, type AppLocale } from '@/i18n/routing'
 import { getTourList } from '@/service/tour.service'
 import type { AreaBasedList } from '@/types/tour/areaBasedList'
 import { SearchFestival } from '@/types/tour/searchFestival'
 import { getToday } from '@/utils/getToday'
 
 type Props = {
-  params: Promise<{ locale: string }>
+  params: { locale: string }
+}
+
+function normalizeLocale(locale: string): AppLocale {
+  if (routing.locales.includes(locale as AppLocale)) {
+    return locale as AppLocale
+  }
+  return routing.defaultLocale
 }
 
 async function getHomeData(locale: AppLocale) {
@@ -46,8 +53,8 @@ async function getHomeData(locale: AppLocale) {
 }
 
 export default async function Home({ params }: Props) {
-  const { locale } = await params
-  const appLocale = locale as AppLocale
+  const { locale } = params
+  const appLocale = normalizeLocale(locale)
   const t = await getTranslations('Home')
 
   const { areaBasedListData, festivalData } = await getHomeData(appLocale)
@@ -74,6 +81,7 @@ export default async function Home({ params }: Props) {
           subtitle={t('regionsName.Subtitle')}
           initialData={areaBasedListData}
           initialFilter="seoul"
+          locale={appLocale}
         />
       </div>
     </main>

@@ -55,11 +55,22 @@ export async function getTourList<T = unknown>(
   params: Partial<Record<string, string>> = {},
   pageNo: string = '1'
 ): Promise<T> {
+  if (!BASE_URL) {
+    throw new Error('NEXT_PUBLIC_TOUR_API_URL is not set')
+  }
+
   const serviceKey = process.env.NEXT_PUBLIC_TOUR_API_KEY || ''
   if (!serviceKey) {
     throw new Error('NEXT_PUBLIC_TOUR_API_KEY is not set')
   }
-  const fullUrl = `${BASE_URL}${BASE_BY_LANG[lang]}/${TOUR_ENDPOINT[endpoint]}`
+
+  const langPath = BASE_BY_LANG[lang] || BASE_BY_LANG.ko
+  if (!langPath) {
+    throw new Error(`Invalid locale: ${lang}`)
+  }
+
+  const fullUrl = `${BASE_URL}${langPath}/${TOUR_ENDPOINT[endpoint]}`
+
   return getTours<T>(fullUrl, {
     serviceKey,
     numOfRows: '12',
