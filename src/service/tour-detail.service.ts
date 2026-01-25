@@ -19,7 +19,7 @@ export async function getTourDetailData(
   const detailCommonData = await getTourList<DetailCommon>(
     locale,
     'detailCommon2',
-    { contentId },
+    { contentId: contentId },
     '1'
   )
 
@@ -35,7 +35,7 @@ export async function getTourDetailData(
   const detailIntroData = await getTourList<DetailIntro>(
     locale,
     'detailIntro2',
-    { contentId, contentTypeId },
+    { contentId: contentId, contentTypeId },
     '1'
   )
 
