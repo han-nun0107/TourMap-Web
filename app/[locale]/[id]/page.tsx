@@ -19,7 +19,7 @@ import {
 } from '@/utils/tour-metadata'
 
 type Props = {
-  params: { locale: string; id: string }
+  params: Promise<{ locale: string; id: string }>
 }
 
 function normalizeLocale(locale: string): AppLocale {
@@ -30,7 +30,7 @@ function normalizeLocale(locale: string): AppLocale {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, id } = params
+  const { locale, id } = await params
   const appLocale = normalizeLocale(locale)
 
   try {
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function TourDetailPage({ params }: Props) {
-  const { locale, id } = params
+  const { locale, id } = await params
   const appLocale = normalizeLocale(locale)
 
   let detailCommonItem: DetailCommonItem | undefined
