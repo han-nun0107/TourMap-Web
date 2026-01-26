@@ -2,7 +2,7 @@
 
 import { SearchIcon, X } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useCallback, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 
 import { ButtonClient } from '@/components/common'
 import { useDebounce, useDebouncedChange } from '@/hooks/search'
@@ -23,10 +23,15 @@ export function SearchInput({
   ariaHint,
 }: Props) {
   const [value, setValue] = useState(defaultValue)
-  const { debouncedValue } = useDebounce(value, debounceMs)
   const inputRef = useRef<HTMLInputElement>(null)
   const skipNextDebouncedEffectRef = useRef(false)
   const onDebouncedChangeRef = useRef(onDebouncedChange)
+  const { debouncedValue } = useDebounce(value, debounceMs)
+
+  // defaultValue가 변경되면 내부 상태 업데이트 (뒤로가기 시 URL에서 복원)
+  useEffect(() => {
+    setValue(defaultValue)
+  }, [defaultValue])
   const t = useTranslations('Home')
   useDebouncedChange({
     debouncedValue,
