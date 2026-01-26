@@ -35,7 +35,6 @@ export default function SearchPage() {
     hasNextPage,
     isFetchingNextPage,
     fetchNextPage,
-    isLoading,
   } = useSearchTour(searchQuery, language, activeFilter, INITIAL_KEYWORD)
 
   const cards: SearchTourCard[] = useMemo(
@@ -55,10 +54,6 @@ export default function SearchPage() {
     onLoadMore: fetchNextPage,
     isLoading: isFetchingNextPage,
   })
-
-  if (isLoading) {
-    return <LoadingState />
-  }
 
   return (
     <div className="min-h-screen w-full bg-gray-100">
