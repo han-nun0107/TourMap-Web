@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { useMemo, useState } from 'react'
+import { Suspense, useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
 import { FilterBadge, SearchInput } from '@/components/common'
 import { LoadingState } from '@/components/detail'
 import { FILTER_OPTIONS } from '@/constants/main'
+import { useSearchQueryParams } from '@/hooks/search'
 import { useSearchTour } from '@/hooks/tour/useSearchTour'
 import { useInfiniteScroll } from '@/hooks/useIntersectionObserver'
 import { useLanguageStore } from '@/store/language'
@@ -16,10 +17,14 @@ import {
   type SearchTourCard,
 } from '@/utils/searchTourUtils'
 
-export default function SearchPage() {
+function SearchContent() {
   const language = useLanguageStore((state) => state.language)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [activeFilter, setActiveFilter] = useState<string | null>('seoul')
+  const {
+    searchQuery,
+    activeFilter,
+    handleSearchChange,
+    handleFilterChange,
+  } = useSearchQueryParams()
 
   const SEARCH_FILTER_OPTIONS = FILTER_OPTIONS.filter(
     (option) => option.value !== 'all-regions'
@@ -63,8 +68,9 @@ export default function SearchPage() {
             {t('search.Title')}
           </h1>
           <SearchInput
+            defaultValue={searchQuery}
             debounceMs={300}
-            onDebouncedChange={setSearchQuery}
+            onDebouncedChange={handleSearchChange}
             placeholder={t('search.placeholder')}
             ariaHint={t('search.ariaHint')}
           />
@@ -78,10 +84,10 @@ export default function SearchPage() {
               active={activeFilter === option.value}
               onClick={() => {
                 if (activeFilter === option.value) {
-                  setActiveFilter(null)
+                  handleFilterChange(null)
                   return
                 }
-                setActiveFilter(option.value)
+                handleFilterChange(option.value)
               }}
               className="h-8"
             />
@@ -121,5 +127,13 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <SearchContent />
+    </Suspense>
   )
 }

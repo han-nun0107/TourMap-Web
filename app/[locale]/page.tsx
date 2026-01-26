@@ -14,7 +14,8 @@ import { SearchFestival } from '@/types/tour/searchFestival'
 import { getToday } from '@/utils/getToday'
 
 type Props = {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
+  
 }
 
 function normalizeLocale(locale: string): AppLocale {
@@ -57,7 +58,7 @@ async function getHomeData(locale: AppLocale) {
 }
 
 export default async function Home({ params }: Props) {
-  const { locale } = params
+  const { locale } = await params
   const appLocale = normalizeLocale(locale)
   const t = await getTranslations('Home')
 
