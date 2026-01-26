@@ -15,6 +15,7 @@ import { getToday } from '@/utils/getToday'
 
 type Props = {
   params: Promise<{ locale: string }>
+  
 }
 
 function normalizeLocale(locale: string): AppLocale {

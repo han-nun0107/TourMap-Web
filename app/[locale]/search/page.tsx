@@ -2,10 +2,11 @@
 
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { useMemo } from 'react'
+import { Suspense, useMemo } from 'react'
 
 import { TrendingCard } from '@/components/card'
 import { FilterBadge, SearchInput } from '@/components/common'
+import { LoadingState } from '@/components/detail'
 import { FILTER_OPTIONS } from '@/constants/main'
 import { useSearchQueryParams } from '@/hooks/search'
 import { useSearchTour } from '@/hooks/tour/useSearchTour'
@@ -16,7 +17,7 @@ import {
   type SearchTourCard,
 } from '@/utils/searchTourUtils'
 
-export default function SearchPage() {
+function SearchContent() {
   const language = useLanguageStore((state) => state.language)
   const {
     searchQuery,
@@ -126,5 +127,13 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<LoadingState />}>
+      <SearchContent />
+    </Suspense>
   )
 }
