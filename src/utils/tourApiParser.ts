@@ -11,6 +11,7 @@ export const normalizeToArray = <T>(value: T | T[] | undefined): T[] => {
 export const parseTourApiItemArray = <TItem>(
   data: TourApiResponse<TourApiBodyBase<TItem>> | undefined
 ): TItem[] => {
+  if (!data) return []
   const inner = unwrapTourApiResponse(data)
   const raw = inner?.body?.items?.item
   return normalizeToArray(raw)

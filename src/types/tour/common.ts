@@ -30,7 +30,7 @@ export type TourApiResponse<TBody> = {
 }
 
 export function unwrapTourApiResponse<TBody>(
-  data: TourApiResponse<TBody>
-): TourApiInner<TBody> {
-  return data.response
+  data: TourApiResponse<TBody> | undefined
+): TourApiInner<TBody> | undefined {
+  return data?.response
 }
