@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
 import {
@@ -15,7 +16,6 @@ import { getToday } from '@/utils/getToday'
 
 type Props = {
   params: Promise<{ locale: string }>
-  
 }
 
 function normalizeLocale(locale: string): AppLocale {
@@ -54,6 +54,32 @@ async function getHomeData(locale: AppLocale) {
   return {
     areaBasedListData,
     festivalData,
+  }
+}
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { locale } = await params
+  const appLocale = normalizeLocale(locale)
+  const t = await getTranslations({ locale: appLocale, namespace: 'Home' })
+
+  const title = t('banner.Title')
+  const description = t('banner.Description')
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+    },
+    twitter: {
+      title,
+      description,
+      card: 'summary_large_image',
+    },
   }
 }
 

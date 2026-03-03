@@ -18,18 +18,27 @@ export default function FavoritesPage() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gray-100">
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-1 px-4 py-6 sm:px-6 lg:px-8">
-        <div className="flex flex-col">
-          <h1 className="text-black-900 text-2xl font-bold">
+    <main
+      className="min-h-screen w-full bg-gray-100"
+      aria-labelledby="favorites-page-title"
+    >
+      <section className="mx-auto flex w-full max-w-[1400px] flex-col gap-1 px-4 py-6 sm:px-6 lg:px-8">
+        <header className="flex flex-col">
+          <h1
+            id="favorites-page-title"
+            className="text-black-900 text-2xl font-bold"
+          >
             {t('favorites.favorites')}
           </h1>
-        </div>
+        </header>
         <p className="text-sm font-light text-gray-600">
           {t('favorites.savedPlaces', { count: likes.length })}
         </p>
-      </div>
-      <div className="mx-auto mb-6 w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
+      </section>
+      <section
+        aria-label="즐겨찾기 목록"
+        className="mx-auto mb-6 w-full max-w-[1400px] px-4 sm:px-6 lg:px-8"
+      >
         {likes.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12">
             <p className="text-lg font-medium text-gray-600">
@@ -42,7 +51,11 @@ export default function FavoritesPage() {
         ) : (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {likes.map((like) => (
-              <Link href={`/${language}/${like.id}`} key={like.id}>
+              <Link
+                href={`/${language}/${like.id}`}
+                key={like.id}
+                aria-label={like.title}
+              >
                 <TrendingCard
                   image={like.image}
                   title={like.title}
@@ -58,7 +71,7 @@ export default function FavoritesPage() {
             ))}
           </div>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
