@@ -63,16 +63,26 @@ export default function MapPage() {
   }, [coordinates])
 
   return (
-    <>
-      <div className="w-full border-b border-gray-200/50 bg-gray-100">
+    <main
+      className="w-full bg-gray-100"
+      aria-labelledby="map-page-title"
+      role="main"
+    >
+      <header className="w-full border-b border-gray-200/50 bg-gray-100">
         <div className="mx-auto flex h-28 w-full max-w-[1400px] flex-col justify-center gap-3 px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
             <MousePointer2 size={20} className="rotate-90 text-blue-600" />
-            <h1 className="text-black-900 text-xl font-bold">
+            <h1
+              id="map-page-title"
+              className="text-black-900 text-xl font-bold"
+            >
               {t('map.title')}
             </h1>
           </div>
-          <div className="flex w-full flex-wrap items-start justify-start gap-2 sm:gap-3 md:gap-4">
+          <nav
+            aria-label="지도 카테고리 필터"
+            className="flex w-full flex-wrap items-start justify-start gap-2 sm:gap-3 md:gap-4"
+          >
             {CATEGORY_OPTIONS.map((option) => (
               <FilterBadge
                 key={option.value}
@@ -83,10 +93,10 @@ export default function MapPage() {
                 className="h-8"
               />
             ))}
-          </div>
+          </nav>
         </div>
-      </div>
-      <div className="flex w-full border border-gray-200 bg-gray-100">
+      </header>
+      <section className="flex w-full border border-gray-200 bg-gray-100">
         <Map
           id="map"
           style={{ width: '80%', height: '81vh' }}
@@ -114,7 +124,10 @@ export default function MapPage() {
             </CustomOverlayMap>
           ))}
         </Map>
-        <div className="mx-auto flex flex-col gap-3 px-2 pt-4">
+        <aside
+          aria-label="지도 주변 관광지 목록"
+          className="mx-auto flex flex-col gap-3 px-2 pt-4"
+        >
           <p className="text-sm font-light text-gray-600">
             {filteredItems.length} places nearby
           </p>
@@ -124,6 +137,7 @@ export default function MapPage() {
                 <Link
                   href={`/${language}/${card.contentid}`}
                   key={card.contentid}
+                  aria-label={card.title}
                 >
                   <SearchCard
                     id={card.contentid}
@@ -139,8 +153,8 @@ export default function MapPage() {
               ))}
             </div>
           </div>
-        </div>
-      </div>
-    </>
+        </aside>
+      </section>
+    </main>
   )
 }

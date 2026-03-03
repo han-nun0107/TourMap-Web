@@ -61,10 +61,16 @@ function SearchContent() {
   })
 
   return (
-    <div className="min-h-screen w-full bg-gray-100">
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-black-900 text-2xl font-bold">
+    <main
+      className="min-h-screen w-full bg-gray-100"
+      aria-labelledby="search-page-title"
+    >
+      <section className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 px-4 py-12 sm:px-6 lg:px-8">
+        <header className="flex flex-col gap-4">
+          <h1
+            id="search-page-title"
+            className="text-black-900 text-2xl font-bold"
+          >
             {t('search.Title')}
           </h1>
           <SearchInput
@@ -74,8 +80,11 @@ function SearchContent() {
             placeholder={t('search.placeholder')}
             ariaHint={t('search.ariaHint')}
           />
-        </div>
-        <div className="flex w-full flex-wrap items-start justify-start gap-2 sm:gap-3 md:gap-4">
+        </header>
+        <nav
+          aria-label="검색 필터"
+          className="flex w-full flex-wrap items-start justify-start gap-2 sm:gap-3 md:gap-4"
+        >
           {SEARCH_FILTER_OPTIONS.map((option) => (
             <FilterBadge
               key={option.value}
@@ -92,18 +101,25 @@ function SearchContent() {
               className="h-8"
             />
           ))}
-        </div>
+        </nav>
         <p className="mt-8 flex flex-col gap-2 text-sm font-light text-gray-600">
           {t('search.resultFound', { count: resultCount })}
           {isInitialSearch && (
             <span className="text-gray-600">{t('search.initialSearch')}</span>
           )}
         </p>
-      </div>
-      <div className="mx-auto mb-6 w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
+      </section>
+      <section
+        aria-label="검색 결과 목록"
+        className="mx-auto mb-6 w-full max-w-[1400px] px-4 sm:px-6 lg:px-8"
+      >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {cards.map((card) => (
-            <Link href={`/${language}/${card.id}`} key={card.id}>
+            <Link
+              href={`/${language}/${card.id}`}
+              key={card.id}
+              aria-label={card.title}
+            >
               <TrendingCard
                 image={card.image}
                 title={card.title}
@@ -125,8 +141,8 @@ function SearchContent() {
             <p className="text-gray-600">{t('search.loading')}</p>
           </div>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
 

@@ -5,7 +5,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 
 import { Header } from '@/components/layout'
-import { routing } from '@/i18n/routing'
+import { routing, type AppLocale } from '@/i18n/routing'
 import { ReactQueryProvider } from '@/providers/react-query-provider'
 
 import '../globals.css'
@@ -20,98 +20,126 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://tour-map.com'
-  ),
-  title: {
-    default: 'Tour Map | Interactive Travel Guide & Attractions',
-    template: '%s | Tour Map',
-  },
-  icons: {
-    icon: '/og/logo.png',
-    shortcut: '/og/logo.png',
-    apple: '/og/logo.png',
-  },
-  description:
-    'Explore popular tourist attractions with an interactive tour map. Discover destinations, routes, and travel tips all in one place.',
-  keywords: [
-    'tour map',
-    'travel map',
-    'interactive map',
-    'tourist attractions',
-    'city tour',
-    'travel guide',
-    'seoul tour',
-    'korea travel',
-  ],
-  authors: [{ name: 'Tour Map Team' }],
-  creator: 'Tour Map',
-  publisher: 'Tour Map',
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+function normalizeLocale(locale: string): AppLocale {
+  if (routing.locales.includes(locale as AppLocale)) {
+    return locale as AppLocale
+  }
+  return routing.defaultLocale
+}
+
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || 'https://tour-map.com'
+
+const LOCALE_MAP: Record<AppLocale, { ogLocale: string; htmlLang: string }> = {
+  ko: { ogLocale: 'ko_KR', htmlLang: 'ko-KR' },
+  en: { ogLocale: 'en_US', htmlLang: 'en-US' },
+  de: { ogLocale: 'de_DE', htmlLang: 'de-DE' },
+  es: { ogLocale: 'es_ES', htmlLang: 'es-ES' },
+  fr: { ogLocale: 'fr_FR', htmlLang: 'fr-FR' },
+  ja: { ogLocale: 'ja_JP', htmlLang: 'ja-JP' },
+  ru: { ogLocale: 'ru_RU', htmlLang: 'ru-RU' },
+  'zh-CN': { ogLocale: 'zh_CN', htmlLang: 'zh-CN' },
+  'zh-TW': { ogLocale: 'zh_TW', htmlLang: 'zh-TW' },
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const appLocale = normalizeLocale(locale)
+  const localeConfig = LOCALE_MAP[appLocale]
+
+  const pathname = `/${appLocale}`
+  const canonicalUrl = new URL(pathname, BASE_URL)
+
+  return {
+    metadataBase: new URL(BASE_URL),
+    title: {
+      default: 'Tour Map | Interactive Travel Guide & Attractions',
+      template: '%s | Tour Map',
+    },
+    icons: {
+      icon: '/og/logo.png',
+      shortcut: '/og/logo.png',
+      apple: '/og/logo.png',
+    },
+    description:
+      'Explore popular tourist attractions with an interactive tour map. Discover destinations, routes, and travel tips all in one place.',
+    keywords: [
+      'tour map',
+      'travel map',
+      'interactive map',
+      'tourist attractions',
+      'city tour',
+      'travel guide',
+      'seoul tour',
+      'korea travel',
+    ],
+    authors: [{ name: 'Tour Map Team' }],
+    creator: 'Tour Map',
+    publisher: 'Tour Map',
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  alternates: {
-    canonical: '/',
-    languages: {
-      'ko-KR': '/ko',
-      'en-US': '/en',
-      'de-DE': '/de',
-      'es-ES': '/es',
-      'fr-FR': '/fr',
-      'ja-JP': '/ja',
-      'ru-RU': '/ru',
-      'zh-CN': '/zh-CN',
-      'zh-TW': '/zh-TW',
-    },
-  },
-  openGraph: {
-    title: 'Tour Map – Interactive Travel Guide',
-    description:
-      'An interactive tour map to explore attractions, routes, and must-see destinations.',
-    url: '/',
-    siteName: 'Tour Map',
-    locale: 'ko_KR',
-    alternateLocale: [
-      'en_US',
-      'de_DE',
-      'es_ES',
-      'fr_FR',
-      'ja_JP',
-      'ru_RU',
-      'zh_CN',
-      'zh_TW',
-    ],
-    images: [
-      {
-        url: '/og/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Interactive Tour Map',
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
-    ],
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Tour Map – Interactive Travel Guide',
-    description:
-      'Discover destinations and attractions with our interactive tour map.',
-    images: ['/og/logo.png'],
-  },
-  /* TODO: 추후 구글 연동시 연결 */
-  /*   verification: {
-    google: 'your-google-verification-code',
-    // naver: 'your-naver-verification-code',
-  }, */
+    },
+    alternates: {
+      canonical: canonicalUrl.toString(),
+      languages: {
+        'ko-KR': '/ko',
+        'en-US': '/en',
+        'de-DE': '/de',
+        'es-ES': '/es',
+        'fr-FR': '/fr',
+        'ja-JP': '/ja',
+        'ru-RU': '/ru',
+        'zh-CN': '/zh-CN',
+        'zh-TW': '/zh-TW',
+      },
+    },
+    openGraph: {
+      title: 'Tour Map – Interactive Travel Guide',
+      description:
+        'An interactive tour map to explore attractions, routes, and must-see destinations.',
+      url: canonicalUrl.toString(),
+      siteName: 'Tour Map',
+      locale: localeConfig.ogLocale,
+      alternateLocale: [
+        'en_US',
+        'de_DE',
+        'es_ES',
+        'fr_FR',
+        'ja_JP',
+        'ru_RU',
+        'zh_CN',
+        'zh_TW',
+      ],
+      images: [
+        {
+          url: '/og/logo.png',
+          width: 1200,
+          height: 630,
+          alt: 'Interactive Tour Map',
+        },
+      ],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Tour Map – Interactive Travel Guide',
+      description:
+        'Discover destinations and attractions with our interactive tour map.',
+      images: ['/og/logo.png'],
+    },
+  }
 }
 
 export function generateStaticParams() {

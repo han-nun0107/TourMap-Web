@@ -49,9 +49,9 @@ function CategoryContent() {
   // contentTypeId가 없으면 early return
   if (!contentTypeId) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <main className="flex min-h-screen items-center justify-center bg-gray-100">
         <p className="text-gray-600">{t('search.selectCategory')}</p>
-      </div>
+      </main>
     )
   }
 
@@ -60,10 +60,16 @@ function CategoryContent() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-gray-100">
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-black-900 text-2xl font-bold">
+    <main
+      className="min-h-screen w-full bg-gray-100"
+      aria-labelledby="category-page-title"
+    >
+      <section className="mx-auto flex w/full max-w-[1400px] flex-col gap-6 px-4 py-12 sm:px-6 lg:px-8">
+        <header className="flex flex-col gap-4">
+          <h1
+            id="category-page-title"
+            className="text-black-900 text-2xl font-bold"
+          >
             {categoryName || t('categories.Title')}
           </h1>
           {categoryName && (
@@ -71,14 +77,20 @@ function CategoryContent() {
               {t('search.resultFound', { count: cards.length })}
             </p>
           )}
-        </div>
+        </header>
 
         {cards.length === 0 ? (
-          <div className="flex min-h-[400px] items-center justify-center">
+          <section
+            aria-label="카테고리 검색 결과 없음"
+            className="flex min-h-[400px] items-center justify-center"
+          >
             <p className="text-gray-600">{t('search.noResults')}</p>
-          </div>
+          </section>
         ) : (
-          <>
+          <section
+            aria-label="카테고리별 관광지 목록"
+            className="space-y-4"
+          >
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {cards.map((card) => {
                 const contentTypeMeta =
@@ -87,6 +99,7 @@ function CategoryContent() {
                   <Link
                     href={`/${language}/${card.contentid}`}
                     key={card.contentid}
+                    aria-label={card.title}
                   >
                     <TrendingCard
                       title={card.title}
@@ -106,7 +119,6 @@ function CategoryContent() {
               })}
             </div>
 
-            {/* 로딩 트리거 요소 */}
             {hasNextPage && <div ref={loadMoreRef} className="h-20 w-full" />}
 
             {isFetchingNextPage && (
@@ -114,10 +126,10 @@ function CategoryContent() {
                 <p className="text-gray-600">{t('detail.loading')}</p>
               </div>
             )}
-          </>
+          </section>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   )
 }
 

@@ -66,28 +66,30 @@ export default async function TourDetailPage({ params }: Props) {
   )
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <HeroSection
-        item={detailCommonItem}
-        type={isFestival ? 'festival' : 'default'}
-      />
+    <main className="min-h-screen bg-gray-50">
+      <article aria-label={detailCommonItem.title}>
+        <HeroSection
+          item={detailCommonItem}
+          type={isFestival ? 'festival' : 'default'}
+        />
 
-      <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="grid gap-8 lg:grid-cols-3 lg:gap-12">
-          <div className="lg:col-span-2">
-            {detailCommonItem.overview && (
-              <OverviewSection overview={detailCommonItem.overview} />
-            )}
-            <DetailInfoSection item={detailIntroItem || null} />
+        <div className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <div className="grid gap-8 lg:grid-cols-3 lg:gap-12">
+            <div className="lg:col-span-2">
+              {detailCommonItem.overview && (
+                <OverviewSection overview={detailCommonItem.overview} />
+              )}
+              <DetailInfoSection item={detailIntroItem || null} />
+            </div>
+
+            <ContactSidebar
+              item={detailCommonItem}
+              detailIntroItem={detailIntroItem || null}
+              type={isFestival ? 'festival' : 'default'}
+            />
           </div>
-
-          <ContactSidebar
-            item={detailCommonItem}
-            detailIntroItem={detailIntroItem || null}
-            type={isFestival ? 'festival' : 'default'}
-          />
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   )
 }
